@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ActivityImage;
+use App\Models\Blog;
 use App\Models\Activity;
 
 class GalleryController extends Controller
@@ -12,10 +12,19 @@ class GalleryController extends Controller
     public function index()
     {
         $activities = Activity::with('images')
-        ->orderBy('created_at', 'desc')
-        ->get();
-        $title = 'PPI Kastamonu -  Galeri Kegiatan';
+            ->latest()
+            ->get();
 
-        return view('user.gallery', compact('activities', 'title'));
+        $blogs = Blog::with('images')
+            ->latest()
+            ->get();
+
+        $title = 'PPI Kastamonu - Galeri';
+
+        return view('user.gallery', compact(
+            'activities',
+            'blogs',
+            'title'
+        ));
     }
 }

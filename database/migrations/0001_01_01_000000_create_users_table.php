@@ -83,6 +83,22 @@ return new class extends Migration
             $table->enum('type', ['core', 'mpa', 'division']);
             $table->timestamps();
         });
+
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('thumbnail');
+            $table->text('content');
+            $table->timestamps();
+        });
+
+        Schema::create('blog_images', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('blog_id');
+            $table->string('image_path'); 
+            $table->timestamps();
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
+        });
     }
 
     /**

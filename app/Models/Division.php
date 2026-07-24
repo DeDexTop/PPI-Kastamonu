@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @mixin IdeHelperDivision
+ */
 class Division extends Model
 {
     protected $fillable = ['cabinet_id', 'name'];

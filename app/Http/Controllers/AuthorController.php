@@ -26,12 +26,12 @@ class AuthorController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'thumbnail' => 'image|nullable',
+            'thumbnail' => 'image|nullable|max:500',
 
             'author_id' => 'nullable|exists:authors,id',
             'author_name' => 'required_without:author_id',
             'pen_name' => 'nullable|string',
-            'author_photo' => 'image|nullable',
+            'author_photo' => 'image|nullable|max:500',
         ]);
 
         if ($request->author_id) {

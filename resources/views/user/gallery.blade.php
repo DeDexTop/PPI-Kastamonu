@@ -11,7 +11,7 @@
         </div>
 
         {{-- JIKA TIDAK ADA DATA --}}
-        @if($activities->count() == 0)
+        @if($activities->count() == 0 && $blogs->count() == 0)
             <div class="text-center py-5">
                 <h5 class="text-muted">Belum ada dokumentasi kegiatan 📸</h5>
             </div>
@@ -57,6 +57,51 @@
                 </div>
             @endif
         @endforeach
+
+        {{-- ================= BLOG ================= --}}
+    @foreach($blogs as $blog)
+        @if($blog->images->count())
+
+            <div class="mb-5">
+
+                <div class="text-center mb-4">
+                    <h3 class="text-red fw-bold">
+                        {{ $blog->title }}
+                    </h3>
+
+                    <p class="text-muted">
+                        {{ $blog->created_at->format('d M Y') }}
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+
+                    @foreach($blog->images as $img)
+
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+
+                            <div class="gallery-card shadow-sm">
+
+                                <a href="javascript:void(0)"
+                                onclick="openLightbox('{{ asset('storage/'.$img->image_path) }}')">
+
+                                    <img src="{{ asset('storage/'.$img->image_path) }}"
+                                     class="img-fluid gallery-img">
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    @endforeach
+
+                </div>
+
+            </div>
+
+        @endif
+    @endforeach
 
     </div>
 </div>

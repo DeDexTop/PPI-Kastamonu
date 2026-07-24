@@ -14,6 +14,7 @@
                         <a href="/aktivitas" class="nav-item nav-link {{ Request::is('aktivitas') ? 'active' : '' }}">Aktivitas</a>
                         <a href="/kastulis" class="nav-item nav-link {{ Request::is('kastulis') ? 'active' : '' }}">Kastulis</a>
                         <a href="/kabinet" class="nav-item nav-link {{ Request::is('kabinet') ? 'active' : '' }}">Kabinet</a>
+                        <a href="/blog" class="nav-item nav-link {{ Request::is('blog') ? 'active' : '' }}">Blog</a>
                     </div>
                 </div>
             </nav>

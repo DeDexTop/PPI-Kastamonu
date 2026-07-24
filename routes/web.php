@@ -10,6 +10,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\KabinetController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 
 // User Routes
 
@@ -29,10 +30,20 @@ Route::get('/aktivitas', function () {
     return view('user.activity', compact('title', 'activities'));
 });
 
+Route::get('/blog', function () {
+        $title = 'PPI Kastamonu - Blog';
+        $blogs = App\Models\Blog::all();
+        return view('user.blog', compact('title', 'blogs'));
+    });
+
+
 Route::get('/kabinet', [KabinetController::class, 'index']);
 
 Route::get('penulisan/{post}', [AuthorController::class, 'show'])
         ->name('posts.show');
+
+Route::get('/blog/{blog}', [BlogController::class, 'show'])
+        ->name('blog.show');
 
 Route::get('/kastulis', [AuthorController::class, 'listPosts']);
 
@@ -54,7 +65,7 @@ Route::get('/dashboard', [AdminController::class, 'index'])
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
 
-    
+    route::resource('blog', BlogController::class);
 
     Route::resource('activity', ActivityController::class);
 

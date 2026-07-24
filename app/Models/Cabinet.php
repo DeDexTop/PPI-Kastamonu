@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin IdeHelperCabinet
+ */
 class Cabinet extends Model
 {
     protected $fillable = ['name', 'start_period', 'end_period', 'status'];

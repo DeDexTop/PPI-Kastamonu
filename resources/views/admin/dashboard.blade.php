@@ -22,7 +22,7 @@
     </div>
 
     {{-- ================= STATISTICS ================= --}}
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
 
         <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition">
             <p class="text-sm text-gray-500">Kabinet</p>
@@ -37,6 +37,10 @@
         <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition">
             <p class="text-sm text-gray-500">Penulisan</p>
             <h2 class="text-3xl font-bold text-gray-800">{{ $totalPosts }}</h2>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition">
+            <p class="text-sm text-gray-500">Blog</p>
+            <h2 class="text-3xl font-bold text-gray-800">{{ $totalBlogs }}</h2>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition">

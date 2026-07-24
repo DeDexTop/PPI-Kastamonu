@@ -2,7 +2,16 @@
 
 @section('containers')
 
-@if(!$cabinet->mpaMembers->count() && !$cabinet->coreMembers->count() && !$cabinet->divisions->count())
+
+    
+@if (is_null($cabinet))
+<div class="container py-5 text-center">
+    <p class="display-6 text-center text-red px-3">
+        Belum ada data kabinet yang tersedia
+    </p>
+</div>
+
+@elseif(!$cabinet->mpaMembers->count() && !$cabinet->coreMembers->count() && !$cabinet->divisions->count())
 <div class="container py-5 text-center">
     <p class="display-6 text-center text-red px-3">
         Pengurus Kabinet {{ $cabinet->name }}
@@ -10,6 +19,8 @@
     <p class="text-danger mt-5">Data kabinet belum lengkap</p>
     <p class="text-muted">Mohon maaf, data kabinet saat ini belum tersedia. Silakan cek kembali nanti.</p>
 </div>
+
+
 
 @else
 <div class="container-fluid py-5">

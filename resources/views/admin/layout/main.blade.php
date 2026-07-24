@@ -50,7 +50,7 @@
 <div class="flex min-h-screen">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-lg sidebar">
-        <div class="p-6 text-xl font-bold border-b">Admin Kastam</div>
+        <div class="p-6 text-xl font-bold border-b"><a href="/">Admin Kastam</a></div>
         <nav class="p-4 space-y-2">
             <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
                 <a href="/dashboard">Dashboard</a>
@@ -64,6 +64,8 @@
             <li class="nav-item {{ Request::is('admin/cabinets') ? 'active' : '' }}">
                 <a href="/admin/cabinets">Kabinet</a>
             </li>
+            <li class="nav-item {{ Request::is('admin/blog') ? 'active' : '' }}">
+                <a href="/admin/blog">Blog</a>
             <form method="POST" action="/logout">
               @csrf
               <button type="submit" class="block w-full text-left px-4 py-2 rounded text-red-500 hover:bg-red-50" style="border-radius:15px">Logout</button>
