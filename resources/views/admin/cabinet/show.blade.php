@@ -145,7 +145,7 @@
         <div class="org-section-header">
             <div class="org-section-title">👑 Struktur Inti</div>
             <a href="{{ route('admin.members.create', ['cabinet' => $cabinet->id, 'type' => 'core']) }}" class="btn-add">
-                + Tambah Inti
+                + Tambah
             </a>
         </div>
 
@@ -221,6 +221,9 @@
                     <div style="display:flex; gap:6px;">
                         <a href="{{ route('admin.members.create', ['cabinet' => $cabinet->id, 'division' => $division->id]) }}" class="btn-add">
                             + Anggota
+                        </a>
+                        <a href="{{ route('admin.divisions.edit', $division->id) }}" class="btn-edit">
+                            Edit
                         </a>
                         <form action="{{ route('admin.divisions.destroy', $division->id) }}" method="POST">
                             @csrf

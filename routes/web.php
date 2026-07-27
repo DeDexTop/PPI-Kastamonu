@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('user.home', compact('title'));
 });
 
+Route::get('/profile', function () {
+    $title = 'PPI Kastamonu - Kontak Kami';
+    return view('user.profile', compact('title'));
+});
+
 Route::get('/tentang', function () {
     $title = 'PPI Kastamonu - Tentang Kami';
     return view('user.about', compact('title'));
@@ -55,12 +60,18 @@ Route::get('/kabinet/{cabinet}', [KabinetController::class, 'show'])->name('kabi
 Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
 
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login')
+    ->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])
+    ->name('login.authenticate')
+    ->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
 
 // Admin Routes
-Route::get('/dashboard', [AdminController::class, 'index'])
+Route::middleware(['auth'])->get('/dashboard', [AdminController::class, 'index'])
         ->name('dashboard');
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

@@ -25,7 +25,7 @@ class MemberController extends Controller
             'type' => 'required',
             'division_id' => 'nullable',
             'position_id' => 'nullable',
-            'photo' => 'image|nullable|max:500'
+            'photo' => 'image|nullable|max:1024'
         ]);
 
         if ($request->file('photo')) {
@@ -54,11 +54,11 @@ class MemberController extends Controller
             'type' => 'required',
             'division_id' => 'nullable',
             'position_id' => 'nullable',
-            'photo' => 'image|nullable|max:500'
+            'photo' => 'image|nullable|max:1024'
         ],
         [
             'photo.image' => 'File harus berupa gambar.',
-            'photo.max' => 'Ukuran file tidak boleh lebih dari 500KB.',
+            'photo.max' => 'Ukuran file tidak boleh lebih dari 1024KB.',
         ]);
 
         if ($request->file('photo')) {

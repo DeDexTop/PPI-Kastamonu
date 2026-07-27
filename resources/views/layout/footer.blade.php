@@ -48,10 +48,10 @@
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Dirancang Oleh <a class="fw-semi-bold text-beige" href="https://htmlcodex.com">HTML Codex</a>
+                        Dirancang Oleh <a class="fw-semi-bold text-beige" href="https://htmlcodex.com" target="_blank">HTML Codex</a>
                     </div>
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                       Dikembangkan Oleh <a class="fw-semi-bold text-beige" href="#!">M. Arief Aliman</a>
+                       Dikembangkan Oleh <a class="fw-semi-bold text-beige" href="/profile">M. Arief Aliman</a>
                     </div>
                 </div>
             </div>

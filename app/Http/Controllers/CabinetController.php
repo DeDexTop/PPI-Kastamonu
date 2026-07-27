@@ -62,7 +62,8 @@ class CabinetController extends Controller
         $cabinet = Cabinet::findOrFail($id);
         $cabinet->update($request->validate([
             'name' => 'required',
-            'period' => 'required',
+            'start_period' => 'required',
+            'end_period' => 'required',
             'status' => 'required',
         ]));
 
