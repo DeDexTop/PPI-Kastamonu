@@ -38,6 +38,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('pen_name');
+            $table->text('bio');
             $table->string('photo'); 
             $table->timestamps();
         });

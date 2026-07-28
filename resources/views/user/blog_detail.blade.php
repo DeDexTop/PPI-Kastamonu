@@ -26,7 +26,9 @@
 
                     <div class="col-lg-6">
                         <div class="wow fadeIn" data-wow-delay="0.3s">
-                            <h3>{{ $blog->title }}</h3>
+                            <small class="text-muted mb-2">
+                                {{ $blog->created_at->format('d M Y') }}
+                            </small>
                             <p class="text-dark" style="white-space: pre-line;">
                                 {{ $blog->content }}
                             </p>

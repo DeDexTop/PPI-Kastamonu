@@ -66,6 +66,10 @@
             </li>
             <li class="nav-item {{ Request::is('admin/blog') ? 'active' : '' }}">
                 <a href="/admin/blog">Blog</a>
+            </li>
+            <li class="nav-item {{ Request::is('admin/penulis') ? 'active' : '' }}">
+                <a href="/admin/penulis">Penulis</a>
+            </li>
             <form method="POST" action="/logout">
               @csrf
               <button type="submit" class="block w-full text-left px-4 py-2 rounded text-red-500 hover:bg-red-50" style="border-radius:15px">Logout</button>

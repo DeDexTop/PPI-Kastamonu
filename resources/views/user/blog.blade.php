@@ -15,7 +15,7 @@
             </p>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
 
             @forelse($blogs as $blog)
 

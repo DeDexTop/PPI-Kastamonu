@@ -164,6 +164,11 @@
                 >
             </div>
             <div class="form-group">
+                <label>Bio</label>
+                <textarea name="bio" placeholder="Masukkan bio author">{{ old('bio') }}</textarea>
+            </div>
+            </div>
+            <div class="form-group">
                 <label>Foto Author</label>
                 <input type="file" name="author_photo">
             </div>

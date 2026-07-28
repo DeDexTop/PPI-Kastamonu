@@ -2,7 +2,7 @@
 
 @section('containers')
     <div class=" container-fluid py-5 bg-cream" style="padding-left: 0px; padding-right:0px">
-        <div class="container mb-5">
+        <div class="container mb-4">
             <div class="card border-0">
                 <div class="card-body bg-cream">
                     <h3 class="display-1 text-start text-red pe-3">Tentang Kami</h3>
@@ -34,8 +34,8 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid py-5 bg-cream">
-        <div class="container mb-5">
+    <div class="container-fluid py-4 bg-cream">
+        <div class="container mb-3">
             <div class="card border-0">
                 <div class="card-body bg-cream">
                     <div class="row g-5 align-items-center">
@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="container-fluid py-5 bg-cream">
-        <div class="container mb-5 mt-5">
+        <div class="container mb-4">
             <div class="card border-0 bg-cream">
                 <div class="card-body">
                     <div class="row g-5 align-items-center">

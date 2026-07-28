@@ -1,132 +1,238 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\CabinetController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\DivisionController;
-use App\Http\Controllers\KabinetController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CabinetController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\KabinetController;
+use App\Http\Controllers\MemberController;
 
-// User Routes
+/*
+|--------------------------------------------------------------------------
+| USER
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', function () {
-    $title = 'PPI Kastamonu - Beranda';
-    return view('user.home', compact('title'));
+    return view('user.home', [
+        'title' => 'PPI Kastamonu - Beranda'
+    ]);
 });
 
 Route::get('/profile', function () {
-    $title = 'PPI Kastamonu - Kontak Kami';
-    return view('user.profile', compact('title'));
+    return view('user.profile', [
+        'title' => 'PPI Kastamonu - Kontak Kami'
+    ]);
 });
 
 Route::get('/tentang', function () {
-    $title = 'PPI Kastamonu - Tentang Kami';
-    return view('user.about', compact('title'));
+    return view('user.about', [
+        'title' => 'PPI Kastamonu - Tentang Kami'
+    ]);
 });
 
 Route::get('/aktivitas', function () {
-    $title = 'PPI Kastamonu -  Kegiatan Kami';
-    $activities = App\Models\Activity::all();
-    return view('user.activity', compact('title', 'activities'));
+    return view('user.activity', [
+        'title' => 'PPI Kastamonu - Kegiatan Kami',
+        'activities' => App\Models\Activity::all()
+    ]);
 });
 
 Route::get('/blog', function () {
-        $title = 'PPI Kastamonu - Blog';
-        $blogs = App\Models\Blog::all();
-        return view('user.blog', compact('title', 'blogs'));
-    });
-
-
-Route::get('/kabinet', [KabinetController::class, 'index']);
-
-Route::get('penulisan/{post}', [AuthorController::class, 'show'])
-        ->name('posts.show');
-
-Route::get('/blog/{blog}', [BlogController::class, 'show'])
-        ->name('blog.show');
-
-Route::get('/kastulis', [AuthorController::class, 'listPosts']);
-
-Route::get('/aktivitas/{activity}', [ActivityController::class, 'show']);
-
-Route::get('/kabinet/list', [KabinetController::class, 'list'])->name('kabinet.list');
-Route::get('/kabinet/{cabinet}', [KabinetController::class, 'show'])->name('kabinet.show');
-
-Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
-
-
-Route::get('/login', [LoginController::class, 'index'])
-    ->name('login')
-    ->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])
-    ->name('login.authenticate')
-    ->middleware('guest');
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->name('logout')
-    ->middleware('auth');
-
-// Admin Routes
-Route::middleware(['auth'])->get('/dashboard', [AdminController::class, 'index'])
-        ->name('dashboard');
-
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-
-    route::resource('blog', BlogController::class);
-
-    Route::resource('activity', ActivityController::class);
-
-    Route::get('penulisan', [AuthorController::class, 'index'])
-        ->name('posts.index');
-
-    Route::get('penulisan/create', [AuthorController::class, 'create'])
-        ->name('posts.create');
-
-    Route::post('penulisan', [AuthorController::class, 'store'])
-        ->name('posts.store');
-
-    Route::get('penulisan/{post}/edit', [AuthorController::class, 'edit'])
-        ->name('posts.edit');
-
-    Route::put('penulisan/{post}', [AuthorController::class, 'update'])
-        ->name('posts.update');
-
-    Route::delete('penulisan/{post}', [AuthorController::class, 'destroy'])
-        ->name('posts.destroy');
-
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('posts', AuthorController::class);
-    });
-    
-    Route::resource('cabinets', CabinetController::class);
-    Route::get('cabinets/{cabinet}/members/create', [MemberController::class, 'create'])->name('members.create');
-    Route::post('cabinets/{cabinet}/members', [MemberController::class, 'store'])->name('members.store');
-    Route::get('cabinets/{cabinet}/members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
-    Route::put('cabinets/{cabinet}/members/{member}', [MemberController::class, 'update'])->name('members.update');
-    Route::delete('cabinets/{cabinet}/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
-
-    Route::get('/cabinets/{cabinet}/divisions', [DivisionController::class, 'index'])->name('divisions.index');
-    Route::get('/cabinets/{cabinet}/divisions/create', [DivisionController::class, 'create'])->name('divisions.create');
-    Route::post('/cabinets/{cabinet}/divisions', [DivisionController::class, 'store'])->name('divisions.store');
-
-    Route::get('/divisions/{division}/edit', [DivisionController::class, 'edit'])->name('divisions.edit');
-    Route::put('/divisions/{division}', [DivisionController::class, 'update'])->name('divisions.update');
-    Route::delete('/divisions/{division}', [DivisionController::class, 'destroy'])->name('divisions.destroy');
-
-    Route::get('/admin/cabinets/{cabinet}', [CabinetController::class, 'show'])
-    ->name('admin.cabinets.show');
-
+    return view('user.blog', [
+        'title' => 'PPI Kastamonu - Blog',
+        'blogs' => App\Models\Blog::all()
+    ]);
 });
 
+Route::get('/kastulis', [AuthorController::class, 'listPosts'])
+    ->name('posts.index.user');
+
+Route::get('/penulisan/{post}', [AuthorController::class, 'show'])
+    ->name('posts.show');
+
+Route::get('/author/{author}', [AuthorController::class, 'profile'])
+    ->name('author.profile');
+
+Route::get('/blog/{blog}', [BlogController::class, 'show'])
+    ->name('blog.show');
+
+Route::get('/aktivitas/{activity}', [ActivityController::class, 'show'])
+    ->name('activity.show');
+
+Route::get('/kabinet', [KabinetController::class, 'index'])
+    ->name('kabinet.index');
+
+Route::get('/kabinet/list', [KabinetController::class, 'list'])
+    ->name('kabinet.list');
+
+Route::get('/kabinet/{cabinet}', [KabinetController::class, 'show'])
+    ->name('kabinet.show');
+
+Route::get('/galeri', [GalleryController::class, 'index'])
+    ->name('gallery.index');
 
 
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('guest')->group(function () {
+
+    Route::get('/login', [LoginController::class, 'index'])
+        ->name('login');
+
+    Route::post('/login', [LoginController::class, 'authenticate'])
+        ->name('login.authenticate');
+});
+
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
 
 
+/*
+|--------------------------------------------------------------------------
+| DASHBOARD
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('auth')->get('/dashboard', [AdminController::class, 'index'])
+    ->name('dashboard');
 
 
+/*
+|--------------------------------------------------------------------------
+| ADMIN
+|--------------------------------------------------------------------------
+*/
 
+Route::middleware('auth')
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
+        /*
+        |------------------------------------------------------
+        | BLOG
+        |------------------------------------------------------
+        */
+
+        Route::resource('blog', BlogController::class);
+
+        /*
+        |------------------------------------------------------
+        | ACTIVITY
+        |------------------------------------------------------
+        */
+
+        Route::resource('activity', ActivityController::class);
+
+        /*
+        |------------------------------------------------------
+        | POSTS (KASTULIS)
+        |------------------------------------------------------
+        */
+
+        Route::get('penulisan', [AuthorController::class, 'index'])
+            ->name('posts.index');
+
+        Route::get('penulisan/create', [AuthorController::class, 'create'])
+            ->name('posts.create');
+
+        Route::post('penulisan', [AuthorController::class, 'store'])
+            ->name('posts.store');
+
+        Route::get('penulisan/{post}/edit', [AuthorController::class, 'edit'])
+            ->name('posts.edit');
+
+        Route::put('penulisan/{post}', [AuthorController::class, 'update'])
+            ->name('posts.update');
+
+        Route::delete('penulisan/{post}', [AuthorController::class, 'destroy'])
+            ->name('posts.destroy');
+
+        /*
+        |------------------------------------------------------
+        | AUTHORS
+        |------------------------------------------------------
+        */
+
+        Route::get('penulis', [AuthorController::class, 'indexAuthor'])
+            ->name('posts.index_author');
+
+        Route::get('penulis/create', [AuthorController::class, 'createAuthor'])
+            ->name('posts.create_author');
+
+        Route::post('penulis', [AuthorController::class, 'storeAuthor'])
+            ->name('posts.store_author');
+
+        Route::get('penulis/{author}/edit', [AuthorController::class, 'editAuthor'])
+            ->name('posts.edit_author');
+
+        Route::put('penulis/{author}', [AuthorController::class, 'updateAuthor'])
+            ->name('posts.update_author');
+
+        Route::delete('penulis/{author}', [AuthorController::class, 'destroyAuthor'])
+            ->name('posts.destroy_author');
+
+        /*
+        |------------------------------------------------------
+        | CABINET
+        |------------------------------------------------------
+        */
+
+        Route::resource('cabinets', CabinetController::class);
+
+        /*
+        |------------------------------------------------------
+        | MEMBERS
+        |------------------------------------------------------
+        */
+
+        Route::get('cabinets/{cabinet}/members/create', [MemberController::class, 'create'])
+            ->name('members.create');
+
+        Route::post('cabinets/{cabinet}/members', [MemberController::class, 'store'])
+            ->name('members.store');
+
+        Route::get('cabinets/{cabinet}/members/{member}/edit', [MemberController::class, 'edit'])
+            ->name('members.edit');
+
+        Route::put('cabinets/{cabinet}/members/{member}', [MemberController::class, 'update'])
+            ->name('members.update');
+
+        Route::delete('cabinets/{cabinet}/members/{member}', [MemberController::class, 'destroy'])
+            ->name('members.destroy');
+
+        /*
+        |------------------------------------------------------
+        | DIVISION
+        |------------------------------------------------------
+        */
+
+        Route::get('cabinets/{cabinet}/divisions', [DivisionController::class, 'index'])
+            ->name('divisions.index');
+
+        Route::get('cabinets/{cabinet}/divisions/create', [DivisionController::class, 'create'])
+            ->name('divisions.create');
+
+        Route::post('cabinets/{cabinet}/divisions', [DivisionController::class, 'store'])
+            ->name('divisions.store');
+
+        Route::get('divisions/{division}/edit', [DivisionController::class, 'edit'])
+            ->name('divisions.edit');
+
+        Route::put('divisions/{division}', [DivisionController::class, 'update'])
+            ->name('divisions.update');
+
+        Route::delete('divisions/{division}', [DivisionController::class, 'destroy'])
+            ->name('divisions.destroy');
+    });

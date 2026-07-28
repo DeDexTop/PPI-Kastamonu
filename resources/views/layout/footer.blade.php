@@ -8,6 +8,7 @@
                     <a class="btn btn-link" href="/aktivitas" style="color: #F5E8C7">Aktivitas</a>
                     <a class="btn btn-link" href="/kastulis" style="color: #F5E8C7">Kastulis</a>
                     <a class="btn btn-link" href="/kabinet" style="color: #F5E8C7">Kabinet</a>
+                    <a class="btn btn-link" href="/blog" style="color: #F5E8C7">Blog</a>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <h4 class="text-beige mb-4">Media Kami</h4>
@@ -18,31 +19,34 @@
                 <div class="col-lg-4 col-md-6">
                     <a href="/galeri"><h4 class="text-beige mb-4">Galeri</h4></a>
                     <div class="row g-2">
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/bph.JPG') }}" alt="" style="border-radius: 10px">
+                        @forelse($footerImages as $image)
+
+                            <div class="col-4">
+                                <a href="/galeri">
+                                    <img
+                                        class="img-fluid w-100"
+                                        src="{{ asset('storage/'.$image['image_path']) }}"
+                                        alt="Galeri"
+                                        style="height:90px; object-fit:cover; border-radius:10px;">
+                                </a>
+                            </div>
+
+                        @empty
+
+                            <div class="col-12 text-center py-3">
+                                <p class="text-beige mb-0">
+                                    Belum ada gambar di galeri.
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/sika.JPG') }}" alt="" style="border-radius: 10px">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/medikal.JPG') }}" alt="" style="border-radius: 10px">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/tanisma.JPG') }}" alt="" style="border-radius: 10px">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/palestina.JPG') }}" alt="" style="border-radius: 10px">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid w-100" src="{{ asset('img/mayo.JPG') }}" alt="" style="border-radius: 10px">
-                        </div>
-                    </div>
+
+                        @endforelse
                 </div>
             </div>
             <div class="copyright pt-5 text-white">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="fw-semi-bold text-beige" href="/login">PPI Kastamonu</a>, Semua Hak Dilindungi Undang-undang
+                        &copy; <a class="fw-semi-bold text-beige" href="/dashboard">PPI Kastamonu</a>, Semua Hak Dilindungi Undang-undang
                     </div>
                     <div class="col-md-6 text-center text-md-end mb-3 mb-md-0">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->

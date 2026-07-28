@@ -8,11 +8,13 @@
                 <h1 class="display-5 text-red mb-4">
                     {{ $post->title }}
                 </h1>
-                <img 
-                    src="{{ asset('storage/'.$post->thumbnail) }}" 
-                    class="img-fluid w-150 mb-4"
-                    style="border-radius:15px"
-                >
+                <div class="thumbnail-wrapper mb-5">
+                    <img 
+                        src="{{ asset('storage/'.$post->thumbnail) }}" 
+                        class="thumbnail-img"
+                        alt="{{ $post->title }}"
+                    >
+                </div>
                 <div class="fs-5 text-dark mb-5">
                     {!! nl2br(e($post->content)) !!}
                 </div>
@@ -31,9 +33,11 @@
                     >
 
                     <div>
-                        <h5 class="mb-1 text-red">
-                            {{ $post->author->pen_name }}
-                        </h5>
+                        <a href="{{ route('author.profile', $post->author->id) }}">
+                            <h5 class="text-red mb-1">
+                                {{ $post->author->pen_name }}
+                            </h5>
+                        </a>
 
                         <small class="text-muted">
                             {{ $post->author->name }}
@@ -47,4 +51,20 @@
 
     </div>
 </div>
+
+<style>
+    .thumbnail-wrapper{
+    width:100%;
+    height:100% /* Tinggi yang diinginkan */
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.thumbnail-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:15px;
+}
+</style>
 @endsection

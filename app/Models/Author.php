@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Author extends Model
 {
-     protected $fillable = ['name', 'photo', 'pen_name'];
+     protected $fillable = ['name', 'photo', 'pen_name', 'bio'];
 
     public function posts()
     {
