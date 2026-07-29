@@ -15,6 +15,7 @@
                     <a class="btn text-beige" style="cursor: pointer; display: flex; align-items: center;" href="https://www.tiktok.com/@ppi.kastamonu" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok text-beige"></i>TikTok</a>
                     <a class="btn text-beige" style="cursor: pointer; display: flex; align-items: center;" href="https://www.instagram.com/ppikastamonu/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram text-beige"></i>Instagram</a>
                     <a class="btn text-beige" style="cursor: pointer; display: flex; align-items: center;" href="https://www.youtube.com/@ppikastamonu2021" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube text-beige"></i>YouTube</a>
+                    <a class="btn text-beige" style="cursor: pointer; display: flex; align-items: center;" href="mailto:ppikastamonu@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope text-beige"></i>ppikastamonu@gmail.com</a>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <a href="/galeri"><h4 class="text-beige mb-4">Galeri</h4></a>

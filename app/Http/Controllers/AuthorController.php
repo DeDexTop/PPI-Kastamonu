@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
-    /**
-     * ==========================
-     * POST
-     * ==========================
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | ADMIN - POST
+    |--------------------------------------------------------------------------
+    */
 
     public function index()
     {
@@ -24,76 +24,76 @@ class AuthorController extends Controller
 
     public function create()
     {
-        $authors = Author::all();
+        $authors = Author::orderBy('name')->get();
+
+        if ($authors->isEmpty()) {
+            return redirect()
+                ->route('admin.posts.index_author')
+                ->with('error', 'Tambahkan minimal satu penulis terlebih dahulu.');
+        }
 
         return view('admin.posts.create', compact('authors'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title'         => 'required|max:255',
-            'content'       => 'required',
-            'thumbnail'     => 'nullable|image|mimes:jpg,jpeg,png|max:500',
+        $validated = $request->validate([
+            'title'      => 'required|max:255',
+            'content'    => 'required',
+            'author_id'  => 'required|exists:authors,id',
+            'thumbnail'  => 'required|image|mimes:jpg,jpeg,png|max:500',
+        ], [
+            'title.required'      => 'Judul tulisan wajib diisi.',
+            'title.max'           => 'Judul maksimal 255 karakter.',
 
-            'author_id'     => 'nullable|exists:authors,id',
-            'author_name'   => 'required_without:author_id|max:255',
-            'pen_name'      => 'nullable|max:255',
-            'bio'           => 'nullable',
-            'author_photo'  => 'nullable|image|mimes:jpg,jpeg,png|max:500',
-        ],[
-            'thumbnail.max' => 'Thumbnail maksimal 500KB.',
-            'author_photo.max' => 'Foto penulis maksimal 500KB.',
+            'content.required'    => 'Isi tulisan wajib diisi.',
+
+            'author_id.required'  => 'Silakan pilih penulis.',
+            'author_id.exists'    => 'Penulis tidak ditemukan.',
+
+            'thumbnail.required'  => 'Thumbnail wajib diunggah.',
+            'thumbnail.image'     => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes'     => 'Thumbnail harus berformat JPG, JPEG, atau PNG.',
+            'thumbnail.max'       => 'Ukuran thumbnail maksimal 500 KB.',
         ]);
 
-        if ($request->author_id) {
+        $validated['thumbnail'] = $request
+            ->file('thumbnail')
+            ->store('posts', 'public');
 
-            $authorId = $request->author_id;
-
-        } else {
-
-            $author = Author::create([
-                'name' => $request->author_name,
-                'pen_name' => $request->pen_name,
-                'bio' => $request->bio,
-                'photo' => $request->hasFile('author_photo')
-                    ? $request->file('author_photo')->store('authors', 'public')
-                    : null,
-            ]);
-
-            $authorId = $author->id;
-        }
-
-        Post::create([
-            'author_id' => $authorId,
-            'title' => $request->title,
-            'content' => $request->content,
-            'thumbnail' => $request->hasFile('thumbnail')
-                ? $request->file('thumbnail')->store('posts', 'public')
-                : null,
-        ]);
+        Post::create($validated);
 
         return redirect()
             ->route('admin.posts.index')
-            ->with('success', 'Post berhasil ditambahkan.');
+            ->with('success', 'Tulisan berhasil ditambahkan.');
     }
 
     public function edit(Post $post)
     {
-        $authors = Author::all();
+        $authors = Author::orderBy('name')->get();
 
         return view('admin.posts.edit', compact('post', 'authors'));
     }
 
     public function update(Request $request, Post $post)
     {
-        $data = $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required',
-            'author_id' => 'required|exists:authors,id',
-            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:500',
-        ],[
-            'thumbnail.max' => 'Thumbnail maksimal 500KB.',
+        $validated = $request->validate([
+            'title'      => 'required|max:255',
+            'content'    => 'required',
+            'author_id'  => 'required|exists:authors,id',
+            'thumbnail'  => 'nullable|image|mimes:jpg,jpeg,png|max:500',
+        ], [
+            'title.required'      => 'Judul tulisan wajib diisi.',
+            'title.max'           => 'Judul maksimal 255 karakter.',
+
+            'content.required'    => 'Isi tulisan wajib diisi.',
+
+            'author_id.required'  => 'Silakan pilih penulis.',
+            'author_id.exists'    => 'Penulis tidak ditemukan.',
+
+            'thumbnail.image'     => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes'     => 'Thumbnail harus berformat JPG, JPEG, atau PNG.',
+            'thumbnail.max'       => 'Ukuran thumbnail maksimal 500 KB.',
         ]);
 
         if ($request->hasFile('thumbnail')) {
@@ -102,15 +102,16 @@ class AuthorController extends Controller
                 Storage::disk('public')->delete($post->thumbnail);
             }
 
-            $data['thumbnail'] = $request->file('thumbnail')
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
                 ->store('posts', 'public');
         }
 
-        $post->update($data);
+        $post->update($validated);
 
         return redirect()
             ->route('admin.posts.index')
-            ->with('success', 'Post berhasil diperbarui.');
+            ->with('success', 'Tulisan berhasil diperbarui.');
     }
 
     public function destroy(Post $post)
@@ -121,14 +122,14 @@ class AuthorController extends Controller
 
         $post->delete();
 
-        return back()->with('success', 'Post berhasil dihapus.');
+        return back()->with('success', 'Tulisan berhasil dihapus.');
     }
 
-    /**
-     * ==========================
-     * AUTHOR
-     * ==========================
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | ADMIN - AUTHOR
+    |--------------------------------------------------------------------------
+    */
 
     public function indexAuthor()
     {
@@ -144,29 +145,25 @@ class AuthorController extends Controller
 
     public function storeAuthor(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|max:255',
             'pen_name' => 'nullable|max:255',
-            //'bio' => 'nullable',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:500',
-        ],[
-            'photo.image' => 'File harus berupa gambar.',
-            'photo.max' => 'Ukuran foto maksimal 500KB.',
+            'bio' => 'nullable',
+            'photo' => 'required|image|mimes:jpg,jpeg,png|max:500',
+        ], [
+            'name.required' => 'Nama penulis wajib diisi.',
+
+            'photo.required' => 'Foto penulis wajib diunggah.',
+            'photo.image' => 'Foto harus berupa gambar.',
+            'photo.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
+            'photo.max' => 'Ukuran foto maksimal 500 KB.',
         ]);
 
-        $photo = null;
+        $validated['photo'] = $request
+            ->file('photo')
+            ->store('authors', 'public');
 
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo')
-                ->store('authors', 'public');
-        }
-
-        Author::create([
-            'name' => $request->name,
-            'pen_name' => $request->pen_name,
-            //'bio' => $request->bio,
-            'photo' => $photo,
-        ]);
+        Author::create($validated);
 
         return redirect()
             ->route('admin.posts.index_author')
@@ -180,17 +177,18 @@ class AuthorController extends Controller
 
     public function updateAuthor(Request $request, Author $author)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|max:255',
             'pen_name' => 'nullable|max:255',
-            //'bio' => 'nullable',
+            'bio' => 'nullable',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:500',
-        ],[
-            'photo.image' => 'File harus berupa gambar.',
-            'photo.max' => 'Ukuran foto maksimal 500KB.',
-        ]);
+        ], [
+            'name.required' => 'Nama penulis wajib diisi.',
 
-        $photo = $author->photo;
+            'photo.image' => 'Foto harus berupa gambar.',
+            'photo.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
+            'photo.max' => 'Ukuran foto maksimal 500 KB.',
+        ]);
 
         if ($request->hasFile('photo')) {
 
@@ -198,16 +196,12 @@ class AuthorController extends Controller
                 Storage::disk('public')->delete($author->photo);
             }
 
-            $photo = $request->file('photo')
+            $validated['photo'] = $request
+                ->file('photo')
                 ->store('authors', 'public');
         }
 
-        $author->update([
-            'name' => $request->name,
-            'pen_name' => $request->pen_name,
-            //'bio' => $request->bio,
-            'photo' => $photo,
-        ]);
+        $author->update($validated);
 
         return redirect()
             ->route('admin.posts.index_author')
@@ -216,7 +210,6 @@ class AuthorController extends Controller
 
     public function destroyAuthor(Author $author)
     {
-        // Hapus semua post beserta thumbnail
         foreach ($author->posts as $post) {
 
             if ($post->thumbnail) {
@@ -226,12 +219,10 @@ class AuthorController extends Controller
             $post->delete();
         }
 
-        // Hapus foto author
         if ($author->photo) {
             Storage::disk('public')->delete($author->photo);
         }
 
-        // Hapus author
         $author->delete();
 
         return redirect()
@@ -239,25 +230,15 @@ class AuthorController extends Controller
             ->with('success', 'Penulis beserta seluruh tulisannya berhasil dihapus.');
     }
 
-    /**
-     * ==========================
-     * USER
-     * ==========================
-     */
-
-    public function show(Post $post)
-    {
-        $post->load('author');
-
-        $title = "PPI Kastamonu - Kastulis - {$post->title}";
-
-        return view('user.kastulis_detail', compact('post', 'title'));
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | USER
+    |--------------------------------------------------------------------------
+    */
 
     public function listPosts(Request $request)
     {
-        $search = $request->query('search');
-        $title = 'PPI Kastamonu - Kastulis';
+        $search = $request->search;
 
         $posts = Post::with('author')
             ->when($search, function ($query) use ($search) {
@@ -268,9 +249,23 @@ class AuthorController extends Controller
             ->paginate(5)
             ->withQueryString();
 
+        $title = 'PPI Kastamonu - Kastulis';
+
         return view('user.kastulis', compact(
             'posts',
             'search',
+            'title'
+        ));
+    }
+
+    public function show(Post $post)
+    {
+        $post->load('author');
+
+        $title = "PPI Kastamonu - Kastulis - {$post->title}";
+
+        return view('user.kastulis_detail', compact(
+            'post',
             'title'
         ));
     }
@@ -279,7 +274,7 @@ class AuthorController extends Controller
     {
         $author->load('posts');
 
-        $title = $author->pen_name ?? $author->name;
+        $title = $author->pen_name ?: $author->name;
 
         return view('user.author', compact(
             'author',

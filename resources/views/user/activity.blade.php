@@ -59,9 +59,9 @@
             @empty
 
                 <div class="col-12 text-center">
-                    <p class="text-muted">
+                    <h5 class="text-muted">
                         Belum ada aktivitas yang ditambahkan.
-                    </p>
+                    </h5>
                 </div>
 
             @endforelse

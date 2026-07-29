@@ -1,6 +1,7 @@
 @extends('admin.layout.main')
 
 @section('containers')
+
 <style>
     .page-title {
         font-size: 24px;
@@ -12,86 +13,101 @@
         background: #fff;
         padding: 24px;
         border-radius: 12px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        box-shadow: 0 10px 20px rgba(0,0,0,.06);
         max-width: 700px;
     }
 
-    .form-group {
-        margin-bottom: 16px;
+    .form-group{
+        margin-bottom:16px;
     }
 
-    label {
-        font-weight: 600;
-        display: block;
-        margin-bottom: 6px;
+    label{
+        font-weight:600;
+        display:block;
+        margin-bottom:6px;
     }
 
     input[type="text"],
     textarea,
-    select {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 8px;
-        border: 1px solid #d1d5db;
-        font-size: 14px;
+    select{
+        width:100%;
+        padding:10px 12px;
+        border-radius:8px;
+        border:1px solid #d1d5db;
+        font-size:14px;
     }
 
-    textarea {
-        resize: vertical;
-        min-height: 120px;
+    textarea{
+        resize:vertical;
+        min-height:150px;
     }
 
-    input[type="file"] {
-        font-size: 14px;
+    input[type="file"]{
+        font-size:14px;
     }
 
-    .btn {
-        padding: 10px 16px;
-        border-radius: 8px;
-        border: none;
-        font-size: 14px;
-        cursor: pointer;
-        text-decoration: none;
+    .btn{
+        padding:10px 16px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        text-decoration:none;
+        font-size:14px;
     }
 
-    .btn-primary {
-        background: #2563eb;
-        color: #fff;
+    .btn-primary{
+        background:#2563eb;
+        color:#fff;
     }
 
-    .btn-secondary {
-        background: #6b7280;
-        color: #fff;
+    .btn-secondary{
+        background:#6b7280;
+        color:#fff;
     }
 
-    .btn-group {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
+    .btn-success{
+        background:#16a34a;
+        color:#fff;
     }
 
-    .error-box {
-        background: #fee2e2;
-        color: #991b1b;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 16px;
+    .btn-group{
+        display:flex;
+        gap:10px;
+        margin-top:20px;
     }
 
-    .divider {
-        margin: 24px 0;
-        border-top: 1px dashed #e5e7eb;
+    .error-box{
+        background:#fee2e2;
+        color:#991b1b;
+        padding:12px;
+        border-radius:8px;
+        margin-bottom:16px;
+    }
+
+    .warning-box{
+        background:#fef3c7;
+        color:#92400e;
+        border:1px solid #fde68a;
+        padding:16px;
+        border-radius:10px;
+        margin-bottom:20px;
+    }
+
+    .warning-box p{
+        margin-bottom:15px;
     }
 </style>
 
-<div class="page-title">➕ Tambah Post</div>
+<div class="page-title">
+    ➕ Tambah Post
+</div>
 
 <div class="card">
 
-    {{-- Validation Error --}}
+    {{-- Error Validasi --}}
     @if ($errors->any())
         <div class="error-box">
-            <ul style="margin:0; padding-left:18px;">
+            <ul style="margin:0;padding-left:18px;">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -99,99 +115,95 @@
         </div>
     @endif
 
-    <form 
-        action="{{ route('admin.posts.store') }}" 
-        method="POST" 
-        enctype="multipart/form-data"
-    >
+    {{-- Jika belum ada author --}}
+    @if($authors->count() == 0)
+
+        <div class="warning-box">
+            <h5>⚠ Belum Ada Penulis</h5>
+
+            <p>
+                Anda belum dapat menambahkan tulisan karena belum ada data penulis.
+                Silakan tambahkan penulis terlebih dahulu.
+            </p>
+
+            <a href="{{ route('admin.posts.create_author') }}"
+               class="btn btn-success">
+                + Tambah Penulis
+            </a>
+        </div>
+
+    @else
+
+    <form
+        action="{{ route('admin.posts.store') }}"
+        method="POST"
+        enctype="multipart/form-data">
+
         @csrf
 
-        {{-- POST --}}
         <div class="form-group">
             <label>Judul Post</label>
-            <input 
-                type="text" 
-                name="title" 
+            <input
+                type="text"
+                name="title"
                 value="{{ old('title') }}"
                 placeholder="Masukkan judul post"
-            >
+                required>
         </div>
 
         <div class="form-group">
-            <label>Thumbnail Post</label>
-            <input type="file" name="thumbnail">
+            <label>Thumbnail</label>
+            <input
+                type="file"
+                name="thumbnail">
         </div>
 
         <div class="form-group">
-            <label>Isi Post</label>
-            <textarea 
-                name="content" 
-                placeholder="Masukkan isi post"
-            >{{ old('content') }}</textarea>
+            <label>Isi Tulisan</label>
+            <textarea
+                name="content"
+                placeholder="Masukkan isi tulisan"
+                required>{{ old('content') }}</textarea>
         </div>
 
-        <div class="divider"></div>
-
-        {{-- AUTHOR --}}
         <div class="form-group">
-            <label>Pilih Author</label>
-            <select name="author_id" id="authorSelect">
-                <option value="">+ Buat Author Baru</option>
-                @foreach ($authors as $author)
-                    <option value="{{ $author->id }}">
-                        {{ $author->name }}
+            <label>Author</label>
+
+            <select name="author_id" required>
+                <option value="">-- Pilih Penulis --</option>
+
+                @foreach($authors as $author)
+                    <option
+                        value="{{ $author->id }}"
+                        {{ old('author_id') == $author->id ? 'selected' : '' }}>
+                        {{ $author->pen_name ?? $author->name }}
+                        ({{ $author->name }})
                     </option>
                 @endforeach
+
             </select>
         </div>
 
-        <div id="newAuthorForm">
-            <div class="form-group">
-                <label>Nama Author</label>
-                <input 
-                    type="text" 
-                    name="author_name" 
-                    placeholder="Masukkan nama author"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>Nama Pena (Pen Name)</label>
-                <input 
-                    type="text" 
-                    name="pen_name" 
-                    placeholder="Nama pena author"
-                >
-            </div>
-            <div class="form-group">
-                <label>Bio</label>
-                <textarea name="bio" placeholder="Masukkan bio author">{{ old('bio') }}</textarea>
-            </div>
-            </div>
-            <div class="form-group">
-                <label>Foto Author</label>
-                <input type="file" name="author_photo">
-            </div>
-        </div>
-
         <div class="btn-group">
-            <button type="submit" class="btn btn-primary">
+
+            <button
+                type="submit"
+                class="btn btn-primary">
                 Simpan
             </button>
 
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">
+            <a
+                href="{{ route('admin.posts.index') }}"
+                class="btn btn-secondary">
                 Kembali
             </a>
+
         </div>
+
     </form>
+
+    @endif
+
 </div>
 
-<script>
-    const authorSelect = document.getElementById('authorSelect');
-    const newAuthorForm = document.getElementById('newAuthorForm');
-
-    authorSelect.addEventListener('change', function () {
-        newAuthorForm.style.display = this.value ? 'none' : 'block';
-    });
-</script>
 @endsection
