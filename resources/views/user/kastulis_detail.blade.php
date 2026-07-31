@@ -2,7 +2,7 @@
 
 @section('containers')
 <div class="container-fluid py-5 bg-cream">
-    <div class="container">
+    <div class="container" style="margin-top: 100px">
         <div class="card border-0 bg-cream">
             <div class="card-body">
                 <h1 class="display-5 text-red mb-4">

@@ -3,7 +3,7 @@
 @section('containers')
 
 <div class="container-fluid py-5 bg-cream" style="padding-left:0; padding-right:0">
-    <div class="container mb-5">
+    <div class="container mb-5" style="margin-top: 100px">
         <div class="card border-0">
             <div class="card-body bg-cream">
 
@@ -14,7 +14,7 @@
                 <div class="row g-5 align-items-center">
 
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
-                        <div class="about-img">
+                        <div class="about-img justify-content-center d-flex">
                             <img 
                                 class="img-fluid w-100" 
                                 src="{{ asset('storage/'.$blog->thumbnail) }}" 
@@ -26,9 +26,13 @@
 
                     <div class="col-lg-6">
                         <div class="wow fadeIn" data-wow-delay="0.3s">
-                            <small class="text-muted mb-2">
-                                {{ $blog->created_at->format('d M Y') }}
-                            </small>
+                            <span class="badge-modern mb-3" style="width:fit-content;">
+
+                            <i class="far fa-calendar-alt me-2"></i>
+
+                            {{ $blog->created_at->format('d M Y') }}
+
+                        </span>
                             <p class="text-dark" style="white-space: pre-line;">
                                 {{ $blog->content }}
                             </p>

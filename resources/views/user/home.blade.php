@@ -2,8 +2,8 @@
 
 @section('containers')
 <div class="container-fluid p-0 wow fadeIn bg-beige" data-wow-delay="0.1s">
-        <div class="owl-carousel header-carousel py-5">
-            <div class="container py-5">
+        <div class="owl-carousel header-carousel py-5" >
+            <div class="container py-5" style="margin-top: 50px">
                 <div class="card border-0">
                     <div class="card-body bg-beige">
                         <div class="row g-5 align-items-center">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container py-5">
+            <div class="container py-5" style="margin-top: 50px">
                 <div class="card border-0">
                     <div class="card-body bg-beige">
                         <div class="row g-5 align-items-center">

@@ -1,145 +1,346 @@
-@extends('layout.main')
+﻿@extends('layout.main')
 
 @section('containers')
 
-<div class="container-fluid py-5 bg-cream">
-    <div class="container">
+<section class="section-padding bg-cream">
 
-        {{-- Header --}}
-        <div class="text-center mb-5">
-            <h1 class="display-6 text-red">Apa itu Kastulis?</h1>
-            <p class="text-muted mx-auto" style="max-width:850px;">
-                Kastulis adalah Kastamonu Penulis, sebuah wadah bagi para penulis di organisasi
-                PPI Kastamonu untuk berbagi karya tulis mereka. Di sini Anda dapat menemukan
-                berbagai artikel, cerita pendek, puisi, dan esai yang ditulis oleh anggota
-                organisasi kami.
-            </p>
-        </div>
+<div class="container" style="margin-top: 50px">
 
-        {{-- LIST POST --}}
-        <div class="row g-4 justify-content-center">
 
-            @forelse($posts as $post)
+    {{-- HEADER --}}
+    <div class="text-center mb-5">
 
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
 
-                    <div class="card post-card border-0 shadow-sm h-100">
 
-                        {{-- Thumbnail --}}
-                        <img
-                            src="{{ $post->thumbnail ? asset('storage/'.$post->thumbnail) : asset('img/default-blog.jpg') }}"
-                            class="card-img-top post-image"
-                            alt="{{ $post->title }}">
+        <h1 class="display-4 fw-bold mt-3">
 
-                        <div class="card-body d-flex flex-column">
+            Cerita & Karya
 
-                            {{-- Author & Date --}}
-                            <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-red">
+                PPI Kastamonu
+            </span>
 
-                                <small class="text-muted">
-                                    ✍ {{ $post->author->pen_name ?? $post->author->name }}
-                                </small>
+        </h1>
 
-                                <small class="text-muted">
-                                    {{ $post->created_at->format('d M Y') }}
-                                </small>
 
-                            </div>
 
-                            {{-- Title --}}
-                            <h4 class="card-title text-red">
-                                {{ $post->title }}
-                            </h4>
+        <div class="divider"></div>
 
-                            {{-- Excerpt --}}
-                            <p class="card-text text-muted flex-grow-1">
-                                {{ Str::limit(strip_tags($post->content), 120) }}
-                            </p>
 
-                            {{-- Button --}}
-                            <a href="{{ route('posts.show', $post->id) }}"
-                               class="btn btn-outline-danger mt-auto">
-                                Selengkapnya →
-                            </a>
 
-                        </div>
+        <p class="text-muted mx-auto"
+           style="max-width:750px;">
+
+            Ruang bagi anggota PPI Kastamonu untuk berbagi
+            gagasan melalui artikel, puisi, cerita pendek,
+            dan tulisan inspiratif.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+    {{-- POSTS --}}
+    <div class="row g-4 align-baseline justify-content-center">
+
+
+        @forelse($posts as $post)
+
+
+
+        <div class="col-md-6 col-lg-4">
+
+
+            <article class="blog-card shadow-hover h-100">
+
+
+                {{-- IMAGE --}}
+                <div class="overflow-hidden">
+
+                    <img
+                        src="{{ $post->thumbnail
+                            ? asset('storage/'.$post->thumbnail)
+                            : asset('img/default-blog.jpg') }}"
+                        alt="{{ $post->title }}"
+                    >
+
+                </div>
+
+
+
+
+                {{-- BODY --}}
+                <div class="card-body d-flex flex-column">
+
+
+
+                    <span class="category text-center">
+
+                        Karya Tulisan
+
+                    </span>
+
+
+
+
+                    <div class="d-flex justify-content-between mb-3">
+
+
+                        <small class="text-muted">
+
+                            ✍
+                            {{ $post->author->pen_name ?? $post->author->name }}
+
+                        </small>
+
+
+
+                        <small class="text-muted">
+
+                            {{ $post->created_at->format('d M Y') }}
+
+                        </small>
+
 
                     </div>
 
+
+
+
+
+                    <h4>
+
+                        {{ $post->title }}
+
+                    </h4>
+
+
+
+
+
+                    <p class="flex-grow-1">
+
+                        {{ Str::limit(
+                            strip_tags($post->content),
+                            130
+                        ) }}
+
+                    </p>
+
+
+
+
+
+                    <a href="{{ route('posts.show',$post->id) }}"
+                       class="mt-auto">
+
+                        Baca Selengkapnya
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+
+
                 </div>
 
-            @empty
 
-                <div class="col-12 text-center">
-                    <h5 class="text-muted">
-                        Belum ada tulisan yang dipublikasikan.
-                    </h5>
-                </div>
+            </article>
 
-            @endforelse
+
 
         </div>
 
-        {{-- Pagination --}}
-        <div class="mt-5 d-flex justify-content-center">
-            {{ $posts->links('pagination::bootstrap-5') }}
+
+
+        @empty
+
+
+
+        {{-- EMPTY STATE --}}
+
+        <div class="col-12">
+
+
+            <div class="empty-state">
+
+
+                <img
+                    src="{{ asset('img/Logo ppi.png') }}"
+                    alt="Logo PPI Kastamonu"
+                >
+
+
+                <h4>
+
+                    Belum ada tulisan yang dipublikasikan.
+
+                </h4>
+
+
+                <p class="text-muted">
+
+                    Karya anggota akan tampil di sini
+                    setelah ditambahkan melalui dashboard.
+
+                </p>
+
+
+            </div>
+
+
         </div>
+
+
+
+        @endforelse
+
+
 
     </div>
+
+
+
+
+
+    {{-- PAGINATION --}}
+
+    @if($posts->hasPages())
+
+    <div class="mt-5 d-flex justify-content-center">
+
+        {{ $posts->links('pagination::bootstrap-5') }}
+
+    </div>
+
+    @endif
+
+
+
+
 </div>
 
+</section>
+
+
+
+
 <style>
-.post-card{
-    border-radius:18px;
-    overflow:hidden;
-    transition:.3s;
-    background:#fff;
-}
 
-.post-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 18px 35px rgba(0,0,0,.15)!important;
-}
 
-.post-image{
-    width:100%;
-    height:230px;
+/* Kastulis Custom */
+
+
+.blog-card img{
+
+    height:280px;
+
     object-fit:cover;
+
 }
 
-.post-card .card-body{
-    padding:22px;
+
+
+.blog-card .card-body{
+
+    padding:30px;
+
 }
 
-.post-card .card-title{
-    font-size:1.25rem;
-    font-weight:700;
-    min-height:65px;
-    margin-bottom:12px;
+
+
+.blog-card h4{
+
+    min-height:60px;
+
 }
 
-.post-card .card-text{
-    line-height:1.7;
+
+
+.blog-card a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
 }
 
-.btn-outline-danger{
-    border-radius:10px;
-    font-weight:600;
+
+
+.blog-card a:hover span{
+
+    transform:translateX(5px);
+
+    display:inline-block;
+
 }
 
-.btn-outline-danger:hover{
-    color:#fff;
+
+
+
+
+.empty-state{
+
+    min-height:350px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
 }
 
-@media (max-width:768px){
-    .post-image{
-        height:200px;
+
+
+.empty-state img{
+
+    width:120px;
+
+    opacity:.4;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.empty-state h4{
+
+    color:var(--primary);
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+    .blog-card img{
+
+        height:220px;
+
     }
 
-    .post-card .card-title{
-        min-height:auto;
-    }
+
 }
+
+
+
 </style>
+
 
 @endsection

@@ -2,43 +2,100 @@
 
 @section('containers')
 
-<div class="container-fluid py-5 bg-cream">
-    <div class="container">
-        <div class="row g-5">
-            <div class="service-title">
-                <h1 class="display-6 mb-4 text-red">Kabinet-kabinet Kami</h1>
-            </div>
+<section class="section-padding bg-cream">
 
-            <div class="col-md-12 col-lg-8 col-xl-12">
-                <div class="row g-5">
+    <div class="container" style="margin-top: 100px">
 
-                    @forelse($cabinets as $cabinet)
-                        <div class="col-sm-6 col-lg-12 wow fadeIn mb-5" data-wow-delay="0.1s">
-                            <div class="service-item h-100">
-                                <h3 class="text-red">
-                                    {{ $cabinet->name }}
-                                    ({{ $cabinet->start_period }}/{{ $cabinet->end_period }})
-                                </h3>
+        {{-- HEADER --}}
+        <div class="text-center mb-5">
 
-                                <p class="mb-2">
-                                    Ketua: {{ $cabinet->coreMembers->firstWhere('position_id', 1)->name ?? '-' }}
-                                </p>
+            <h1 class="display-5 fw-bold">
+                Arsip
+                <span class="text-red">Kabinet</span>
+            </h1>
 
-                                <a href="{{ route('kabinet.show', $cabinet->id) }}" class="text-red">
-                                    Kabinet Lengkap
-                                </a>
-                            </div>
+            <div class="divider"></div>
+
+            <p class="text-muted mx-auto" style="max-width:700px;">
+                Daftar kabinet PPI Kastamonu dari periode ke periode.
+                Klik salah satu kabinet untuk melihat struktur kepengurusannya.
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4 justify-content-center">
+
+            @forelse($cabinets as $cabinet)
+
+            <div class="col-lg-6 wow fadeInUp">
+
+                <div class="card-modern shadow-hover h-100">
+
+                    <div class="card-body p-4 d-flex flex-column">
+
+                        <span class="badge-modern mb-3 align-self-start">
+                            {{ $cabinet->start_period }}/{{ $cabinet->end_period }}
+                        </span>
+
+                        <h3 class="text-red mb-3">
+                            {{ $cabinet->name }}
+                        </h3>
+
+                        <p class="text-muted mb-4">
+
+                            <strong>Ketua Kabinet :</strong><br>
+
+                            {{ $cabinet->coreMembers->firstWhere('position_id',1)->name ?? '-' }}
+
+                        </p>
+
+                        <div class="mt-auto">
+
+                            <a
+                                href="{{ route('kabinet.show',$cabinet->id) }}"
+                                class="btn btn-danger rounded-pill px-4">
+
+                                Lihat Kepengurusan
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
                         </div>
-                    @empty
-                        <div class="col-12 text-center">
-                            <h4 class="text-muted">Belum ada data kabinet</h4>
-                        </div>
-                    @endforelse
+
+                    </div>
 
                 </div>
+
             </div>
+
+            @empty
+
+            <div class="col-12">
+
+                <div class="card-modern text-center p-5">
+
+                    <i class="fas fa-users fa-3x text-danger mb-4"></i>
+
+                    <h4 class="text-red">
+                        Belum Ada Data Kabinet
+                    </h4>
+
+                    <p class="text-muted mb-0">
+                        Arsip kabinet belum tersedia.
+                    </p>
+
+                </div>
+
+            </div>
+
+            @endforelse
+
         </div>
+
     </div>
-</div>
+
+</section>
 
 @endsection

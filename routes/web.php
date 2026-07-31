@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/profile', function () {
     return view('user.profile', [
-        'title' => 'PPI Kastamonu - Kontak Kami'
+        'title' => 'PPI Kastamonu - Profil Pengembang'
     ]);
 });
 

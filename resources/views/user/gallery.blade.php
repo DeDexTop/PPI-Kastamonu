@@ -3,18 +3,42 @@
 @section('containers')
 
 <div class="container-fluid py-5 bg-cream">
-    <div class="container">
+    <div class="container" style="margin-top: 100px">
 
         {{-- HEADER --}}
         <div class="text-center mb-5">
-            <h1 class="display-6 text-red">Galeri Kegiatan</h1>
+
+            <h1 class="display-5 fw-bold">
+                Galeri
+                <span class="text-red">PPI Kastamonu</span>
+            </h1>
+
+            <div class="divider"></div>
+
+            <p class="text-muted mx-auto" style="max-width:700px;">
+                Dokumentasi berbagai kegiatan, acara, dan momen kebersamaan
+                mahasiswa Indonesia di Universitas Kastamonu.
+            </p>
+
         </div>
 
-        {{-- JIKA TIDAK ADA DATA --}}
+        {{-- KOSONG --}}
         @if($activities->count() == 0 && $blogs->count() == 0)
-            <div class="text-center py-5">
-                <h5 class="text-muted">Belum ada dokumentasi kegiatan 📸</h5>
+
+            <div class="card-modern text-center py-5">
+
+                <i class="fas fa-images fa-4x text-danger mb-4"></i>
+
+                <h3 class="text-red">
+                    Belum Ada Galeri
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Dokumentasi kegiatan akan segera ditampilkan di sini.
+                </p>
+
             </div>
+
         @endif
 
         {{-- LOOP ACTIVITY --}}
@@ -68,6 +92,15 @@
                         <h3 class="text-red fw-bold">
                             {{ $blog->title }}
                         </h3>
+                        @if(isset($blog->created_at))
+                                <span class="badge-modern mb-3" style="width:fit-content;">
+
+                                    <i class="far fa-calendar-alt me-2"></i>
+
+                                    {{ $blog->created_at->format('d M Y') }}
+
+                                </span>
+                        @endif
                     </div>
 
                     <div class="row g-4 justify-content-center">

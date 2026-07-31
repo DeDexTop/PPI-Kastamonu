@@ -149,14 +149,14 @@ class AuthorController extends Controller
             'name' => 'required|max:255',
             'pen_name' => 'nullable|max:255',
             'bio' => 'nullable',
-            'photo' => 'required|image|mimes:jpg,jpeg,png|max:500',
+            'photo' => 'required|image|mimes:jpg,jpeg,png|max:1024',
         ], [
             'name.required' => 'Nama penulis wajib diisi.',
 
             'photo.required' => 'Foto penulis wajib diunggah.',
             'photo.image' => 'Foto harus berupa gambar.',
             'photo.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
-            'photo.max' => 'Ukuran foto maksimal 500 KB.',
+            'photo.max' => 'Ukuran foto maksimal 1 MB.',
         ]);
 
         $validated['photo'] = $request
@@ -181,13 +181,13 @@ class AuthorController extends Controller
             'name' => 'required|max:255',
             'pen_name' => 'nullable|max:255',
             'bio' => 'nullable',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:500',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:1024',
         ], [
             'name.required' => 'Nama penulis wajib diisi.',
 
             'photo.image' => 'Foto harus berupa gambar.',
             'photo.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
-            'photo.max' => 'Ukuran foto maksimal 500 KB.',
+            'photo.max' => 'Ukuran foto maksimal 1 MB.',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -274,7 +274,7 @@ class AuthorController extends Controller
     {
         $author->load('posts');
 
-        $title = $author->pen_name ?: $author->name;
+        $title = "PPI Kastamonu - Author - {$author->pen_name}";
 
         return view('user.author', compact(
             'author',

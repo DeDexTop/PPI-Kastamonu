@@ -3,138 +3,286 @@
 @section('containers')
 
 @if(!$cabinet->mpaMembers->count() && !$cabinet->coreMembers->count() && !$cabinet->divisions->count())
-<div class="container py-5 text-center">
-    <p class="display-6 text-center text-red px-3">
-        Pengurus Kabinet {{ $cabinet->name }}
-    </p>
-    <p class="text-danger mt-5">Data kabinet belum lengkap</p>
-    <p class="text-muted">Mohon maaf, data kabinet saat ini belum tersedia. Silakan cek kembali nanti.</p>
-</div>
 
-@else
-<div class="container-fluid py-5 bg-cream">
+<section class="section-padding bg-cream">
 
-    {{-- ================== HEADER KABINET ================== --}}
-    <div class="container text-center mb-5">
-        <p class="display-6 text-center text-red px-3">
-            Pengurus Kabinet {{ $cabinet->name }}
-            ({{ $cabinet->start_period }}/{{ $cabinet->end_period }})
-        </p>
+    <div class="container text-center" style="margin-top:100px">
+
+        <h1 class="display-5 text-red fw-bold">
+            Pengurus Kabinet
+        </h1>
+
+        <h2 class="mb-4">
+            {{ $cabinet->name }}
+        </h2>
+
+        <div class="divider"></div>
+
+        <div class="card-modern p-5 mt-4">
+
+            <i class="fas fa-users fa-4x text-danger mb-4"></i>
+
+            <h3 class="text-red">
+                Data Belum Tersedia
+            </h3>
+
+            <p class="text-muted">
+                Mohon maaf, data kepengurusan kabinet ini masih dalam proses pengisian.
+            </p>
+
+            <a href="{{ route('kabinet.list') }}" class="btn btn-danger rounded-pill px-4 mt-3">
+                Kembali ke Arsip
+            </a>
+
+        </div>
+
     </div>
 
-    {{-- ================== MPA ================== --}}
-    <div class="container mb-5">
-        <h1 class="display-6 mb-4 text-red text-center">MPA</h1>
+</section>
+
+@else
+
+<section class="section-padding bg-cream">
+
+<div class="container">
+
+    {{-- HEADER --}}
+    <div class="text-center mb-5">
+
+        <h1 class="display-5 fw-bold">
+            Kabinet
+            <span class="text-red">{{ $cabinet->name }}</span>
+        </h1>
+
+        <div class="divider"></div>
+
+        <span class="badge-modern">
+            {{ $cabinet->start_period }} / {{ $cabinet->end_period }}
+        </span>
+
+    </div>
+
+
+
+    {{-- ================= MPA ================= --}}
+    <div class="mb-5">
+
+        <h2 class="text-center text-red mb-5">
+            MPA
+        </h2>
+
         <div class="row g-4 justify-content-center">
 
             @forelse($cabinet->mpaMembers as $member)
-                <div class="col-md-6 col-lg-4 bg-cream">
-                    <div class="team-item d-flex h-100 p-4">
-                        <div class="team-detail text-center w-100">
-                            <img class="img-fluid mb-3"
-                                src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
-                                style="border-radius: 15px">
-                            <h3>{{ $member->name }}</h3>
-                            <span>MPA</span>
-                        </div>
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="member-card h-100">
+
+                    <img
+                        src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
+                        alt="{{ $member->name }}">
+
+                    <div class="card-body">
+
+                        <h5>{{ $member->name }}</h5>
+
+                        <span>Majelis Permusyawaratan Anggota</span>
+
                     </div>
-                </div>
-            @empty
-                <p class="text-center text-muted">Belum ada anggota MPA.</p>
-            @endforelse
 
-        </div>
-    </div>
-
-    {{-- ================== BPH INTI ================== --}}
-    <div class="container mb-5">
-        <h1 class="display-6 mb-4 text-red text-center">BPH Inti</h1>
-        <div class="row g-4 justify-content-center">
-
-            @forelse($cabinet->coreMembers->sortBy('position_id') as $member)
-                <div class="col-md-6 col-lg-4">
-                    <div class="team-item d-flex h-100 p-4">
-                        <div class="team-detail text-center w-100">
-                            <img class="img-fluid mb-3"
-                                src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
-                                style="border-radius: 15px">
-                            <h3>{{ $member->name }}</h3>
-                            <span>{{ $member->position->name ?? 'Anggota' }}</span>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <p class="text-center text-muted">Belum ada anggota BPH Inti.</p>
-            @endforelse
-
-        </div>
-    </div>
-
-    {{-- ================== DIVISI ================== --}}
-    <div class="container mb-5">
-        <h1 class="display-6 mb-4 text-red text-center">Divisi-Divisi</h1>
-
-        @forelse($cabinet->divisions as $division)
-
-            <div class="mb-5">
-                <h3 class="text-center text-red mb-4">
-                    Divisi {{ $division->name }}
-                </h3>
-
-                {{-- KEPALA DIVISI --}}
-                <div class="row g-4 justify-content-center mb-4">
-                    @forelse($division->members->where('position_id', 5) as $head) 
-                        <div class="col-md-6 col-lg-4">
-                            <div class="team-item d-flex h-100 p-4 border-none">
-                                <div class="team-detail text-center w-100">
-                                    <img class="img-fluid mb-3"
-                                        src="{{ $head->photo ? asset('storage/'.$head->photo) : asset('img/blank.png') }}"
-                                        style="border-radius: 15px">
-                                    <h3>{{ $head->name }}</h3>
-                                    <span class="fw-bold text-red">
-                                        {{ $head->position->name ?? 'Kepala Divisi' }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-muted">Belum ada kepala divisi untuk Divisi {{ $division->name }}.</p>
-                    @endforelse
-                </div>
-
-                {{-- ANGGOTA DIVISI --}}
-                <div class="row g-4 justify-content-center">
-                    @forelse($division->members->where('position_id', '!=', 5) as $member)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="team-item d-flex h-100 p-4">
-                                <div class="team-detail text-center w-100">
-                                    <img class="img-fluid mb-3"
-                                        src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
-                                        style="border-radius: 15px">
-                                    <h3>{{ $member->name }}</h3>
-                                    <span>{{ $member->position->name ?? 'Anggota' }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-muted">Belum ada anggota untuk Divisi {{ $division->name }}.</p>
-                    @endforelse
                 </div>
 
             </div>
+
             @empty
-                <p class="text-center text-muted">Belum ada data divisi.</p>
-        @endforelse
+
+            <p class="text-center text-muted">
+                Belum ada anggota MPA.
+            </p>
+
+            @endforelse
+
+        </div>
+
     </div>
 
-    {{-- ================== BUTTON KEMBALI ================== --}}
-    <div class="container text-center">
-        <a href="{{ route('kabinet.list') }}" class="btn bg-red text-beige" style="border-radius:15px">
-            ⬅ Kembali ke Arsip Kabinet
+
+
+    {{-- ================= BPH ================= --}}
+    <div class="mb-5">
+
+        <h2 class="text-center text-red mb-5">
+            BPH Inti
+        </h2>
+
+        <div class="row g-4 justify-content-center">
+
+            @forelse($cabinet->coreMembers->sortBy('position_id') as $member)
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="member-card h-100">
+
+                    <img
+                        src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
+                        alt="{{ $member->name }}">
+
+                    <div class="card-body">
+
+                        <h5>{{ $member->name }}</h5>
+
+                        <span>
+                            {{ $member->position->name ?? 'Anggota' }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            @empty
+
+            <p class="text-center text-muted">
+                Belum ada anggota BPH Inti.
+            </p>
+
+            @endforelse
+
+        </div>
+
+    </div>
+
+
+
+    {{-- ================= DIVISI ================= --}}
+    <div>
+
+        <h2 class="text-center text-red mb-5">
+            Divisi
+        </h2>
+
+        @forelse($cabinet->divisions as $division)
+
+        <div class="mb-5">
+
+            <h3 class="text-center mb-4">
+                {{ $division->name }}
+            </h3>
+
+
+
+            {{-- Kepala Divisi --}}
+            <div class="row justify-content-center g-4 mb-4">
+
+                @foreach($division->members->where('position_id',5) as $head)
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="member-card h-100">
+
+                        <img
+                            src="{{ $head->photo ? asset('storage/'.$head->photo) : asset('img/blank.png') }}"
+                            alt="{{ $head->name }}">
+
+                        <div class="card-body">
+
+                            <h5>{{ $head->name }}</h5>
+
+                            <span class="text-red fw-bold">
+                                {{ $head->position->name }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @endforeach
+
+            </div>
+
+
+
+            {{-- Anggota --}}
+            <div class="row justify-content-center g-4">
+
+                @forelse($division->members->where('position_id','!=',5) as $member)
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="member-card h-100">
+
+                        <img
+                            src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}"
+                            alt="{{ $member->name }}">
+
+                        <div class="card-body">
+
+                            <h5>{{ $member->name }}</h5>
+
+                            <span>
+                                {{ $member->position->name ?? 'Anggota' }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @empty
+
+                <div class="text-center">
+
+                    <p class="text-muted">
+                        Belum ada anggota divisi.
+                    </p>
+
+                </div>
+
+                @endforelse
+
+            </div>
+
+        </div>
+
+        @empty
+
+        <div class="card-modern text-center p-5">
+
+            <h4 class="text-muted">
+                Belum ada data divisi.
+            </h4>
+
+        </div>
+
+        @endforelse
+
+    </div>
+
+
+
+    {{-- BUTTON --}}
+    <div class="text-center mt-5">
+
+        <a href="{{ route('kabinet.list') }}"
+           class="btn btn-danger rounded-pill px-5 py-3">
+
+            <i class="fas fa-arrow-left me-2"></i>
+
+            Kembali ke Arsip Kabinet
+
         </a>
+
     </div>
 
 </div>
 
+</section>
+
 @endif
+
 @endsection

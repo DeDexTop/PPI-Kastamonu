@@ -1,23 +1,72 @@
-<header>
-    <div class="container-fluid bg-red px-0 mobile-navbar">
-        <div class="nav-bar">
-            <nav class="navbar navbar-expand-lg navbar-dark py-lg-0">
-                <h4 class="d-lg-none m-0 text-beige">Menu</h4>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav me-auto">
-                        <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
-                        <a href="/tentang" class="nav-item nav-link {{ Request::is('tentang') ? 'active' : '' }}">Tentang</a>
-                        <a href="/aktivitas" class="nav-item nav-link {{ Request::is('aktivitas') ? 'active' : '' }}">Aktivitas</a>
-                        <a href="/kastulis" class="nav-item nav-link {{ Request::is('kastulis') ? 'active' : '' }}">Kastulis</a>
-                        <a href="/kabinet" class="nav-item nav-link {{ Request::is('kabinet') ? 'active' : '' }}">Kabinet</a>
-                        <a href="/blog" class="nav-item nav-link {{ Request::is('blog') ? 'active' : '' }}">Blog</a>
-                    </div>
+<header class="site-header-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ asset('img/Logo ppi.png') }}" alt="Logo" class="logo">
+                <span class="brand-text">PPI Kastamonu</span>
+            </a>
+
+            <!-- Button Mobile -->
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" style="border: 1px solid #fff; border-radius: 5px; padding: 5px 10px;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                <ul class="navbar-nav mx-auto text-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
+                            Beranda
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('tentang') ? 'active' : '' }}" href="/tentang">
+                            Tentang
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('aktivitas') ? 'active' : '' }}" href="/aktivitas">
+                            Aktivitas
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('kastulis') ? 'active' : '' }}" href="/kastulis">
+                            Kastulis
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('kabinet') ? 'active' : '' }}" href="/kabinet">
+                            Kabinet
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="/blog">
+                            Blog
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Tombol -->
+                <div class="d-flex">
+                    <a href="/kontak" class="btn btn-primary-custom">
+                        Hubungi Kami
+                    </a>
                 </div>
-            </nav>
+
+            </div>
+
         </div>
-    </div>
+    </nav>
 </header>
