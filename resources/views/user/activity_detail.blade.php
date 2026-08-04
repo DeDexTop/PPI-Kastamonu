@@ -2,246 +2,202 @@
 
 @section('containers')
 
-<section class="section-padding bg-cream">
+<div class="container-fluid py-5 bg-cream" style="padding-left:0;padding-right:0">
+    <div class="container mb-5" style="margin-top:100px">
+        <div class="card border-0">
+            <div class="card-body bg-cream">
 
-    <div class="container" style="margin-top: 100px">
+                <!-- JUDUL AKTIVITAS -->
+                <h3 class="display-5 text-start text-red pe-3 mb-4">
+                    {{ $activity->nama }}
+                </h3>
 
-        {{-- HEADER --}}
+                <!-- BADGE STATUS -->
+                <div class="mb-4 wow fadeIn" data-wow-delay="0.1s">
+                    <span class="badge-modern" style="width:fit-content; display: inline-block;">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Aktivitas
+                    </span>
+                </div>
 
-        <div class="row justify-content-center">
+                <!-- AREA UTAMA KONTEN (Sistem Float Murni & Stabil) -->
+                <div class="blog-wrapper text-start">
 
-            <div class="col-lg-10">
-
-                <div class="card-modern p-4 p-lg-5">
-
-                    <!-- Judul -->
-
-                    <div class="text-center mb-5">
-
-                        <span class="badge-modern">
-                            Aktivitas
-                        </span>
-
-                        <h1 class="display-4 fw-bold text-red mt-3">
-                            {{ $activity->nama }}
-                        </h1>
-
-                        <div class="divider"></div>
-
+                    <!-- BANNER/THUMBNAIL AKTIVITAS -->
+                    <div class="wow fadeIn float-blog-container" data-wow-delay="0.2s">
+                        <img
+                            class="img-fluid float-blog-img"
+                            src="{{ asset('storage/'.$activity->thumbnail) }}"
+                            alt="{{ $activity->nama }}"
+                            style="border-radius:15px">
                     </div>
 
-                    <!-- Konten -->
+                    <!-- PROSES MEMECAH TEXTAREA MENJADI PARAGRAF ASLI -->
+                    @php
+                        // 1. Amankan teks dasar dari XSS
+                        $safe_text = e($activity->deskripsi);
 
-                    <div class="row g-5 align-items-center">
+                        // 2. Ubah URL teks biasa menjadi link HTML aktif yang bisa diklik
+                        $text_with_links = preg_replace(
+                            '/(https?:\/\/[^\s]+)/',
+                            '<a href="$1" target="_blank" rel="noopener noreferrer" style="color: #dc3545; text-decoration: underline;">$1</a>',
+                            $safe_text
+                        );
 
-                        <div class="col-lg-6">
+                        // 3. Pecah teks berdasarkan tombol 'Enter' (pindah baris)
+                        $paragraphs = explode("\n", $text_with_links);
+                    @endphp
 
-                            <div class="activity-thumbnail">
-
-                                <img
-                                    src="{{ asset('storage/'.$activity->thumbnail) }}"
-                                    alt="{{ $activity->nama }}"
-                                    class="img-fluid">
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <h3 class="text-red fw-bold mb-4">
-
-                                Tentang Kegiatan
-
-                            </h3>
-
-                            <p
-                                class="text-muted"
-                                style="white-space:pre-line;line-height:2;">
-
-                                {{ $activity->deskripsi }}
-
+                    <!-- MENAMPILKAN SETIAP PARAGRAF SEBAGAI ELEMEN BARU -->
+                    @foreach ($paragraphs as $paragraph)
+                        @if (trim($paragraph) !== '')
+                            <p class="text-dark float-blog-text">
+                                {!! $paragraph !!}
                             </p>
-
-                        </div>
-
-                    </div>
-
-                    @if($activity->images->count())
-
-                    <div class="mt-5 pt-5 border-top">
-
-                        <div class="text-center mb-5">
-
-                            <span class="badge-modern">
-
-                                Dokumentasi
-
-                            </span>
-
-                            <h2 class="fw-bold mt-3">
-
-                                Galeri Kegiatan
-
-                            </h2>
-
-                            <div class="divider"></div>
-
-                        </div>
-
-                        <div class="row g-4 justify-content-center d-flex">
-
-                            @foreach($activity->images as $image)
-
-                            <div class="col-6 col-md-4 col-lg-3">
-
-                                <div
-                                    class="gallery-item"
-                                    onclick="openLightbox('{{ asset('storage/'.$image->image_path) }}')">
-
-                                    <img
-                                        src="{{ asset('storage/'.$image->image_path) }}"
-                                        class="img-fluid"
-                                        alt="Galeri">
-
-                                </div>
-
-                            </div>
-
-                            @endforeach
-
-                        </div>
-
-                    </div>
-
-                    @endif
+                        @endif
+                    @endforeach
 
                 </div>
 
+                <!-- MEMBERSIHKAN EFEK FLOAT SEBELUM MASUK KE GALERI -->
+                <div style="clear: both;"></div>
+
+                <!-- SEKSI GALERI KEGIATAN -->
+                @if($activity->images->count())
+                <hr class="my-5">
+
+                <h4 class="text-red mb-4">
+                    Galeri Kegiatan
+                </h4>
+
+                <div class="row g-4 justify-content-center">
+                    @foreach($activity->images as $image)
+                    <div class="col-6 col-md-4 col-lg-3 wow fadeIn">
+                        <img
+                            src="{{ asset('storage/'.$image->image_path) }}"
+                            class="img-fluid w-100 gallery-img"
+                            style="border-radius:12px;object-fit:cover;height:180px;cursor:pointer;"
+                            alt="Galeri {{ $activity->nama }}"
+                            onclick="openLightbox('{{ asset('storage/'.$image->image_path) }}')">
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+
             </div>
-
         </div>
-
     </div>
+</div>
 
-</section>
-
-<!-- Lightbox -->
-
-<div id="activity-lightbox" class="activity-lightbox">
-
-    <span class="activity-lightbox-close">&times;</span>
-
-    <img
-        id="activity-lightbox-image"
-        class="activity-lightbox-image"
-        src="">
-
+{{-- LIGHTBOX --}}
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="">
 </div>
 
 <style>
-
-.activity-lightbox{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,.92);
-    z-index:99999;
-    animation:fadeIn .3s;
+/* CSS UTAMA UNTUK TATA LETAK ARTIKEL */
+.float-blog-container {
+    float: left;
+    width: 45%; /* Lebar gambar memakan 45% area pada layar desktop */
+    margin-right: 30px;
+    margin-bottom: 15px;
 }
 
-.activity-lightbox-image{
-    max-width:90%;
-    max-height:90%;
-    border-radius:20px;
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
-    animation:zoomIn .35s;
+.float-blog-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-.activity-lightbox-close{
-    position:absolute;
-    top:25px;
-    right:35px;
-    font-size:50px;
-    color:#fff;
-    cursor:pointer;
+.float-blog-text {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem; /* Memberikan jarak antar paragraf yang konsisten */
+}
+
+/* RESPONSIVE: Otomatis kembali normal di layar HP agar tulisan tidak bertumpuk */
+@media (max-width: 991px) {
+    .float-blog-container {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+}
+
+/* STYLE BAWAAN GALERI & LIGHTBOX ANDA */
+.gallery-img{
     transition:.3s;
 }
 
-.activity-lightbox-close:hover{
-    transform:rotate(90deg);
+.gallery-img:hover{
+    transform:scale(1.03);
 }
 
-@keyframes zoomIn{
+.lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+}
 
+.lightbox-content{
+    max-width:90%;
+    max-height:90%;
+    border-radius:12px;
+    animation:zoom .25s;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:20px;
+    right:35px;
+    color:#fff;
+    font-size:42px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@keyframes zoom{
     from{
-        opacity:0;
         transform:scale(.8);
+        opacity:0;
     }
-
     to{
-        opacity:1;
         transform:scale(1);
+        opacity:1;
     }
-
 }
-
-@media(max-width:768px){
-
-    .activity-lightbox-image{
-
-        max-width:95%;
-        max-height:80%;
-
-    }
-
-}
-
 </style>
 
 <script>
-
-const lightbox=document.getElementById('activity-lightbox');
-const image=document.getElementById('activity-lightbox-image');
-
 function openLightbox(src){
+    const lightbox=document.getElementById('lightbox');
+    const image=document.getElementById('lightbox-img');
 
     image.src=src;
     lightbox.style.display='flex';
-
 }
 
-function closeLightbox(){
+document.querySelector('.lightbox-close').addEventListener('click',function(){
+    document.getElementById('lightbox').style.display='none';
+});
 
-    lightbox.style.display='none';
-
-}
-
-document.querySelector('.activity-lightbox-close')
-.addEventListener('click',closeLightbox);
-
-lightbox.addEventListener('click',function(e){
-
-    if(e.target===lightbox){
-
-        closeLightbox();
-
+document.getElementById('lightbox').addEventListener('click',function(e){
+    if(e.target===this){
+        this.style.display='none';
     }
-
 });
 
 document.addEventListener('keydown',function(e){
-
-    if(e.key==="Escape"){
-
-        closeLightbox();
-
+    if(e.key==='Escape'){
+        document.getElementById('lightbox').style.display='none';
     }
-
 });
-
 </script>
 
 @endsection

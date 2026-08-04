@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Division extends Model
 {
-    protected $fillable = ['cabinet_id', 'name'];
+    protected $fillable = ['cabinet_id', 'name', 'sort_order'];
 
     public function cabinet()
     {
@@ -19,7 +19,18 @@ class Division extends Model
 
     public function members()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class)
+                    ->orderBy('sort_order')
+                    ->orderBy('position_id');
+    }
+
+    public function orderedMembers()
+    {
+        return $this->members()
+                    ->with('position')
+                    ->join('positions','positions.id','=','members.position_id')
+                    ->orderBy('positions.sort_order')
+                    ->select('members.*');
     }
 }
 

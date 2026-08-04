@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     {{-- Icons --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
@@ -71,32 +72,29 @@
     <script src="{{ asset('js/main.js') }}"></script>
 
     <script>
-
         let lastScrollY = window.scrollY;
-const customNavbar = document.querySelector('.custom-navbar');
+        const customNavbar = document.querySelector('.custom-navbar');
 
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
 
-  // Efek berjalan jika pengguna sudah scroll melampaui 40px dari atas layar
-  if (currentScrollY > 40) {
-    if (currentScrollY > lastScrollY) {
-      // Jika scroll ke BAWAH -> Sembunyikan navbar
-      customNavbar.classList.add('nav-hidden');
-    } else {
-      // Jika scroll ke ATAS -> Tampilkan kembali navbar
-      customNavbar.classList.remove('nav-hidden');
-    }
-  } else {
-    // Jika kembali ke paling atas halaman, pastikan navbar selalu muncul
-    customNavbar.classList.remove('nav-hidden');
-  }
+            // Efek berjalan jika pengguna sudah scroll melampaui 40px dari atas layar
+            if (currentScrollY > 40) {
+                if (currentScrollY > lastScrollY) {
+                    // Jika scroll ke BAWAH -> Sembunyikan navbar
+                    customNavbar.classList.add('nav-hidden');
+                } else {
+                    // Jika scroll ke ATAS -> Tampilkan kembali navbar
+                    customNavbar.classList.remove('nav-hidden');
+                }
+            } else {
+                // Jika kembali ke paling atas halaman, pastikan navbar selalu muncul
+                customNavbar.classList.remove('nav-hidden');
+            }
 
-  // Rekam posisi scroll terakhir
-  lastScrollY = currentScrollY;
-});
-    
-
+            // Rekam posisi scroll terakhir
+            lastScrollY = currentScrollY;
+        });
     </script>
 
 </body>

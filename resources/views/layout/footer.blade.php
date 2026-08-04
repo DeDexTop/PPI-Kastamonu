@@ -21,38 +21,31 @@
                 </p>
 
 
-                <div class="d-flex gap-3">
+                <div class="d-flex gap-3 link-center">
 
 
-                    <a href="https://www.instagram.com/ppikastamonu/"
-                       target="_blank"
-                       class="social-circle">
+                    <a href="https://www.instagram.com/ppikastamonu/" target="_blank" class="social-circle">
 
                         <i class="fab fa-instagram"></i>
 
                     </a>
 
 
-                    <a href="https://www.tiktok.com/@ppi.kastamonu"
-                       target="_blank"
-                       class="social-circle">
+                    <a href="https://www.tiktok.com/@ppi.kastamonu" target="_blank" class="social-circle">
 
                         <i class="fab fa-tiktok"></i>
 
                     </a>
 
 
-                    <a href="https://www.youtube.com/@ppikastamonu2021"
-                       target="_blank"
-                       class="social-circle">
+                    <a href="https://www.youtube.com/@ppikastamonu2021" target="_blank" class="social-circle">
 
                         <i class="fab fa-youtube"></i>
 
                     </a>
 
 
-                    <a href="mailto:ppikastamonu@gmail.com"
-                       class="social-circle">
+                    <a href="mailto:ppikastamonu@gmail.com" class="social-circle">
 
                         <i class="fas fa-envelope"></i>
 
@@ -79,40 +72,35 @@
                 <div class="footer-links">
 
 
-                    <a href="/tentang"
-                       class="btn btn-link text-start">
+                    <a href="/tentang" class="btn btn-link text-start">
 
                         Tentang Kami
 
                     </a>
 
 
-                    <a href="/aktivitas"
-                       class="btn btn-link text-start">
+                    <a href="/aktivitas" class="btn btn-link text-start">
 
                         Aktivitas
 
                     </a>
 
 
-                    <a href="/kastulis"
-                       class="btn btn-link text-start">
+                    <a href="/kastulis" class="btn btn-link text-start">
 
                         Kastulis
 
                     </a>
 
 
-                    <a href="/kabinet"
-                       class="btn btn-link text-start">
+                    <a href="/kabinet" class="btn btn-link text-start">
 
                         Kabinet
 
                     </a>
 
 
-                    <a href="/blog"
-                       class="btn btn-link text-start">
+                    <a href="/blog" class="btn btn-link text-start">
 
                         Blog
 
@@ -132,8 +120,7 @@
             <div class="col-lg-4 col-md-12">
 
 
-                <a href="/galeri"
-                   class="text-decoration-none">
+                <a href="/galeri" class="text-decoration-none">
 
                     <h4>
                         Galeri
@@ -143,39 +130,30 @@
 
 
 
-                @if($footerImages->count())
+                @if ($footerImages->count())
 
 
                     <div class="row g-2 footer-gallery">
 
 
-                        @foreach($footerImages as $image)
-
+                        @foreach ($footerImages as $image)
                             <div class="col-4">
 
 
                                 <a href="/galeri">
 
-                                    <img
-                                    src="{{ asset('storage/'.$image->image_path) }}"
-                                    alt="Gallery PPI Kastamonu">
+                                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="Gallery PPI Kastamonu">
 
 
                                 </a>
 
 
                             </div>
-
-
                         @endforeach
 
 
                     </div>
-
-
                 @else
-
-
                     <p>
                         Belum ada gambar galeri.
                     </p>
@@ -219,9 +197,7 @@
 
                 <div class="col-lg-4 text-center mb-3">
                     Dirancang oleh
-                    <a class="text-beige fw-bold"
-                        href="https://htmlcodex.com"
-                        target="_blank">
+                    <a class="text-beige fw-bold" href="https://htmlcodex.com" target="_blank">
                         HTML Codex
                     </a>
                 </div>
@@ -232,7 +208,7 @@
                 <div class="col-lg-4 text-center text-lg-end">
 
 
-                    Developed by
+                    Dikembangkan Oleh
 
                     <a href="/profile">
 

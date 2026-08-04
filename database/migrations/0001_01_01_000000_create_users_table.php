@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /*
+        |--------------------------------------------------------------------------
+        | USERS
+        |--------------------------------------------------------------------------
+        */
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
@@ -20,6 +25,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | ACTIVITIES
+        |--------------------------------------------------------------------------
+        */
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
@@ -27,78 +37,175 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->timestamps();
         });
+
         Schema::create('activity_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('activity_id');
+
+            $table->foreignId('activity_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
             $table->string('image_path');
+
             $table->timestamps();
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
         });
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORS
+        |--------------------------------------------------------------------------
+        */
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('pen_name');
             $table->text('bio');
-            $table->string('photo'); 
+            $table->string('photo');
             $table->timestamps();
         });
+
+        /*
+        |--------------------------------------------------------------------------
+        | POSTS
+        |--------------------------------------------------------------------------
+        */
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('thumbnail'); 
-            $table->unsignedBigInteger('author_id');
-            $table->timestamps();
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
-        });
-        Schema::create('cabinets', function (Blueprint $table) {
-            $table->id();
-            $table->string('name'); 
-            $table->year('start_period'); 
-            $table->year('end_period');   
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
-            $table->timestamps();
-        });
 
-        Schema::create('divisions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cabinet_id')->constrained()->cascadeOnDelete();
-            $table->string('name'); // Nama divisi
-            $table->timestamps();
-    });
+            $table->foreignId('author_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
-        Schema::create('positions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name'); 
-            $table->integer('level')->default(0);
-            $table->timestamps();
-        });
-
-        Schema::create('members', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cabinet_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('division_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('position_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('name');
-            $table->string('photo')->nullable();
-            $table->enum('type', ['core', 'mpa', 'division']);
-            $table->timestamps();
-        });
-
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->id();
             $table->string('title');
             $table->string('thumbnail');
-            $table->text('content');
+            $table->longText('content');
+
+            $table->timestamps();
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | CABINETS
+        |--------------------------------------------------------------------------
+        */
+        Schema::create('cabinets', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name');
+
+            $table->year('start_period');
+
+            $table->year('end_period');
+
+            $table->enum('status', ['active', 'inactive'])
+                ->default('inactive');
+
+            $table->timestamps();
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | CABINET GROUPS
+        |--------------------------------------------------------------------------
+        */
+        Schema::create('cabinet_groups', function (Blueprint $table) {
+
+            $table->id();
+
+            $table->foreignId('cabinet_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->string('name');
+
+            $table->string('description')
+                ->nullable();
+
+            $table->integer('sort_order')
+                ->default(0);
+
+            $table->timestamps();
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | POSITIONS
+        |--------------------------------------------------------------------------
+        */
+        Schema::create('positions', function (Blueprint $table) {
+
+            $table->id();
+
+            $table->string('name');
+
+            $table->integer('level')
+                ->default(0);
+
+            $table->timestamps();
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | MEMBERS
+        |--------------------------------------------------------------------------
+        */
+        Schema::create('members', function (Blueprint $table) {
+
+            $table->id();
+
+            $table->foreignId('cabinet_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->foreignId('cabinet_group_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->foreignId('position_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+
+            $table->string('name');
+
+            $table->string('photo')
+                ->nullable();
+
+            $table->integer('sort_order')
+                ->default(0);
+
+            $table->timestamps();
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | BLOGS
+        |--------------------------------------------------------------------------
+        */
+        Schema::create('blogs', function (Blueprint $table) {
+
+            $table->id();
+
+            $table->string('title');
+
+            $table->string('thumbnail');
+
+            $table->longText('content');
+
             $table->timestamps();
         });
 
         Schema::create('blog_images', function (Blueprint $table) {
+
             $table->id();
-            $table->unsignedBigInteger('blog_id');
-            $table->string('image_path'); 
+
+            $table->foreignId('blog_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->string('image_path');
+
             $table->timestamps();
-            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
         });
     }
 
@@ -107,16 +214,25 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('activities');
-        Schema::dropIfExists('cabinets');
-        Schema::dropIfExists('cabinet_members');
-        Schema::dropIfExists('activity_images');
-        Schema::dropIfExists('cabinet_images');
-        Schema::dropIfExists('authors');
-        Schema::dropIfExists('posts');
-        Schema::dropIfExists('divisions');
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('blog_images');
+        Schema::dropIfExists('blogs');
+
         Schema::dropIfExists('members');
+
+        Schema::dropIfExists('positions');
+
+        Schema::dropIfExists('cabinet_groups');
+
+        Schema::dropIfExists('cabinets');
+
+        Schema::dropIfExists('posts');
+
+        Schema::dropIfExists('authors');
+
+        Schema::dropIfExists('activity_images');
+
+        Schema::dropIfExists('activities');
+
+        Schema::dropIfExists('users');
     }
 };

@@ -60,7 +60,7 @@
 
                 <!-- Tombol -->
                 <div class="d-flex">
-                    <a href="/kontak" class="btn btn-primary-custom">
+                    <a href="mailto:ppikastamonu@gmail.com" class="btn btn-primary-custom">
                         Hubungi Kami
                     </a>
                 </div>

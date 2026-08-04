@@ -4,7 +4,7 @@
 
 <section class="section-padding bg-cream">
 
-    <div class="container" style="margin-top: 100px">
+    <div class="container" style="margin-top:100px">
 
         {{-- HEADER --}}
         <div class="text-center mb-5">
@@ -23,44 +23,56 @@
 
         </div>
 
-
-
         <div class="row g-4 justify-content-center">
 
             @forelse($cabinets as $cabinet)
 
-            <div class="col-lg-6 wow fadeInUp">
+                @php
+                    $chairman = null;
 
-                <div class="card-modern shadow-hover h-100">
+                    foreach ($cabinet->groups as $group) {
+                        foreach ($group->members as $member) {
+                            if ($member->position && str_contains(strtolower($member->position->name), 'ketua')) {
+                                $chairman = $member;
+                                break 2;
+                            }
+                        }
+                    }
+                @endphp
 
-                    <div class="card-body p-4 d-flex flex-column">
+                <div class="col-lg-6 wow fadeInUp">
 
-                        <span class="badge-modern mb-3 align-self-start">
-                            {{ $cabinet->start_period }}/{{ $cabinet->end_period }}
-                        </span>
+                    <div class="card-modern shadow-hover h-100">
 
-                        <h3 class="text-red mb-3">
-                            {{ $cabinet->name }}
-                        </h3>
+                        <div class="card-body p-4 d-flex flex-column">
 
-                        <p class="text-muted mb-4">
+                            <span class="badge-modern mb-3 align-self-start">
+                                {{ $cabinet->start_period }}/{{ $cabinet->end_period }}
+                            </span>
 
-                            <strong>Ketua Kabinet :</strong><br>
+                            <h3 class="text-red mb-3">
+                                {{ $cabinet->name }}
+                            </h3>
 
-                            {{ $cabinet->coreMembers->firstWhere('position_id',1)->name ?? '-' }}
+                            <p class="text-muted mb-4">
 
-                        </p>
+                                <strong>Ketua Kabinet :</strong><br>
 
-                        <div class="mt-auto">
+                                {{ $chairman->name ?? '-' }}
 
-                            <a
-                                href="{{ route('kabinet.show',$cabinet->id) }}"
-                                class="btn btn-danger rounded-pill px-4">
+                            </p>
 
-                                Lihat Kepengurusan
-                                <i class="fas fa-arrow-right ms-2"></i>
+                            <div class="mt-auto">
 
-                            </a>
+                                <a href="{{ route('kabinet.show',$cabinet->id) }}"
+                                   class="btn btn-danger rounded-pill px-4">
+
+                                    Lihat Kepengurusan
+                                    <i class="fas fa-arrow-right ms-2"></i>
+
+                                </a>
+
+                            </div>
 
                         </div>
 
@@ -68,27 +80,25 @@
 
                 </div>
 
-            </div>
-
             @empty
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="card-modern text-center p-5">
+                    <div class="card-modern text-center p-5">
 
-                    <i class="fas fa-users fa-3x text-danger mb-4"></i>
+                        <i class="fas fa-users fa-3x text-danger mb-4"></i>
 
-                    <h4 class="text-red">
-                        Belum Ada Data Kabinet
-                    </h4>
+                        <h4 class="text-red">
+                            Belum Ada Data Kabinet
+                        </h4>
 
-                    <p class="text-muted mb-0">
-                        Arsip kabinet belum tersedia.
-                    </p>
+                        <p class="text-muted mb-0">
+                            Arsip kabinet belum tersedia.
+                        </p>
+
+                    </div>
 
                 </div>
-
-            </div>
 
             @endforelse
 

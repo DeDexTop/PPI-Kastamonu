@@ -4,36 +4,50 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @mixin IdeHelperCabinet
- */
 class Cabinet extends Model
 {
-    protected $fillable = ['name', 'start_period', 'end_period', 'status'];
+    protected $fillable = [
+        'name',
+        'start_period',
+        'end_period',
+        'status'
+    ];
 
-    public function divisions()
+    /**
+     * Semua group pada kabinet
+     */
+    public function groups()
     {
-        return $this->hasMany(Division::class);
+        return $this->hasMany(CabinetGroup::class)
+            ->with([
+                'members.position'
+            ])
+            ->orderBy('sort_order');
     }
 
+    /**
+     * Semua anggota kabinet
+     */
     public function members()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class)
+            ->with('position')
+            ->orderBy('sort_order');
     }
 
-    public function coreMembers()
+    /**
+     * Group aktif beserta anggotanya
+     */
+    public function groupedMembers()
     {
-        return $this->members()->whereHas('position', function($q){
-            $q->where('type', 'core');
-        });
-    }
-
-    public function mpaMembers()
-    {
-        return $this->members()->where('type', 'mpa');
+        return $this->groups()
+            ->whereHas('members')
+            ->with([
+                'members' => function ($query) {
+                    $query->with('position')
+                        ->orderBy('sort_order')
+                        ->orderBy('position_id');
+                }
+            ]);
     }
 }
-
-
-
-

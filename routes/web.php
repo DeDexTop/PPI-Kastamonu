@@ -11,6 +11,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\KabinetController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\CabinetGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
     return view('user.home', [
-        'title' => 'PPI Kastamonu - Beranda'
+        'title' => 'PPI Kastamonu - Beranda',
+        'blogs' => App\Models\Blog::latest()->take(3)->get(),
     ]);
 });
 
@@ -211,6 +213,34 @@ Route::middleware('auth')
 
         Route::delete('cabinets/{cabinet}/members/{member}', [MemberController::class, 'destroy'])
             ->name('members.destroy');
+
+
+        /*
+        |------------------------------------------------------
+        | GROUP
+        |------------------------------------------------------
+        */
+
+        Route::get('cabinets/{cabinet}/groups/create',
+            [CabinetGroupController::class,'create'])
+            ->name('groups.create');
+
+        Route::post('cabinets/{cabinet}/groups',
+            [CabinetGroupController::class,'store'])
+            ->name('groups.store');
+
+        Route::get('groups/{group}/edit',
+            [CabinetGroupController::class,'edit'])
+            ->name('groups.edit');
+
+        Route::put('groups/{group}',
+            [CabinetGroupController::class,'update'])
+            ->name('groups.update');
+
+        Route::delete('groups/{group}',
+            [CabinetGroupController::class,'destroy'])
+            ->name('groups.destroy');
+        
 
         /*
         |------------------------------------------------------

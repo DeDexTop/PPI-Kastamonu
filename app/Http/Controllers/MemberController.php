@@ -2,86 +2,154 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cabinet;
 use App\Models\Member;
 use App\Models\Position;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
+    /**
+     * Form tambah anggota
+     */
     public function create(Cabinet $cabinet)
     {
-        $divisions = $cabinet->divisions;
-        $positions = Position::all();
+        $groups = $cabinet->groups()
+            ->orderBy('sort_order')
+            ->get();
 
-        return view('admin.member.create', compact('cabinet', 'divisions', 'positions'));
+        $positions = Position::orderBy('level')->get();
+
+        return view('admin.member.create', compact(
+            'cabinet',
+            'groups',
+            'positions'
+        ));
     }
 
+    /**
+     * Simpan anggota
+     */
     public function store(Request $request, Cabinet $cabinet)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'division_id' => 'nullable',
-            'position_id' => 'nullable',
-            'photo' => 'image|nullable|max:1024'
+            'name' => 'required|string|max:100',
+
+            'cabinet_group_id' => 'required|exists:cabinet_groups,id',
+
+            'position_id' => 'required|exists:positions,id',
+
+            'sort_order' => 'nullable|integer|min:0',
+
+            'photo' => 'nullable|image|max:1024',
         ]);
 
-        if ($request->file('photo')) {
-            $data['photo'] = $request->file('photo')->store('members', 'public');
-        }
+        DB::transaction(function () use ($request, &$data, $cabinet) {
 
-        $data['cabinet_id'] = $cabinet->id;
+            if ($request->hasFile('photo')) {
 
-        Member::create($data);
+                $data['photo'] = $request
+                    ->file('photo')
+                    ->store('members', 'public');
+            }
 
-        return redirect()->route('admin.cabinets.show', $cabinet->id);
+            $data['cabinet_id'] = $cabinet->id;
+
+            $data['sort_order'] = $data['sort_order'] ?? 0;
+
+            Member::create($data);
+        });
+
+        return redirect()
+            ->route('admin.cabinets.show', $cabinet->id)
+            ->with('success', 'Anggota berhasil ditambahkan.');
     }
 
+    /**
+     * Form edit anggota
+     */
     public function edit(Cabinet $cabinet, Member $member)
     {
-        $divisions = $cabinet->divisions;
-        $positions = Position::all();
+        $member->load([
+            'group',
+            'position'
+        ]);
 
-        return view('admin.member.edit', compact('cabinet', 'member', 'divisions', 'positions'));
+        $groups = $cabinet->groups()
+            ->orderBy('sort_order')
+            ->get();
+
+        $positions = Position::orderBy('level')->get();
+
+        return view('admin.member.edit', compact(
+            'cabinet',
+            'member',
+            'groups',
+            'positions'
+        ));
     }
 
+    /**
+     * Update anggota
+     */
     public function update(Request $request, Cabinet $cabinet, Member $member)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'division_id' => 'nullable',
-            'position_id' => 'nullable',
-            'photo' => 'image|nullable|max:1024'
-        ],
-        [
+            'name' => 'required|string|max:100',
+
+            'cabinet_group_id' => 'required|exists:cabinet_groups,id',
+
+            'position_id' => 'required|exists:positions,id',
+
+            'sort_order' => 'nullable|integer|min:0',
+
+            'photo' => 'nullable|image|max:1024',
+        ], [
             'photo.image' => 'File harus berupa gambar.',
-            'photo.max' => 'Ukuran file tidak boleh lebih dari 1024KB.',
+            'photo.max'   => 'Ukuran file maksimal 1 MB.',
         ]);
 
-        if ($request->file('photo')) {
+        DB::transaction(function () use ($request, &$data, $member) {
+
+            if ($request->hasFile('photo')) {
+
+                if ($member->photo) {
+                    Storage::disk('public')->delete($member->photo);
+                }
+
+                $data['photo'] = $request
+                    ->file('photo')
+                    ->store('members', 'public');
+            }
+
+            $data['sort_order'] = $data['sort_order'] ?? 0;
+
+            $member->update($data);
+        });
+
+        return redirect()
+            ->route('admin.cabinets.show', $cabinet->id)
+            ->with('success', 'Anggota berhasil diperbarui.');
+    }
+
+    /**
+     * Hapus anggota
+     */
+    public function destroy(Cabinet $cabinet, Member $member)
+    {
+        DB::transaction(function () use ($member) {
+
             if ($member->photo) {
                 Storage::disk('public')->delete($member->photo);
             }
-            $data['photo'] = $request->file('photo')->store('members', 'public');
-        }
 
-        $member->update($data);
+            $member->delete();
+        });
 
-        return redirect()->route('admin.cabinets.show', $cabinet->id);
-    }
-
-    public function destroy(Cabinet $cabinet, Member $member)
-    {
-        if ($member->photo) {
-            Storage::disk('public')->delete($member->photo);
-        }
-
-        $member->delete();
-
-        return redirect()->route('admin.cabinets.show', $cabinet->id);
+        return redirect()
+            ->route('admin.cabinets.show', $cabinet->id)
+            ->with('success', 'Anggota berhasil dihapus.');
     }
 }
-

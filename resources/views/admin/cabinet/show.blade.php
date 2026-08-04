@@ -1,269 +1,332 @@
 @extends('admin.layout.main')
 
 @section('containers')
-<style>
-.org-container {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
 
-/* TITLE */
-.org-title {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
+    <style>
+        .org-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-/* SECTION */
-.org-section {
-    background: #fff;
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-}
+        .org-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
 
-.org-section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
+        .org-section {
+            background: #fff;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+        }
 
-.org-section-title {
-    font-size: 18px;
-    font-weight: 600;
-}
+        .org-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-/* MEMBER GRID */
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 14px;
-}
+        .org-section-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
 
-/* MEMBER CARD */
-.member-card {
-    background: #f9fafb;
-    border-radius: 14px;
-    padding: 14px 12px;
-    text-align: center;
-    border: 1px solid #e5e7eb;
-    position: relative;
-    transition: .2s;
-}
+        .org-section-desc {
+            color: #6b7280;
+            font-size: 14px;
+        }
 
-.member-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-}
+        .member-grid {
 
-.member-card img {
-    width: 74px;
-    height: 74px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #e5e7eb;
-    margin-bottom: 10px;
-}
+            display: grid;
 
-.member-name {
-    font-size: 14px;
-    font-weight: 600;
-}
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 
-.member-role {
-    font-size: 12px;
-    margin-top: 4px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: #2563eb;
-    color: #fff;
-    display: inline-block;
-}
+            gap: 18px;
 
-/* ACTION BUTTON */
-.card-actions {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    display: flex;
-    gap: 5px;
-}
+        }
 
-.btn-edit {
-    background: #f59e0b;
-    color: white;
-    font-size: 11px;
-    padding: 3px 7px;
-    border-radius: 6px;
-    text-decoration: none;
-}
+        .member-card {
 
-.btn-delete {
-    background: #ef4444;
-    color: white;
-    border: none;
-    font-size: 11px;
-    padding: 3px 7px;
-    border-radius: 6px;
-    cursor: pointer;
-}
+            background: #f9fafb;
 
-/* DIVISION BOX */
-.division-box {
-    background: #f8fafc;
-    border-radius: 14px;
-    padding: 16px;
-    margin-top: 12px;
-    border: 1px dashed #e5e7eb;
-}
+            border-radius: 14px;
 
-/* BUTTON ADD */
-.btn-add {
-    background: #2563eb;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    text-decoration: none;
-}
+            padding: 16px;
 
-.btn-add:hover {
-    background: #1e40af;
-}
-</style>
+            text-align: center;
 
-<div class="org-container">
+            position: relative;
 
-    <div class="org-title">
-        🏛️ Kabinet {{ $cabinet->name }}
-    </div>
+            border: 1px solid #e5e7eb;
 
-    {{-- ================= STRUKTUR INTI ================= --}}
-    <div class="org-section">
-        <div class="org-section-header">
-            <div class="org-section-title">👑 Struktur Inti</div>
-            <a href="{{ route('admin.members.create', ['cabinet' => $cabinet->id, 'type' => 'core']) }}" class="btn-add">
-                + Tambah
+        }
+
+        .member-card img {
+
+            width: 90px;
+
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin-bottom: 12px;
+
+        }
+
+        .member-name {
+
+            font-weight: 700;
+
+        }
+
+        .member-role {
+
+            margin-top: 6px;
+
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: #fff;
+
+            padding: 3px 12px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+
+        }
+
+        .card-actions {
+
+            position: absolute;
+
+            top: 8px;
+
+            right: 8px;
+
+            display: flex;
+
+            gap: 5px;
+
+        }
+
+        .btn-add {
+
+            background: #2563eb;
+
+            color: #fff;
+
+            padding: 8px 14px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+        }
+
+        .btn-edit {
+
+            background: #f59e0b;
+
+            color: white;
+
+            padding: 3px 8px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+        }
+
+        .btn-delete {
+
+            background: #ef4444;
+
+            color: white;
+
+            border: none;
+
+            padding: 3px 8px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+        }
+
+        .group-action {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+    </style>
+
+    <div class="org-container">
+
+        <div class="org-title">
+
+            🏛️ Kabinet {{ $cabinet->name }}
+
+        </div>
+
+
+        <div style="display:flex;gap:10px;">
+
+            <a href="{{ route('admin.groups.create', $cabinet->id) }}" class="btn-add">
+
+                + Tambah Group
+
             </a>
-        </div>
 
-        <div class="member-grid">
-            @forelse ($cabinet->coreMembers as $member)
-                <div class="member-card">
+            <a href="{{ route('admin.members.create', $cabinet->id) }}" class="btn-add">
 
-                    <div class="card-actions">
-                        <a href="{{ route('admin.members.edit', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" class="btn-edit">Edit</a>
-                        <form action="{{ route('admin.members.destroy', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-delete" onclick="return confirm('Hapus anggota ini?')">✕</button>
-                        </form>
-                    </div>
+                + Tambah Anggota
 
-                    <img src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}">
-                    <div class="member-name">{{ $member->name }}</div>
-                    <div class="member-role">{{ $member->position->name ?? 'Inti' }}</div>
-                </div>
-            @empty
-                <p style="color:#6b7280;">Belum ada struktur inti.</p>
-            @endforelse
-        </div>
-    </div>
-
-    {{-- ================= MPA ================= --}}
-    <div class="org-section">
-        <div class="org-section-header">
-            <div class="org-section-title">🏛️ MPA</div>
-            <a href="{{ route('admin.members.create', ['cabinet' => $cabinet->id, 'type' => 'mpa']) }}" class="btn-add">
-                + Tambah MPA
             </a>
+
         </div>
 
-        <div class="member-grid">
-            @forelse ($cabinet->mpaMembers as $member)
-                <div class="member-card">
 
-                    <div class="card-actions">
-                        <a href="{{ route('admin.members.edit', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" class="btn-edit">Edit</a>
-                        <form action="{{ route('admin.members.destroy', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-delete" onclick="return confirm('Hapus anggota ini?')">✕</button>
-                        </form>
-                    </div>
-
-                    <img src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}">
-                    <div class="member-name">{{ $member->name }}</div>
-                    <div class="member-role">MPA</div>
-                </div>
-            @empty
-                <p style="color:#6b7280;">Belum ada anggota MPA.</p>
-            @endforelse
-        </div>
-    </div>
-
-    {{-- ================= DIVISI ================= --}}
-    <div class="org-section">
-        <div class="org-section-header">
-            <div class="org-section-title">🧩 Divisi</div>
-            <a href="{{ route('admin.divisions.create', $cabinet->id) }}" class="btn-add">
-                + Tambah Divisi
-            </a>
-        </div>
-
-        @forelse ($cabinet->divisions as $division)
-            <div class="division-box">
+        @forelse($cabinet->groups as $group)
+            <div class="org-section">
 
                 <div class="org-section-header">
-                    <div class="org-section-title">Divisi {{ $division->name }}</div>
-                    <div style="display:flex; gap:6px;">
-                        <a href="{{ route('admin.members.create', ['cabinet' => $cabinet->id, 'division' => $division->id]) }}" class="btn-add">
-                            + Anggota
+
+                    <div>
+
+                        <div class="org-section-title">
+
+                            {{ $group->name }}
+
+                        </div>
+
+                        @if ($group->description)
+                            <div class="org-section-desc">
+
+                                {{ $group->description }}
+
+                            </div>
+                        @endif
+
+                    </div>
+
+
+                    <div class="group-action">
+
+                        <a href="{{ route('admin.groups.edit', $group->id) }}" class="btn-edit">
+
+                            Edit Group
+
                         </a>
-                        <a href="{{ route('admin.divisions.edit', $division->id) }}" class="btn-edit">
-                            Edit
-                        </a>
-                        <form action="{{ route('admin.divisions.destroy', $division->id) }}" method="POST">
+
+                        <form action="{{ route('admin.groups.destroy', $group->id) }}" method="POST">
+
                             @csrf
                             @method('DELETE')
-                            <button class="btn-delete" onclick="return confirm('Hapus divisi ini?')">Hapus</button>
+
+                            <button class="btn-delete" onclick="return confirm('Hapus group ini?')">
+
+                                Hapus
+
+                            </button>
+
                         </form>
+
                     </div>
+
                 </div>
 
+
                 <div class="member-grid">
-                    @forelse ($division->members as $member)
+
+                    @forelse($group->members as $member)
                         <div class="member-card">
 
                             <div class="card-actions">
-                                <a href="{{ route('admin.members.edit', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" class="btn-edit">Edit</a>
-                                <form action="{{ route('admin.members.destroy', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}" method="POST">
+
+                                <a href="{{ route('admin.members.edit', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}"
+                                    class="btn-edit">
+
+                                    Edit
+
+                                </a>
+
+                                <form
+                                    action="{{ route('admin.members.destroy', ['cabinet' => $cabinet->id, 'member' => $member->id]) }}"
+                                    method="POST">
+
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn-delete" onclick="return confirm('Hapus anggota ini?')">✕</button>
+
+                                    <button class="btn-delete" onclick="return confirm('Hapus anggota?')">
+
+                                        ✕
+
+                                    </button>
+
                                 </form>
+
                             </div>
 
-                            <img src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('img/blank.png') }}">
-                            <div class="member-name">{{ $member->name }}</div>
-                            <div class="member-role">{{ $member->position->name ?? 'Anggota' }}</div>
+
+                            <img src="{{ $member->photo ? asset('storage/' . $member->photo) : asset('img/blank.png') }}">
+
+
+                            <div class="member-name">
+
+                                {{ $member->name }}
+
+                            </div>
+
+                            <div class="member-role">
+
+                                {{ $member->position->name ?? '-' }}
+
+                            </div>
+
                         </div>
+
                     @empty
-                        <p style="color:#6b7280;">Belum ada anggota divisi.</p>
+
+                        <p>
+
+                            Belum ada anggota pada group ini.
+
+                        </p>
                     @endforelse
+
                 </div>
 
             </div>
+
         @empty
-            <p style="color:#6b7280;">Belum ada divisi.</p>
+
+            <div class="org-section">
+
+                Belum ada Group Struktur.
+
+            </div>
         @endforelse
+
+
+        <a href="{{ route('admin.cabinets.index') }}" class="btn-add" style="width:fit-content">
+
+            ⬅ Kembali
+
+        </a>
+
     </div>
 
-</div>
-
-<a href="{{ route('admin.cabinets.index') }}" class="btn-add" style="margin-top:20px;">
-    ⬅ Kembali
-</a>
 @endsection

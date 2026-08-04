@@ -384,6 +384,7 @@ BACK TO TOP
     display:none;
 
     z-index:999;
+    
 
 }
 
@@ -428,7 +429,7 @@ SPINNER
     width: 95%;
     z-index: 1050;              /* Berada di atas elemen konten */
     
-    background: #FFF8E1;
+    background: var(--cream);
     backdrop-filter: blur(14px);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
@@ -507,12 +508,12 @@ SPINNER
 
     .custom-navbar{
         width: calc(100% - 30px);
-        margin: 15px auto;
+        margin: auto;
         border-radius: 18px;
         padding: 10px 15px;
         background: #FFF8E1;
         transition: all .3s ease;
-        margin-bottom: 100px;
+        margin-bottom: 75px;
     }
 
     .navbar-collapse{
@@ -704,11 +705,12 @@ RESPONSIVE
     }
 
     .display-1{
-        font-size:3rem;
+        font-size:2.6rem;
     }
 
     .display-2{
-        font-size:2.7rem;
+        font-size:2.6rem;
+        
     }
 
     .display-3{
@@ -793,6 +795,18 @@ ABOUT
 
 .about-content .btn{
     margin-top:10px;
+}
+
+@media(max-width:991px){
+
+    .img-about{
+
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+
+    }
+
 }
 
 
@@ -1181,44 +1195,6 @@ GALLERY
 
 }
 
-/* .gallery-item::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:70px;
-
-    height:70px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    color:var(--primary);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:34px;
-
-    font-weight:bold;
-
-    opacity:0;
-
-    transition:.35s;
-
-} */
-
 .gallery-item:hover::after{
 
     opacity:1;
@@ -1410,14 +1386,6 @@ RESPONSIVE
 
 }
 
-/*====================================================
-PART 3
-CABINET
-TEAM
-FOOTER
-ANIMATION
-RESPONSIVE
-====================================================*/
 
 
 
@@ -1868,6 +1836,18 @@ BADGE
     border-radius:999px;
 
     font-weight:600;
+
+    width:fit-content;
+
+}
+
+@media(max-width:768px){
+
+    .link-center{
+
+        justify-content:center;
+
+    }
 
 }
 

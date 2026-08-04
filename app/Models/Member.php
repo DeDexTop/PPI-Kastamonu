@@ -4,45 +4,53 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @mixin IdeHelperMember
- */
 class Member extends Model
 {
     protected $fillable = [
         'cabinet_id',
-        'division_id',
+        'cabinet_group_id',
         'position_id',
+        'sort_order',
         'name',
         'photo',
-        'type'
     ];
 
+    protected $casts = [
+        'sort_order' => 'integer',
+    ];
+
+    /**
+     * Relasi ke kabinet
+     */
     public function cabinet()
     {
         return $this->belongsTo(Cabinet::class);
     }
 
-    public function division()
+    /**
+     * Relasi ke group kabinet
+     */
+    public function group()
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(CabinetGroup::class, 'cabinet_group_id');
     }
 
+    /**
+     * Relasi ke jabatan
+     */
     public function position()
     {
         return $this->belongsTo(Position::class);
     }
 
-    public function scopeOrderByPosition($query)
+    /**
+     * Scope urutan anggota
+     */
+    public function scopeOrdered($query)
     {
-        return $query->orderByRaw("
-            CASE 
-                WHEN positions.name LIKE '%Ketua%' THEN 1
-                WHEN positions.name LIKE '%Wakil%' THEN 2
-                WHEN positions.name LIKE '%Sekre%' THEN 3
-                WHEN positions.name LIKE '%Bendahara%' THEN 4
-                ELSE 5
-            END
-        ");
+        return $query
+            ->orderBy('sort_order')
+            ->orderBy('position_id')
+            ->orderBy('name');
     }
 }

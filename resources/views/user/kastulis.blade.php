@@ -186,7 +186,7 @@
                 <p class="text-muted">
 
                     Karya anggota akan tampil di sini
-                    setelah ditambahkan melalui dashboard.
+                    setelah ditambahkan.
 
                 </p>
 

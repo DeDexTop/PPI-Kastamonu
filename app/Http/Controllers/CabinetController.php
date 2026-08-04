@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cabinet;
-use App\Models\Member;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CabinetController extends Controller
@@ -12,6 +11,7 @@ class CabinetController extends Controller
     public function index()
     {
         $cabinets = Cabinet::latest()->get();
+
         return view('admin.cabinet.index', compact('cabinets'));
     }
 
@@ -22,66 +22,79 @@ class CabinetController extends Controller
 
     public function store(Request $request)
     {
-        Cabinet::create($request->validate([
-            'name' => 'required',
+        $data = $request->validate([
+            'name' => 'required|string|max:100',
             'start_period' => 'required',
             'end_period' => 'required',
-            'status' => 'required',
-        ]));
+            'status' => 'required|in:active,inactive',
+        ]);
 
-        return redirect()->route('admin.cabinets.index');
+        Cabinet::create($data);
+
+        return redirect()
+            ->route('admin.cabinets.index')
+            ->with('success', 'Kabinet berhasil ditambahkan.');
     }
 
-    public function show($id)
+    public function show(Cabinet $cabinet)
     {
-        $cabinet = Cabinet::with([
-            'coreMembers' => function ($q) {
-                $q->leftJoin('positions', 'members.position_id', '=', 'positions.id')
-                ->orderBy('positions.level', 'asc')
-                ->select('members.*');
+        $cabinet->load([
+            'groups' => function ($query) {
+                $query->orderBy('sort_order');
             },
-            'mpaMembers',
-            'divisions.members' => function ($q) {
-                $q->leftJoin('positions', 'members.position_id', '=', 'positions.id')
-                ->orderBy('positions.level', 'asc')
-                ->select('members.*');
+            'groups.members' => function ($query) {
+                $query->orderBy('sort_order')
+                      ->orderBy('position_id');
             },
-            'divisions.members.position'
-        ])->findOrFail($id);
+            'groups.members.position',
+        ]);
+
         return view('admin.cabinet.show', compact('cabinet'));
     }
 
-    public function edit($id)
+    public function edit(Cabinet $cabinet)
     {
-        $cabinet = Cabinet::findOrFail($id);
         return view('admin.cabinet.edit', compact('cabinet'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Cabinet $cabinet)
     {
-        $cabinet = Cabinet::findOrFail($id);
-        $cabinet->update($request->validate([
-            'name' => 'required',
+        $data = $request->validate([
+            'name' => 'required|string|max:100',
             'start_period' => 'required',
             'end_period' => 'required',
-            'status' => 'required',
-        ]));
+            'status' => 'required|in:active,inactive',
+        ]);
 
-        return redirect()->route('admin.cabinets.index');
+        $cabinet->update($data);
+
+        return redirect()
+            ->route('admin.cabinets.index')
+            ->with('success', 'Kabinet berhasil diperbarui.');
     }
 
-     public function destroy(Cabinet $cabinet)
+    public function destroy(Cabinet $cabinet)
     {
-        foreach ($cabinet->members as $member) {
-        if ($member->photo) {
-            Storage::disk('public')->delete($member->photo);
+        $cabinet->load('groups.members');
+
+        foreach ($cabinet->groups as $group) {
+
+            foreach ($group->members as $member) {
+
+                if ($member->photo) {
+                    Storage::disk('public')->delete($member->photo);
+                }
+
+                $member->delete();
+            }
+
+            $group->delete();
         }
-        $member->delete();
-    }
 
-    $cabinet->delete();
+        $cabinet->delete();
 
-    return redirect()->route('admin.cabinets.index');
+        return redirect()
+            ->route('admin.cabinets.index')
+            ->with('success', 'Kabinet berhasil dihapus.');
     }
 }
-
