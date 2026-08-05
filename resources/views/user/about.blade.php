@@ -1,9 +1,7 @@
 @extends('layout.main')
 
 @section('containers')
-    <!-- ==========================
-                 HERO
-            =========================== -->
+    <!-- ========================== HERO =========================== -->
     <section class="about-hero section-padding bg-cream">
 
         <div class="container" style="margin-top: 50px">
@@ -23,7 +21,7 @@
 
                     <p class="lead mt-4 text-muted">
 
-                        PPI Kastamonu merupakan wadah berhimpunnya pelajar Indonesia
+                        Didirikan pada tahun 2016, PPI Kastamonu merupakan wadah berhimpunnya pelajar Indonesia
                         di Kastamonu untuk berkembang, berkolaborasi,
                         serta memberikan kontribusi bagi masyarakat Indonesia maupun Turki.
 
@@ -33,9 +31,9 @@
 
                 <div class="col-lg-6 wow fadeInRight">
 
-                    <div class="rounded-img shadow-soft">
+                    <div class="rounded-img">
 
-                        <img src="{{ asset('img/musta.JPG') }}" class="img-fluid" alt="Tentang Kami"
+                        <img src="{{ asset('img/musta.JPG') }}" class="img-fluid img-about" alt="Tentang Kami"
                             style="height:400px; object-fit:cover;border-radius: 10px;">
 
                     </div>
@@ -49,9 +47,7 @@
     </section>
 
 
-    <!-- ==========================
-                 FUNGSI & TUJUAN
-            =========================== -->
+    <!-- ========================== FUNGSI & TUJUAN =========================== -->
 
     <section class="section-padding">
 
@@ -151,9 +147,7 @@
     </section>
 
 
-    <!-- ==========================
-                 LOGO
-            =========================== -->
+    <!-- ========================== LOGO =========================== -->
 
     <section class="section-padding bg-cream">
 
@@ -224,9 +218,7 @@
     </section>
 
 
-    <!-- ==========================
-                 KASTAMONU
-            =========================== -->
+    <!-- ========================== KASTAMONU =========================== -->
 
     <section class="section-padding">
 
@@ -242,9 +234,9 @@
 
                 <div class="col-lg-6 wow fadeInLeft">
 
-                    <div class="rounded-img shadow-soft">
+                    <div class="rounded-img">
 
-                        <img src="{{ asset('img/kastam.jpg') }}" class="img-fluid" alt="Kastamonu"
+                        <img src="{{ asset('img/kastam.jpg') }}" class="img-fluid img-about" alt="Kastamonu"
                             style="border-radius: 10px;">
 
                     </div>

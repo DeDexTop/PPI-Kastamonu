@@ -24,16 +24,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('ppikastam_2016'),
         ]);
 
-        
+
 
        DB::table('positions')->updateOrInsert(['name' => 'Ketua Umum'], ['level' => 1]);
+       DB::table('positions')->updateOrInsert(['name' => 'MPA'], ['level' => 1]);
        DB::table('positions')->updateOrInsert(['name' => 'Wakil Ketua'], ['level' => 2]);
        DB::table('positions')->updateOrInsert(['name' => 'Sekretaris Jenderal'], ['level' => 3]);
        DB::table('positions')->updateOrInsert(['name' => 'Sekretaris'], ['level' => 3]);
        DB::table('positions')->updateOrInsert(['name' => 'Bendahara'], ['level' => 4]);
        DB::table('positions')->updateOrInsert(['name' => 'Kepala Divisi'], ['level' => 1]);
        DB::table('positions')->updateOrInsert(['name' => 'Anggota'], ['level' => 2]);
-       DB::table('positions')->updateOrInsert(['name' => 'MPA'], ['level' => 1]);
 
     }
 }

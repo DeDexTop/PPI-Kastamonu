@@ -1,76 +1,84 @@
 @extends('layout.main')
 
 @section('containers')
+    <section class="section-padding bg-cream">
 
-<section class="section-padding bg-cream">
+        <div class="container" style="margin-top:100px">
 
-    <div class="container" style="margin-top:100px">
+            {{-- HEADER --}}
+            <div class="text-center mb-5">
 
-        {{-- HEADER --}}
-        <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold">
+                    Arsip
+                    <span class="text-red">Kabinet</span>
+                </h1>
 
-            <h1 class="display-5 fw-bold">
-                Arsip
-                <span class="text-red">Kabinet</span>
-            </h1>
+                <div class="divider"></div>
 
-            <div class="divider"></div>
+                <p class="text-muted mx-auto" style="max-width:700px;">
+                    Daftar kabinet PPI Kastamonu dari periode ke periode.
+                    Klik salah satu kabinet untuk melihat struktur kepengurusannya.
+                </p>
 
-            <p class="text-muted mx-auto" style="max-width:700px;">
-                Daftar kabinet PPI Kastamonu dari periode ke periode.
-                Klik salah satu kabinet untuk melihat struktur kepengurusannya.
-            </p>
+            </div>
 
-        </div>
+            <div class="row g-4 justify-content-center">
 
-        <div class="row g-4 justify-content-center">
+                @forelse($cabinets as $cabinet)
+                    @php
+                        $chairman = null;
 
-            @forelse($cabinets as $cabinet)
-
-                @php
-                    $chairman = null;
-
-                    foreach ($cabinet->groups as $group) {
-                        foreach ($group->members as $member) {
-                            if ($member->position && str_contains(strtolower($member->position->name), 'ketua')) {
-                                $chairman = $member;
-                                break 2;
+                        foreach ($cabinet->groups as $group) {
+                            foreach ($group->members as $member) {
+                                if ($member->position && str_contains(strtolower($member->position->name), 'ketua')) {
+                                    $chairman = $member;
+                                    break 2;
+                                }
                             }
                         }
-                    }
-                @endphp
+                    @endphp
 
-                <div class="col-lg-6 wow fadeInUp">
+                    <div class="col-lg-6 wow fadeInUp">
 
-                    <div class="card-modern shadow-hover h-100">
+                        <div class="card-modern shadow-hover h-100">
 
-                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="card-body p-4 d-flex flex-column">
 
-                            <span class="badge-modern mb-3 align-self-start">
-                                {{ $cabinet->start_period }}/{{ $cabinet->end_period }}
-                            </span>
+                                <div class="periode-wrapper">
+                                    <span class="badge-modern mb-3 align-self-start">
+                                        {{ $cabinet->start_period }}/{{ $cabinet->end_period }}
+                                    </span>
 
-                            <h3 class="text-red mb-3">
-                                {{ $cabinet->name }}
-                            </h3>
+                                    @if ($cabinet->status === 'active')
+                                        <span class="badge-modern bg-green mb-3 align-self-start">
+                                            Aktif
+                                        </span>
+                                    @endif
+                                </div>
 
-                            <p class="text-muted mb-4">
+                                <h3 class="text-red mb-3">
+                                    {{ $cabinet->name }}
+                                </h3>
 
-                                <strong>Ketua Kabinet :</strong><br>
+                                <p class="text-muted mb-4">
 
-                                {{ $chairman->name ?? '-' }}
+                                    <strong>Ketua Kabinet :</strong><br>
 
-                            </p>
+                                    {{ $chairman->name ?? '-' }}
 
-                            <div class="mt-auto">
+                                </p>
 
-                                <a href="{{ route('kabinet.show',$cabinet->id) }}"
-                                   class="btn btn-danger rounded-pill px-4">
+                                <div class="mt-auto">
 
-                                    Lihat Kepengurusan
-                                    <i class="fas fa-arrow-right ms-2"></i>
+                                    <a href="{{ route('kabinet.show', $cabinet->id) }}"
+                                        class="btn btn-danger rounded-pill px-4">
 
-                                </a>
+                                        Lihat Kepengurusan
+                                        <i class="fas fa-arrow-right ms-2"></i>
+
+                                    </a>
+
+                                </div>
 
                             </div>
 
@@ -78,34 +86,30 @@
 
                     </div>
 
-                </div>
+                @empty
 
-            @empty
+                    <div class="col-12">
 
-                <div class="col-12">
+                        <div class="card-modern text-center p-5">
 
-                    <div class="card-modern text-center p-5">
+                            <i class="fas fa-users fa-3x text-danger mb-4"></i>
 
-                        <i class="fas fa-users fa-3x text-danger mb-4"></i>
+                            <h4 class="text-red">
+                                Belum Ada Data Kabinet
+                            </h4>
 
-                        <h4 class="text-red">
-                            Belum Ada Data Kabinet
-                        </h4>
+                            <p class="text-muted mb-0">
+                                Arsip kabinet belum tersedia.
+                            </p>
 
-                        <p class="text-muted mb-0">
-                            Arsip kabinet belum tersedia.
-                        </p>
+                        </div>
 
                     </div>
+                @endforelse
 
-                </div>
-
-            @endforelse
+            </div>
 
         </div>
 
-    </div>
-
-</section>
-
+    </section>
 @endsection

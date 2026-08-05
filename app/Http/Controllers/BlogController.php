@@ -7,6 +7,7 @@ use App\Models\BlogImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -18,6 +19,26 @@ class BlogController extends Controller
         $blogs = Blog::latest()->paginate(10);
 
         return view('admin.blog.index', compact('blogs'));
+    }
+
+    public function indexUser(Request $request)
+    {
+        $title = 'PPI Kastamonu - Blog';
+        $search = $request->search;
+
+        $blogs = Blog::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                        ->orWhere('content', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(6)
+            ->withQueryString();
+
+
+        return view('user.blog', compact('blogs', 'search', 'title'));
     }
 
     /**
@@ -100,7 +121,7 @@ class BlogController extends Controller
     {
         $blog->load('images');
 
-        $title = "Blog - {$blog->title}";
+        $title = "PPI Kastamonu - Blog - {$blog->title}";
 
         return view('user.blog_detail', compact('blog', 'title'));
     }
@@ -188,23 +209,40 @@ class BlogController extends Controller
     /**
      * Hapus blog
      */
+
     public function destroy(Blog $blog)
     {
+        // 1. Hapus Thumbnail Utama
         if ($blog->thumbnail) {
-            Storage::disk('public')->delete($blog->thumbnail);
+            // Menghapus kata 'storage/' jika tidak sengaja tersimpan di database
+            $cleanThumbnailPath = Str::replace('storage/', '', $blog->thumbnail);
+
+            if (Storage::disk('public')->exists($cleanThumbnailPath)) {
+                Storage::disk('public')->delete($cleanThumbnailPath);
+            }
         }
 
-        foreach ($blog->images as $img) {
+        // 2. Hapus Galeri Gambar Pendukung (Multiple Images)
+        if ($blog->images) {
+            foreach ($blog->images as $img) {
+                if ($img->image_path) {
+                    // Menghapus kata 'storage/' jika ada di data path galeri
+                    $cleanImagePath = Str::replace('storage/', '', $img->image_path);
 
-            Storage::disk('public')->delete($img->image_path);
-
-            $img->delete();
+                    if (Storage::disk('public')->exists($cleanImagePath)) {
+                        Storage::disk('public')->delete($cleanImagePath);
+                    }
+                }
+                // Hapus baris data galeri dari database
+                $img->delete();
+            }
         }
 
+        // 3. Hapus data Blog utama dari database
         $blog->delete();
 
         return redirect()
             ->route('admin.blog.index')
-            ->with('success', 'Blog berhasil dihapus.');
+            ->with('success', 'Blog dan semua berkas gambar berhasil dihapus.');
     }
 }

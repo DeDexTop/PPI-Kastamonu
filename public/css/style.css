@@ -384,7 +384,7 @@ BACK TO TOP
     display:none;
 
     z-index:999;
-    
+
 
 }
 
@@ -428,14 +428,14 @@ SPINNER
     margin: 0 auto;             /* Trik otomatis aman untuk membuat elemen fixed berada di TENGAH */
     width: 95%;
     z-index: 1050;              /* Berada di atas elemen konten */
-    
+
     background: var(--cream);
     backdrop-filter: blur(14px);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    
+
     /* Animasi transisi khusus untuk pergeseran naik-turun posisi 'top' */
-    transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1); 
+    transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .custom-navbar.nav-hidden {
@@ -581,21 +581,21 @@ HEADER
     width: 100%;
     z-index: 1050; /* Di atas standard elemen Bootstrap */
     background: transparent; /* Supaya background krem konten mengintip rapi */
-    
+
     /* Animasi transisi halus saat menyembunyikan navbar */
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Kelas yang akan dipicu otomatis oleh JavaScript */
 .site-header-wrapper.nav-hidden {
     /* Menggeser keluar layar secara vertikal ke atas */
-    transform: translateY(-120%); 
+    transform: translateY(-120%);
 }
 
 
 .header-carousel,
 .page-header{
-    
+
     position:relative;
 
     background:url("../img/bg.jpg") center center;
@@ -710,7 +710,7 @@ RESPONSIVE
 
     .display-2{
         font-size:2.6rem;
-        
+
     }
 
     .display-3{
@@ -1839,6 +1839,21 @@ BADGE
 
     width:fit-content;
 
+}
+
+.badge-modern.bg-green{
+
+    background:rgba(0, 207, 7, 0.205);
+
+    color:#008302;
+
+}
+
+.periode-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 @media(max-width:768px){

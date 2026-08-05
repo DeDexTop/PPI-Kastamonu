@@ -4,7 +4,7 @@
 
 <section class="section-padding bg-cream">
 
-    <div class="container" style="margin-top:100px">
+    <div class="container" style="margin-top:50px">
 
         <div class="row justify-content-center">
 
@@ -72,7 +72,7 @@
 
                                 <small class="text-muted">
 
-                                    Artikel Dipublikasikan
+                                    Karya Tulis Dipublikasikan
 
                                 </small>
 
@@ -99,7 +99,11 @@
                                 class="text-muted"
                                 style="white-space:pre-line;line-height:2;">
 
-                                {{ $author->bio ?? 'Penulis belum menambahkan biodata.' }}
+                                {!! preg_replace(
+                                '/(https?:\/\/[^\s]+)/',
+                                '<a href="$1" target="_blank" rel="noopener noreferrer" style="color: #dc3545; text-decoration: underline;">$1</a>',
+                                e($author->bio ?? 'Penulis belum menambahkan biodata.'),
+                            ) !!}
 
                             </p>
 
@@ -111,7 +115,7 @@
 
                             <h3 class="text-red mb-4">
 
-                                Artikel Penulis
+                                Karya Penulis
 
                             </h3>
 
@@ -161,13 +165,13 @@
 
                                     <h4 class="mt-4">
 
-                                        Belum Ada Artikel
+                                        Belum Ada Hasil Karya
 
                                     </h4>
 
                                     <p class="text-muted">
 
-                                        Penulis ini belum mempublikasikan artikel.
+                                        Penulis ini belum mempublikasikan hasil karya.
 
                                     </p>
 

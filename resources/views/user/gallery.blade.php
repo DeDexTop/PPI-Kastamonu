@@ -40,8 +40,6 @@
             @if ($activities->count() > 0 && $blogs->count() > 0)
                 <div class="my-5">
 
-                    <hr class="gallery-divider">
-
                     <div class="text-center py-4">
 
                         <h2 class="fw-bold text-red">

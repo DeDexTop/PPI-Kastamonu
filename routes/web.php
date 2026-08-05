@@ -45,12 +45,9 @@ Route::get('/aktivitas', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-    return view('user.blog', [
-        'title' => 'PPI Kastamonu - Blog',
-        'blogs' => App\Models\Blog::all()
-    ]);
-});
+Route::get('/blog', [BlogController::class, 'indexUser'])
+    ->name('blog.index.user');
+
 
 Route::get('/kastulis', [AuthorController::class, 'listPosts'])
     ->name('posts.index.user');
@@ -240,7 +237,7 @@ Route::middleware('auth')
         Route::delete('groups/{group}',
             [CabinetGroupController::class,'destroy'])
             ->name('groups.destroy');
-        
+
 
         /*
         |------------------------------------------------------

@@ -1,10 +1,10 @@
 @extends('layout.main')
 
 @section('containers')
-    <div class="container-fluid py-5 bg-cream">
-        <div class="container" style="margin-top: 100px">
-            <div class="card border-0 bg-cream">
-                <div class="card-body">
+    <div class="container-fluid py-5 bg-cream" style="padding-left:0; padding-right:0">
+        <div class="container" style="margin-top: 50px">
+            <div class="card border-0">
+                <div class="card-body bg-cream">
 
                     <!-- JUDUL ARTIKEL -->
                     <h1 class="display-5 text-red mb-4">
@@ -20,8 +20,6 @@
                                 alt="{{ $post->title }}">
                         </div>
 
-                        <!-- TEKS ISI KASTULIS -->
-                        <!-- TEKS ISI KASTULIS (Baru yang otomatis mendeteksi Link) -->
                         <div class="text-dark float-blog-text">
                             {!! nl2br(
                                 preg_replace(
@@ -90,9 +88,16 @@
             line-height: 1.7;
         }
 
-        /* RESPONSIVE: Otomatis kembali normal di layar HP agar tulisan tidak berhimpitan */
+
         @media (max-width: 991px) {
             .thumbnail-wrapper {
+                float: none;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 25px;
+            }
+
+            .float-blog-container {
                 float: none;
                 width: 100%;
                 margin-right: 0;

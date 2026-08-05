@@ -108,7 +108,7 @@
                         </div>
                         <h5 class="fw-bold text-dark mb-2">Akademik & Edukasi</h5>
                         <p class="text-muted small mb-0">Mendukung kelancaran perkuliahan mahasiswa melalui kelas sharing,
-                            bimbingan bahasa, dan penyediaan informasi beasiswa.</p>
+                            bimbingan bahasa, dan penyediaan informasi kampus.</p>
                     </div>
                 </div>
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -118,8 +118,8 @@
                             <i class="fa fa-users fs-3"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2">Minat & Bakat</h5>
-                        <p class="text-muted small mb-0">Wadah pengembangan potensi diri lewat kegiatan olahraga, seni
-                            musik, pembuatan konten digital, dan komunitas diskusi.</p>
+                        <p class="text-muted small mb-0">Wadah pengembangan potensi diri lewat kegiatan olahraga, seni,
+                            pembuatan konten digital, dan komunitas diskusi.</p>
                     </div>
                 </div>
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">

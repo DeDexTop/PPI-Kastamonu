@@ -239,24 +239,34 @@ class AuthorController extends Controller
     public function listPosts(Request $request)
     {
         $search = $request->search;
+        $authorId = $request->author;
 
         $posts = Post::with('author')
             ->when($search, function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                      ->orWhere('content', 'like', "%{$search}%");
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                        ->orWhere('content', 'like', "%{$search}%");
+                });
+            })
+            ->when($authorId, function ($query) use ($authorId) {
+                $query->where('author_id', $authorId);
             })
             ->latest()
             ->paginate(5)
             ->withQueryString();
+
+        $authors = \App\Models\Author::has('posts')->get();
 
         $title = 'PPI Kastamonu - Kastulis';
 
         return view('user.kastulis', compact(
             'posts',
             'search',
+            'authors', // Data authors dikirim ke view
             'title'
         ));
     }
+
 
     public function show(Post $post)
     {

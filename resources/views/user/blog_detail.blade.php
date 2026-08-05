@@ -22,7 +22,7 @@
 
                     <!-- AREA UTAMA KONTEN (Format Aliran Teks Alami) -->
                     <div class="blog-wrapper text-start">
-                        
+
                         <!-- BANNER/THUMBNAIL BLOG -->
                         <div class="wow fadeIn float-blog-container" data-wow-delay="0.2s">
                             <img class="img-fluid float-blog-img" src="{{ asset('storage/' . $blog->thumbnail) }}"
@@ -83,7 +83,7 @@
             margin-right: 30px;
             margin-bottom: 20px;
         }
-        
+
         .float-blog-img {
             width: 100%;
             height: auto;
@@ -97,7 +97,6 @@
             font-size: 1.05rem;
         }
 
-        /* RESPONSIVE: Mengembalikan tata letak standar di layar HP/Tablet agar rapi */
         @media (max-width: 991px) {
             .float-blog-container {
                 float: none;

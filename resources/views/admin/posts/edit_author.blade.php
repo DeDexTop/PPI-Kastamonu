@@ -121,10 +121,10 @@ textarea{
                 value="{{ old('pen_name',$author->pen_name) }}">
         </div>
 
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label>Bio</label>
             <textarea name="bio">{{ old('bio',$author->bio) }}</textarea>
-        </div> --}}
+        </div>
 
         <div class="form-group">
 
