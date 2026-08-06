@@ -5,7 +5,7 @@
     @if (is_null($cabinet))
         <section class="section-padding bg-cream">
 
-            <div class="container text-center" style="margin-top:75px">
+            <div class="container text-center" style="margin-top:50px">
 
                 <h1 class="display-4 fw-bold mt-3">
                     Kabinet
@@ -44,7 +44,7 @@
     @elseif($cabinet->groups->count() == 0)
         <section class="section-padding bg-cream">
 
-            <div class="container text-center" style="margin-top:75px">
+            <div class="container text-center" style="margin-top:50px">
 
                 <h1 class="display-4 fw-bold">
                     Kabinet

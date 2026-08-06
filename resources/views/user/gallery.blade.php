@@ -28,7 +28,7 @@
                     <i class="fas fa-images fa-4x text-danger mb-4"></i>
 
                     <h3 class="text-red">
-                        Belum Ada Galeri
+                        Belum Ada Gambar
                     </h3>
 
                     <p class="text-muted mb-0">

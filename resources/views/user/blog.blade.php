@@ -107,7 +107,7 @@
                             <img src="{{ asset('img/Logo ppi.png') }}" alt="Logo"
                                 style="width:120px;opacity:.4;margin:auto;">
 
-                            <h3 class="mt-4">
+                            <h3 class="mt-4 text-red">
                                 {{ request('search') ? 'Artikel Tidak Ditemukan' : 'Belum Ada Artikel' }}
                             </h3>
 
@@ -125,17 +125,17 @@
             </div>
 
             {{-- PAGINATION --}}
-            @if (method_exists($blogs, 'hasPages') && $blogs->hasPages())
-                <div class="mt-5 d-flex justify-content-center">
+            @if ($blogs->hasPages())
+                <div class="mt-5 d-flex justify-content-center custom-pagination-wrapper">
                     {{ $blogs->appends(request()->query())->links('pagination::bootstrap-5') }}
                 </div>
             @endif
+
 
         </div>
 
     </section>
 
-    {{-- CUSTOM CSS UNTUK FILTER SEARCH --}}
     <style>
         .search-wrapper {
             max-width: 480px;
@@ -172,7 +172,6 @@
 
         .btn-search-submit {
             background-color: #dc3545;
-            /* Menyesuaikan class bg-red / merah PPI */
             color: #ffffff;
             border: none;
             padding: 8px 22px;
@@ -207,6 +206,74 @@
             background-color: #dc3545;
             color: #ffffff;
             transform: rotate(90deg);
+        }
+
+
+        .custom-pagination-wrapper nav .d-none,
+        .custom-pagination-wrapper nav div.flex-sm-fill {
+            display: flex !important;
+            width: 100% !important;
+            justify-content: center !important;
+        }
+
+
+        .custom-pagination-wrapper nav div:first-child,
+        .custom-pagination-wrapper nav p {
+            display: none !important;
+        }
+
+        .custom-pagination-wrapper .pagination {
+            display: flex !important;
+            margin-bottom: 0;
+            padding-left: 0 !important;
+            list-style: none !important;
+            gap: 6px !important;
+            margin: 0 auto !important;
+        }
+
+        .custom-pagination-wrapper .page-item .page-link {
+            display: flex !important;
+            color: #495057 !important;
+            background-color: #ffffff !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+            border-radius: 50% !important;
+            /* Bulat Lingkaran */
+            width: 42px !important;
+            height: 42px !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .custom-pagination-wrapper .page-item .page-link:hover {
+            color: #dc3545 !important;
+            background-color: #fff5f5 !important;
+            border-color: rgba(220, 53, 69, 0.2) !important;
+            transform: translateY(-2px);
+        }
+        .custom-pagination-wrapper .page-item.active .page-link {
+            color: #ffffff !important;
+            background-color: #dc3545 !important;
+            border-color: #dc3545 !important;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.25);
+        }
+        .custom-pagination-wrapper .page-item.disabled .page-link {
+            color: #bcbcbc !important;
+            background-color: #f8f9fa !important;
+            border-color: rgba(0, 0, 0, 0.04) !important;
+            pointer-events: none;
+        }
+
+        @media(max-width: 768px) {
+            .custom-pagination-wrapper .page-item .page-link {
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 0.85rem !important;
+            }
         }
     </style>
 @endsection

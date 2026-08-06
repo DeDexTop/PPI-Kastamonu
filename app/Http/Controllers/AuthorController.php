@@ -252,7 +252,7 @@ class AuthorController extends Controller
                 $query->where('author_id', $authorId);
             })
             ->latest()
-            ->paginate(5)
+            ->paginate(6)
             ->withQueryString();
 
         $authors = \App\Models\Author::has('posts')->get();

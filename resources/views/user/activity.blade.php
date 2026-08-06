@@ -91,7 +91,7 @@
                  alt="Logo"
                  style="width:120px; opacity:.4;">
 
-            <h4 class="mt-4">
+            <h4 class="mt-4 text-red">
                 Belum ada aktivitas yang ditambahkan.
             </h4>
 
