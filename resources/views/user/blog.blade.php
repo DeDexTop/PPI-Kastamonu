@@ -102,7 +102,7 @@
 
                     <div class="col-lg-8">
 
-                        <div class="card-modern text-center p-5">
+                        <div class="text-center p-5">
 
                             <img src="{{ asset('img/Logo ppi.png') }}" alt="Logo"
                                 style="width:120px;opacity:.4;margin:auto;">
