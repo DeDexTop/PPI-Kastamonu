@@ -74,7 +74,7 @@
 
                                 </h4>
 
-                                <p class="text-muted flex-grow-1">
+                                <p class="text-muted grow">
 
                                     {{ Str::limit(strip_tags($blog->content), 150) }}
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\KabinetController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CabinetGroupController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +42,18 @@ Route::get('/tentang', function () {
 Route::get('/aktivitas', function () {
     return view('user.activity', [
         'title' => 'PPI Kastamonu - Kegiatan Kami',
-        'activities' => App\Models\Activity::all()
+        'activities' => App\Models\Activity::orderBy('created_at', 'desc')->paginate(5),
     ]);
 });
 
 Route::get('/blog', [BlogController::class, 'indexUser'])
     ->name('blog.index.user');
+
+Route::get('/kontak', [ContactController::class, 'index'])
+    ->name('contact.index');
+
+Route::post('/kontak/send', [ContactController::class, 'send'])
+    ->name('contact.send');
 
 
 Route::get('/kastulis', [AuthorController::class, 'listPosts'])

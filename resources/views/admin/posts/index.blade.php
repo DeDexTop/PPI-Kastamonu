@@ -15,6 +15,7 @@
         font-size: 14px;
         cursor: pointer;
         border: none;
+        display: inline-block;
     }
 
     .btn-primary {
@@ -37,6 +38,7 @@
         border-radius: 10px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         overflow-x: auto;
+        margin-bottom: 20px;
     }
 
     table {
@@ -86,6 +88,67 @@
         font-size: 13px;
         font-weight: 500;
     }
+
+    /* Desain Kustom Pagination Serasi */
+    .custom-pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        padding: 12px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .04);
+        margin-top: 15px;
+    }
+
+    .pagination-info {
+        font-size: 14px;
+        color: #64748b;
+    }
+
+    .pagination-links {
+        display: flex;
+        gap: 6px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .pagination-links a, .pagination-links span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #475569;
+        text-decoration: none;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+    }
+
+    .pagination-links a:hover {
+        background: #f1f5f9;
+        color: #2563eb;
+        border-color: #cbd5e1;
+    }
+
+    .pagination-links .active span {
+        background: #2563eb;
+        color: #fff;
+        border-color: #2563eb;
+    }
+
+    .pagination-links .disabled span {
+        color: #94a3b8;
+        background: #f1f5f9;
+        border-color: #e2e8f0;
+        cursor: not-allowed;
+    }
 </style>
 
 <div class="page-title">📝 Data Posts</div>
@@ -110,7 +173,7 @@
         <tbody>
         @forelse ($posts as $post)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ ($posts->currentPage() - 1) * $posts->perPage() + $loop->iteration }}</td>
 
                 <td>{{ $post->title }}</td>
 
@@ -160,4 +223,38 @@
         </tbody>
     </table>
 </div>
+
+{{-- Struktur Pagination Kustom --}}
+@if ($posts->hasPages())
+    <div class="custom-pagination">
+        <div class="pagination-info">
+            Menampilkan {{ $posts->firstItem() }} sampai {{ $posts->lastItem() }} dari {{ $posts->total() }} data
+        </div>
+        
+        <ul class="pagination-links">
+            {{-- Tombol Sebelumnya --}}
+            @if ($posts->onFirstPage())
+                <li class="disabled"><span>&laquo;</span></li>
+            @else
+                <li><a href="{{ $posts->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
+
+            {{-- Elemen Nomor Halaman --}}
+            @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+                @if ($page == $posts->currentPage())
+                    <li class="active"><span>{{ $page }}</span></li>
+                @else
+                    <li><a href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            {{-- Tombol Selanjutnya --}}
+            @if ($posts->hasMorePages())
+                <li><a href="{{ $posts->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="disabled"><span>&raquo;</span></li>
+            @endif
+        </ul>
+    </div>
+@endif
 @endsection

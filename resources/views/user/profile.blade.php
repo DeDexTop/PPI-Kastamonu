@@ -93,7 +93,7 @@
 
                     <p class="text-muted text-justify-custom" style="line-height: 1.9;">
                         Semoga website ini dapat memberikan manfaat bagi seluruh
-                        mahasiswa Indonesia di Universitas Kastamonu serta menjadi
+                        mahasiswa Indonesia yang ada di Universitas Kastamonu maupun di tempat lain, serta menjadi
                         sarana penyebaran informasi yang lebih efektif.
                     </p>
 

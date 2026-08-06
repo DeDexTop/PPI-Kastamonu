@@ -9,16 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class DivisionController extends Controller
 {
-    // public function index($cabinetId)
-    // {
-    //     $cabinet = Cabinet::with('divisions')->findOrFail($cabinetId);
-
-    //     return view('admin.divisions.index', compact('cabinet'));
-    // }
-
-    /**
-     * Form tambah divisi
-     */
+    
     public function create($cabinetId)
     {
         $cabinet = Cabinet::findOrFail($cabinetId);

@@ -45,13 +45,6 @@
                     </a>
 
 
-                    <a href="mailto:ppikastamonu@gmail.com" class="social-circle">
-
-                        <i class="fas fa-envelope"></i>
-
-                    </a>
-
-
                 </div>
 
 
@@ -155,7 +148,7 @@
                     </div>
                 @else
                     <p>
-                        Belum ada gambar galeri.
+                        Belum ada gambar di galeri.
                     </p>
 
 

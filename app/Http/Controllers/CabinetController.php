@@ -10,7 +10,7 @@ class CabinetController extends Controller
 {
     public function index()
     {
-        $cabinets = Cabinet::orderBy('start_period', 'desc')->get();
+        $cabinets = Cabinet::orderBy('start_period', 'desc')->paginate(10);
 
         return view('admin.cabinet.index', compact('cabinets'));
     }

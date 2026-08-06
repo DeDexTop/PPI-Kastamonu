@@ -17,7 +17,7 @@ class AuthorController extends Controller
 
     public function index()
     {
-        $posts = Post::with('author')->latest()->get();
+        $posts = Post::with('author')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -133,7 +133,7 @@ class AuthorController extends Controller
 
     public function indexAuthor()
     {
-        $authors = Author::latest()->get();
+        $authors = Author::orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.posts.index_author', compact('authors'));
     }

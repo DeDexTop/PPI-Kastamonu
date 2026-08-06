@@ -267,7 +267,36 @@
 
             </div>
 
+            <div class="row justify-content-center mt-5 wow fadeInUp">
+                <div class="col-lg-12">
+                    <div class="map-wrapper">
+                        <!-- Ganti URL src di bawah ini dengan koordinat atau link embed map Kastamonu University / Kastamonu kota yang Anda inginkan -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47886.65335111611!2d33.7469699331073!3d41.39763415213568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4084fa1240163891%3A0xd819b0a02911d532!2sKastamonu%2C%20Kastamonu%20Merkez%2FProvinsi%20Kastamonu%2C%20Turki!5e0!3m2!1sid!2sid!4v1785986925157!5m2!1sid!2sid" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 350px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        
 
     </section>
+
+    <style>
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            height: 100%;
+            min-height: 350px;
+        }
+    </style>
 @endsection

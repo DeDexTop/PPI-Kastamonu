@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
-use App\Models\ActivityImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,7 +10,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $activities = Activity::with('images')->latest()->get();
+        $activities = Activity::with('images')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.activity.index', compact('activities'));
     }

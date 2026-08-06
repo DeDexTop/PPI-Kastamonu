@@ -52,7 +52,7 @@
         <div class="container py-4">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <img src="{{ asset('img/kastamonu_kampus.JPG') }}" alt="Kastamonu" class="img-fluid image-shadow"
+                    <img src="{{ asset('img/kastamonu_kampus.jpg') }}" alt="Kastamonu" class="img-fluid image-shadow"
                         style="width: 100%; height: 380px; object-fit: cover; border-radius: 20px;">
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
@@ -196,7 +196,7 @@
                                 <h5 class="card-title fw-bold text-dark mb-2 line-clamp-2">
                                     {{ $blog['title'] ?? '' }}
                                 </h5>
-                                <p class="card-text text-muted small flex-grow-1">
+                                <p class="card-text text-muted small grow">
                                     {{ Str::limit(strip_tags($blog['content'] ?? ''), 100) }}
                                 </p>
                                 <a href="{{ route('blog.show', $blog['id'] ?? '#') }}"

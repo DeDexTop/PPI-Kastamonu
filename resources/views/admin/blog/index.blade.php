@@ -15,6 +15,7 @@
         font-size: 14px;
         cursor: pointer;
         border: none;
+        display: inline-block;
     }
 
     .btn-primary {
@@ -37,6 +38,7 @@
         border-radius: 10px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         overflow-x: auto;
+        margin-bottom: 20px;
     }
 
     table {
@@ -86,6 +88,7 @@
         display: flex;
         gap: 6px;
     }
+    
     .image-grid {
         display: flex;
         flex-wrap: wrap;
@@ -102,12 +105,72 @@
         border-radius: 8px;
         border: 1px solid #e5e7eb;
     }
+    
     .image-grid img:hover {
         transform: scale(1.05);
         transition: .2s;
     }
 
+    /* Desain Kustom Pagination Serasi */
+    .custom-pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        padding: 12px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .04);
+        margin-top: 15px;
+    }
 
+    .pagination-info {
+        font-size: 14px;
+        color: #64748b;
+    }
+
+    .pagination-links {
+        display: flex;
+        gap: 6px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .pagination-links a, .pagination-links span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #475569;
+        text-decoration: none;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+    }
+
+    .pagination-links a:hover {
+        background: #f1f5f9;
+        color: #2563eb;
+        border-color: #cbd5e1;
+    }
+
+    .pagination-links .active span {
+        background: #2563eb;
+        color: #fff;
+        border-color: #2563eb;
+    }
+
+    .pagination-links .disabled span {
+        color: #94a3b8;
+        background: #f1f5f9;
+        border-color: #e2e8f0;
+        cursor: not-allowed;
+    }
 </style>
 
 <div class="page-title">📌 Data Blog</div>
@@ -131,7 +194,7 @@
         <tbody>
         @forelse ($blogs as $blog)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ ($blogs->currentPage() - 1) * $blogs->perPage() + $loop->iteration }}</td>
 
                 <td>{{ $blog->title }}</td>
 
@@ -152,7 +215,6 @@
                     </div>
                 </td>
 
-
                 <td>
                     <div class="actions">
                         <a href="{{ route('admin.blog.edit', $blog->id) }}" class="btn btn-warning">
@@ -172,11 +234,45 @@
         @empty
             <tr>
                 <td colspan="6" style="text-align:center; padding:20px;">
-                    Data aktivitas belum tersedia
+                    Data blog belum tersedia
                 </td>
             </tr>
         @endforelse
         </tbody>
     </table>
 </div>
+
+{{-- Struktur Pagination Kustom --}}
+@if ($blogs->hasPages())
+    <div class="custom-pagination">
+        <div class="pagination-info">
+            Menampilkan {{ $blogs->firstItem() }} sampai {{ $blogs->lastItem() }} dari {{ $blogs->total() }} data
+        </div>
+        
+        <ul class="pagination-links">
+            {{-- Tombol Sebelumnya --}}
+            @if ($blogs->onFirstPage())
+                <li class="disabled"><span>&laquo;</span></li>
+            @else
+                <li><a href="{{ $blogs->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
+
+            {{-- Elemen Nomor Halaman --}}
+            @foreach ($blogs->getUrlRange(1, $blogs->lastPage()) as $page => $url)
+                @if ($page == $blogs->currentPage())
+                    <li class="active"><span>{{ $page }}</span></li>
+                @else
+                    <li><a href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            {{-- Tombol Selanjutnya --}}
+            @if ($blogs->hasMorePages())
+                <li><a href="{{ $blogs->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="disabled"><span>&raquo;</span></li>
+            @endif
+        </ul>
+    </div>
+@endif
 @endsection

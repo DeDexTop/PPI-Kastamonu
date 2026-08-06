@@ -75,7 +75,7 @@
 
                                 <h4>{{ $post->title }}</h4>
 
-                                <p class="flex-grow-1">
+                                <p class="grow">
                                     {{ Str::limit(strip_tags($post->content), 130) }}
                                 </p>
 
