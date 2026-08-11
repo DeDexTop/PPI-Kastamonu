@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
-     //Form tambah anggota
     public function create(Cabinet $cabinet)
     {
         $groups = $cabinet->groups()
@@ -28,8 +27,6 @@ class MemberController extends Controller
     }
 
     
-    //Simpan anggota
-
     public function store(Request $request, Cabinet $cabinet)
     {
         $data = $request->validate([
@@ -66,7 +63,6 @@ class MemberController extends Controller
     }
 
     
-    //Form edit anggota
     public function edit(Cabinet $cabinet, Member $member)
     {
         $member->load([
@@ -88,7 +84,6 @@ class MemberController extends Controller
         ));
     }
 
-    //Update anggota
     public function update(Request $request, Cabinet $cabinet, Member $member)
     {
         $data = $request->validate([

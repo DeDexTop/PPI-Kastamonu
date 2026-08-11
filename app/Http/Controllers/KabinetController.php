@@ -20,7 +20,7 @@ class KabinetController extends Controller
             },
             'groups.members.position',
         ])
-        ->where('status', 'active')   // Hanya kabinet aktif
+        ->where('status', 'active')  
         ->first();
 
         return view('user.cabinet', compact('cabinet', 'title'));

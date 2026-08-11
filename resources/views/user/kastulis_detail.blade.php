@@ -6,15 +6,15 @@
             <div class="card border-0">
                 <div class="card-body bg-cream">
 
-                    <!-- JUDUL ARTIKEL -->
+                    
                     <h1 class="display-5 text-red mb-4">
                         {{ $post->title }}
                     </h1>
 
-                    <!-- AREA UTAMA KONTEN (Sistem Float Alami) -->
+                    
                     <div class="blog-wrapper text-start">
 
-                        <!-- BANNER/THUMBNAIL ARTIKEL -->
+                        
                         <div class="thumbnail-wrapper">
                             <img src="{{ asset('storage/' . $post->thumbnail) }}" class="thumbnail-img"
                                 alt="{{ $post->title }}">
@@ -33,12 +33,12 @@
 
                     </div>
 
-                    <!-- MEMBERSIHKAN EFEK FLOAT SEBELUM MASUK KE PROFIL AUTHOR -->
+                    
                     <div style="clear: both;"></div>
 
                     <hr class="my-5">
 
-                    <!-- SEKSI PROFIL AUTHOR -->
+                    
                     <h5 class="text-red mb-5">Profile Author</h5>
 
                     <div class="d-flex align-items-center gap-4">

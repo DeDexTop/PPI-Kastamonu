@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <!-- SEKSI: KENAPA KASTAMONU? -->
+    
     <div class="container-fluid py-5 bg-cream border-top">
         <div class="container py-4">
             <div class="row g-5 align-items-center">
@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <!-- SEKSI: PILAR GERAKAN ORGANISASI -->
+    
     <div class="container-fluid py-5 bg-white border-top">
         <div class="container py-4">
             <div class="text-center mb-5 wow fadeIn">
@@ -137,7 +137,7 @@
         </div>
     </div>
 
-    <!-- SEKSI STATISTIK ORGANISASI -->
+    
     <div class="container-fluid py-5 bg-red text-white">
         <div class="container py-3">
             <div class="row g-4 text-center">
@@ -166,7 +166,7 @@
     </div>
 
 
-    <!-- SEKSI HIGHLIGHT BLOG / BERITA TERBARU -->
+    
     <div class="container-fluid py-5 bg-cream border-top">
         <div class="container py-4">
             <div class="text-center mb-5 wow fadeIn">
@@ -216,7 +216,7 @@
     </div>
 
 
-    <!-- TAMBAHAN CSS UNTUK KONTEN BARU -->
+    
     <style>
         /* CSS TAMBAHAN UNTUK SEKSI BARU */
         .fw-bold {

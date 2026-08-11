@@ -5,7 +5,7 @@
 
         <div class="container" style="margin-top: 50px">
 
-            <!-- Header -->
+            
             <div class="text-center mb-5">
 
                 <h1 class="display-4 fw-bold mt-3">
@@ -43,7 +43,7 @@
 
             </div>
 
-            <!-- Blog List -->
+            
             <div class="row justify-content-center g-4">
 
                 @forelse($blogs as $blog)

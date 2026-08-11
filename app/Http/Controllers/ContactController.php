@@ -25,7 +25,6 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Kirim email langsung ke alamat resmi PPI Kastamonu
         Mail::to('ppi.kastamonu@gmail.com')->send(new ContactMessageMail($validatedData));
 
         return redirect()->back()->with('success', 'Terima kasih! Pesan Anda telah berhasil dikirim langsung ke email kami.');

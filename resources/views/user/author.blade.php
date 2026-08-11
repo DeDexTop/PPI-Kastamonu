@@ -10,7 +10,7 @@
 
             <div class="col-lg-10">
 
-                <!-- Header -->
+                
                 <div class="text-center mb-5">
 
                     <span class="badge-modern">
@@ -29,7 +29,7 @@
 
                 <div class="row g-5">
 
-                    <!-- Profil -->
+                    
                     <div class="col-lg-4">
 
                         <div class="member-card">
@@ -82,10 +82,10 @@
 
                     </div>
 
-                    <!-- Biodata & Artikel -->
+                    
                     <div class="col-lg-8">
 
-                        <!-- Biodata -->
+                        
 
                         <div class="card-modern p-4 mb-5">
 
@@ -109,7 +109,7 @@
 
                         </div>
 
-                        <!-- Artikel -->
+                        
 
                         <div class="card-modern p-4">
 

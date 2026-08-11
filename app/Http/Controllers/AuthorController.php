@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | ADMIN - POST
-    |--------------------------------------------------------------------------
-    */
 
     public function index()
     {
@@ -125,12 +120,6 @@ class AuthorController extends Controller
         return back()->with('success', 'Tulisan berhasil dihapus.');
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ADMIN - AUTHOR
-    |--------------------------------------------------------------------------
-    */
-
     public function indexAuthor()
     {
         $authors = Author::orderBy('created_at', 'desc')->paginate(10);
@@ -230,12 +219,6 @@ class AuthorController extends Controller
             ->with('success', 'Penulis beserta seluruh tulisannya berhasil dihapus.');
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | USER
-    |--------------------------------------------------------------------------
-    */
-
     public function listPosts(Request $request)
     {
         $search = $request->search;
@@ -262,7 +245,7 @@ class AuthorController extends Controller
         return view('user.kastulis', compact(
             'posts',
             'search',
-            'authors', // Data authors dikirim ke view
+            'authors',
             'title'
         ));
     }

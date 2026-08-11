@@ -81,7 +81,7 @@
 
         <div class="container" style="margin-top: 50px">
 
-            <!-- Header -->
+            
             <div class="text-center mb-5">
                 <h1 class="display-4 fw-bold mt-3">
                     Hubungi
@@ -95,10 +95,10 @@
             </div>
 
             <div class="row g-4 justify-content-center mb-5">
-                <!-- Info Kontak Kiri -->
+                
                 <div class="col-lg-5 d-flex flex-column g-4">
 
-                    <!-- Alamat -->
+                    
                     <div class="contact-card p-4 mb-3 d-flex align-items-center">
                         <div class="contact-info-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
 
-                    <!-- Email -->
+                    
                     <div class="contact-card p-4 mb-3 d-flex align-items-center">
                         <div class="contact-info-icon">
                             <i class="far fa-envelope"></i>
@@ -120,7 +120,7 @@
                         </div>
                     </div>
 
-                    <!-- Media Sosial -->
+                    
                     <div class="contact-card p-4 grow">
                         <h5 class="fw-bold mb-3">Media Sosial</h5>
                         <p class="text-muted mb-4">Ikuti perkembangan aktivitas terkini kami melalui saluran resmi berikut:
@@ -140,7 +140,7 @@
 
                 </div>
 
-                <!-- Formulir Kontak Kanan -->
+                
                 <div class="col-lg-7">
                     <div class="contact-card p-5 h-100">
                         <h3 class="fw-bold mb-4 text-red">Kirim Pesan</h3>
@@ -192,11 +192,11 @@
                 </div>
             </div>
 
-            <!-- Bagian Peta / Google Maps Terintegrasi -->
+            
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="map-wrapper">
-                        <!-- Ganti URL src di bawah ini dengan koordinat atau link embed map Kastamonu University / Kastamonu kota yang Anda inginkan -->
+                        
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2991.564926775626!2d33.7698164!3d41.4269622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4084fa0a26570527%3A0xcd2dc99013330c9a!2sKastamonu%20Universitesi!5e0!3m2!1sid!2sid!4v1785986502720!5m2!1sid!2sid"
                             width="100%" height="100%" style="border:0; min-height: 350px;" allowfullscreen=""

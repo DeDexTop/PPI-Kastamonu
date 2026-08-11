@@ -9,17 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class CabinetGroupController extends Controller
 {
-    /**
-     * Form tambah group
-     */
     public function create(Cabinet $cabinet)
     {
         return view('admin.group.create', compact('cabinet'));
     }
 
-    /**
-     * Simpan group baru
-     */
     public function store(Request $request, Cabinet $cabinet)
     {
         $data = $request->validate([
@@ -38,17 +32,11 @@ class CabinetGroupController extends Controller
             ->with('success', 'Grup berhasil ditambahkan.');
     }
 
-    /**
-     * Form edit group
-     */
     public function edit(CabinetGroup $group)
     {
         return view('admin.group.edit', compact('group'));
     }
 
-    /**
-     * Update group
-     */
     public function update(Request $request, CabinetGroup $group)
     {
         $data = $request->validate([
@@ -66,14 +54,10 @@ class CabinetGroupController extends Controller
             ->with('success', 'Grup berhasil diperbarui.');
     }
 
-    /**
-     * Hapus group
-     */
     public function destroy(CabinetGroup $group)
     {
         DB::transaction(function () use ($group) {
 
-            // Hapus semua anggota di group
             foreach ($group->members as $member) {
 
                 if ($member->photo) {

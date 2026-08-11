@@ -17,9 +17,6 @@ class DivisionController extends Controller
         return view('admin.division.create', compact('cabinet'));
     }
 
-    /**
-     * Simpan divisi baru
-     */
     public function store(Request $request, $cabinetId)
     {
         $request->validate([
@@ -36,9 +33,6 @@ class DivisionController extends Controller
             ->with('success', 'Divisi berhasil ditambahkan ✅');
     }
 
-    /**
-     * Form edit divisi
-     */
     public function edit($id)
     {
         $division = Division::findOrFail($id);
@@ -46,9 +40,6 @@ class DivisionController extends Controller
         return view('admin.division.edit', compact('division'));
     }
 
-    /**
-     * Update divisi
-     */
     public function update(Request $request, $id)
     {
         $division = Division::findOrFail($id);
@@ -66,15 +57,11 @@ class DivisionController extends Controller
             ->with('success', 'Divisi berhasil diupdate ✨');
     }
 
-    /**
-     * Hapus divisi
-     */
     public function destroy($id)
     {
         DB::transaction(function () use ($id) {
             $division = Division::with('members')->findOrFail($id);
 
-            // Hapus semua anggota divisi
             foreach ($division->members as $member) {
                 if ($member->photo && file_exists(storage_path('app/public/' . $member->photo))) {
                     unlink(storage_path('app/public/' . $member->photo));
@@ -82,7 +69,6 @@ class DivisionController extends Controller
                 $member->delete();
             }
 
-            // Hapus divisi
             $division->delete();
         });
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="{{ asset('img/Logo ppi.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <title>Login</title>
   <style>
     * {
@@ -104,8 +105,9 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
       opacity: 0.6;
+      transition: opacity 0.2s;
     }
 
 
@@ -130,7 +132,7 @@
         <label for="password">Password</label>
             <div class="password-wrapper">
                 <input type="password" id="password" placeholder="••••••••" required name="password"/>
-                <button type="button" class="toggle-password" onclick="togglePassword()">👁</button>
+                <button type="button" id="toggle-btn" class="toggle-password" onclick="togglePassword()"><i class="fa-solid fa-eye"></i></button>
             </div>
           </div>
       <button type="submit" class="login-btn btn-red">Masuk</button>
@@ -141,8 +143,16 @@
   </div>
   <script>
     function togglePassword() {
-    const passwordInput = document.getElementById('password');
-    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = document.getElementById('toggle-btn');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+      }
     }
 </script>   
 </body>

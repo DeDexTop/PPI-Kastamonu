@@ -7,12 +7,12 @@
             <div class="card border-0">
                 <div class="card-body bg-cream">
 
-                    <!-- JUDUL BLOG -->
+                    
                     <h3 class="display-5 text-start text-red pe-3 mb-4">
                         {{ $blog->title }}
                     </h3>
 
-                    <!-- TANGGAL RILIS -->
+                    
                     <div class="mb-4 wow fadeIn" data-wow-delay="0.1s">
                         <span class="badge-modern" style="width:fit-content; display: inline-block;">
                             <i class="far fa-calendar-alt me-2"></i>
@@ -20,16 +20,16 @@
                         </span>
                     </div>
 
-                    <!-- AREA UTAMA KONTEN (Format Aliran Teks Alami) -->
+                    
                     <div class="blog-wrapper text-start">
 
-                        <!-- BANNER/THUMBNAIL BLOG -->
+                        
                         <div class="wow fadeIn float-blog-container" data-wow-delay="0.2s">
                             <img class="img-fluid float-blog-img" src="{{ asset('storage/' . $blog->thumbnail) }}"
                                 alt="{{ $blog->title }}" style="border-radius:15px">
                         </div>
 
-                        <!-- TEKS ARTIKEL (Menggunakan inline div agar mengalir mulus mengitari gambar) -->
+                        
                         <div class="text-dark float-blog-text">
                             {!! preg_replace(
                                 '/(https?:\/\/[^\s]+)/',
@@ -40,10 +40,10 @@
 
                     </div>
 
-                    <!-- MEMBERSIHKAN EFEK FLOAT SEBELUM MASUK KE GALERI -->
+                    
                     <div style="clear: both;"></div>
 
-                    <!-- SEKSI GALERI -->
+                    
                     @if ($blog->images->count())
                         <hr class="my-5">
 

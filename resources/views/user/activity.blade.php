@@ -148,8 +148,7 @@
 
         <div class="container" style="margin-top: 50px">
 
-            <!-- Header -->
-            <div class="text-center mb-5">
+                        <div class="text-center mb-5">
 
                 <h1 class="display-4 fw-bold mt-3">
                     Aktivitas
@@ -176,16 +175,14 @@
 
                             <div class="row g-0 align-items-center">
 
-                                <!-- Gambar -->
-                                <div class="col-lg-5">
+                                                                <div class="col-lg-5">
 
                                     <img src="{{ asset('storage/' . $activity->thumbnail) }}" alt="{{ $activity->nama }}"
                                         class="img-fluid w-100" style="height:330px; object-fit:cover;">
 
                                 </div>
 
-                                <!-- Konten -->
-                                <div class="col-lg-7 d-flex align-items-center">
+                                                                <div class="col-lg-7 d-flex align-items-center">
 
                                     <div class="p-5 text-center text-lg-start w-100">
 
