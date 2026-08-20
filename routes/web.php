@@ -46,6 +46,30 @@ Route::get('/aktivitas', function () {
     ]);
 });
 
+Route::get('/pendaftaran/mandiri', function(){
+    return view('user.mandiri', [
+        'title' => 'PPI Kastamonu - Pendaftaran Mandiri'
+    ]);
+});
+
+Route::get ('/pendaftaran/agen', function() {
+    return view('user.agen', [
+        'title' => 'PPI Kastamonu - Pendaftaran Melalui Agen'
+    ]);
+});
+
+Route::get('/pendaftaran/visa-pelajar', function() {
+    return view('user.visa', [
+        'title' => 'PPI Kastamonu - Panduan Pendaftaran Visa Pelajar'
+    ]);
+});
+
+Route::get('/pendaftaran/apostille', function() {
+    return view('user.apostille', [
+        'title' => 'PPI Kastamonu - Panduan Apostille Berkas'
+    ]);
+});
+
 Route::get('/blog', [BlogController::class, 'indexUser'])
     ->name('blog.index.user');
 

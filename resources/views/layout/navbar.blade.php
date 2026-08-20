@@ -9,9 +9,8 @@
             </a>
 
             <!-- Button Mobile -->
-            <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse" style="border: 1px solid #fff; border-radius: 5px; padding: 5px 10px;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                style="border: 1px solid #fff; border-radius: 5px; padding: 5px 10px;">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
@@ -56,6 +55,29 @@
                         </a>
                     </li>
 
+                    <!-- Menu Dropdown Pendaftaran -->
+                    <li class="nav-item dropdown custom-dropdown">
+                        <a class="nav-link {{ Request::is('pendaftaran*') ? 'active' : '' }}" href="#"
+                            id="navbarDropdownPendaftaran" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Pendaftaran
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown-menu text-center text-lg-start"
+                            aria-labelledby="navbarDropdownPendaftaran">
+                            <li>
+                                <a class="dropdown-item custom-dropdown-item {{ Request::is('pendaftaran/mandiri') ? 'active' : '' }}"
+                                    href="/pendaftaran/mandiri">
+                                    Jalur Mandiri
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item custom-dropdown-item {{ Request::is('pendaftaran/agen') ? 'active' : '' }}"
+                                    href="/pendaftaran/agen">
+                                    Pendaftaran Agen
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Tombol -->
