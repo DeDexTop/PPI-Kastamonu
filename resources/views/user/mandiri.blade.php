@@ -1,7 +1,6 @@
-@extends('layout.main') {{-- Ganti dengan nama master layout Anda jika berbeda --}}
+@extends('layout.main') 
 
 @section('containers')
-    <!-- Hero Section / Header Halaman -->
     <section class="py-5 bg-cream" style="margin-top: 100px;">
         <div class="container my-4">
             <div class="row align-items-center">
@@ -17,7 +16,7 @@
                         Kuliah di Kastamonu University tanpa perantara. Panduan lengkap tata cara pendaftaran, persyaratan
                         berkas, hingga alur seleksi resmi untuk mahasiswa internasional.
                     </p>
-                    <a href="https://kastamonu.edu.tr" target="_blank" class="btn px-4 py-2 fw-bold text-white shadow-sm"
+                    <a href="https://iso.kastamonu.edu.tr" target="_blank" class="btn px-4 py-2 fw-bold text-white shadow-sm"
                         style="background-color: #cc292b; border-radius: 30px;">
                         Kunjungi Situs Resmi Kampus <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                     </a>
@@ -29,11 +28,9 @@
         </div>
     </section>
 
-    <!-- Konten Utama -->
     <section class="py-5" style="background-color: #fff;">
         <div class="container">
 
-            <!-- Bagian Alur Pendaftaran -->
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Alur Pendaftaran <span style="position: relative;">Mandiri<span
                             style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
@@ -42,7 +39,6 @@
             </div>
 
             <div class="row g-4 mb-5">
-                <!-- Langkah 1 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -54,7 +50,6 @@
                             terlihat jelas sebelum diunggah ke sistem otomasi universitas.</p>
                     </div>
                 </div>
-                <!-- Langkah 2 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -62,12 +57,11 @@
                             <h4 class="m-0 fw-bold text-cream">2</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Pengisian Otomasi & Biaya</h5>
-                        <p class="text-muted small m-0">Buka portal pendaftaran mahasiswa asing (*Yabancı Uyruklu Öğrenci
-                            Otomasyonu*), isi data diri, pilih program studi impian Anda, dan selesaikan pembayaran
+                        <p class="text-muted small m-0">Buka portal pendaftaran mahasiswa asing (Yabancı Uyruklu Öğrenci
+                            Otomasyonu), isi data diri, pilih program studi impian Anda, dan selesaikan pembayaran
                             administrasi.</p>
                     </div>
                 </div>
-                <!-- Langkah 3 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -81,16 +75,13 @@
                 </div>
             </div>
 
-            <!-- Bagian Persyaratan Dokumen & Ketentuan Kampus -->
             <div class="row mt-5 pt-4">
-                <!-- KOLOM KIRI: DOKUMEN WAJIB -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h3 class="fw-bold mb-3" style="color: #222;">Dokumen yang Wajib Disiapkan</h3>
                     <p class="text-muted mb-4">Berikut adalah berkas-berkas yang diperlukan untuk mengunggah pendaftaran
                         Anda:</p>
 
                     <div class="pe-lg-3">
-                        <!-- Berkas 1 -->
                         <div class="d-flex align-items-start mb-4">
                             <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
                             <div>
@@ -99,8 +90,6 @@
                                     aktif selama masa pendaftaran berlangsung.</p>
                             </div>
                         </div>
-
-                        <!-- Berkas 2 -->
                         <div class="d-flex align-items-start mb-4">
                             <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
                             <div>
@@ -109,8 +98,6 @@
                                     putih sesuai dengan standar imigrasi Turki.</p>
                             </div>
                         </div>
-
-                        <!-- Berkas 3 -->
                         <div class="d-flex align-items-start mb-4">
                             <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
                             <div>
@@ -119,8 +106,6 @@
                                     menengah yang menampilkan nilai atau sertifikat hasil ujian YÖS yang Anda ikuti.</p>
                             </div>
                         </div>
-
-                        <!-- Berkas 4 -->
                         <div class="d-flex align-items-start mb-4">
                             <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
                             <div>
@@ -131,10 +116,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- KOLOM KANAN: KOTAK INFORMASI ATAS -->
                 <div class="col-lg-6">
-                    <!-- Kotak 1: Ketentuan Pilihan Jurusan (Merah Transparan) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center" style="color: #cc292b;">
@@ -150,8 +132,6 @@
                             urut berdasarkan minat Anda.
                         </p>
                     </div>
-
-                    <!-- Kotak 2: Biaya Pendaftaran Resmi (Krem) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: #faf6ee; border-color: #4a4a4a !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center" style="color: #4a4a4a;">
@@ -167,14 +147,14 @@
                             *Biaya disetorkan langsung ke rekening resmi Kastamonu Üniversitesi melalui sistem pembayaran
                             otomasi saat melakukan submit berkas.
                         </p>
+                        <p class="text-red mt-1" style="font-style:italic;font-size: 0.85rem; line-height: 1.4;">
+                            Harga bisa saja berubah sesuai ketentuan baru dari kampus.
+                        </p>
                     </div>
                 </div>
             </div>
-
-            <!-- BARIS BARU KHUSUS KOTAK KONTAK (Memanjang Penuh di Bawah Keduanya) -->
             <div class="row mt-2">
                 <div class="col-12">
-                    <!-- Kotak 3: Kontak Hubung Universitas (Abu-abu Terang) -->
                     <div class="p-4 border-start border-4 shadow-sm"
                         style="background-color: #f8f9fa; border-color: #6c757d !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center" style="color: #333;">
@@ -186,19 +166,15 @@
                         </p>
                         <div class="pt-3 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
                             <p class="small m-0 text-muted" style="line-height: 1.6; font-size: 0.9rem;">
-                                <strong>Email ISO:</strong> <span class="text-dark">iso@kastamonu.edu.tr</span> <br>
-                                <strong>Telepon ISO:</strong> <span class="text-dark">+90 366 280 10 00 (ext. 1234)</span>
+                                <strong>Email ISO:</strong> <span class="text-dark">kuyos@kastamonu.edu.tr</span> <br>
+                                <strong>Telepon ISO:</strong> <span class="text-dark">+90 (366) 280 6300 / +90 (366) 280 1061</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- ================= SECTION REGISTRASI ULANG KAMPUS ================= -->
             <section class="py-5 mt-5" style="border-top: 1px solid rgba(0,0,0,0.05);">
                 <div class="row align-items-start">
-
-                    <!-- KOLOM KANAN: DAFTAR BERKAS REGISTRASI FISIK -->
                     <div class="col-lg-7 order-lg-1">
                         <h3 class="fw-bold mb-3" style="color: #222;">Berkas Registrasi Ulang Kampus</h3>
                         <p class="text-muted mb-4">Selamat jika Anda dinyatakan lulus! Jika sudah menerima LoA resmi,
@@ -206,7 +182,6 @@
                             berkas fisik berikut untuk diserahkan ke universitas saat tiba di Kastamonu:</p>
 
                         <div class="pe-lg-4">
-                            <!-- Berkas 1 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-file-invoice mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -216,8 +191,6 @@
                                         mahasiswa baru yang dicetak langsung dari portal pendaftaran online universitas.</p>
                                 </div>
                             </div>
-
-                            <!-- Berkas 2 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-passport mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -226,8 +199,6 @@
                                         halaman depan dan halaman yang tertera visa masuk Turki (jika ada).</p>
                                 </div>
                             </div>
-
-                            <!-- Berkas 3 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-file mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -244,8 +215,6 @@
                                     </p>
                                 </div>
                             </div>
-
-                            <!-- Berkas 4 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-stamp mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -256,8 +225,6 @@
                                         di Jakarta atau di Dinas Pendidikan (Milli Eğitim Müdürlüğü) saat tiba di Turki.</p>
                                 </div>
                             </div>
-
-                            <!-- Berkas 5 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-images mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -267,8 +234,6 @@
                                         arsip data universitas.</p>
                                 </div>
                             </div>
-
-                            <!-- Berkas 6 -->
                             <div class="d-flex align-items-start mb-4">
                                 <i class="fa-solid fa-receipt mt-1 me-3 fs-5" style="color: #cc292b;"></i>
                                 <div>
@@ -281,10 +246,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- KOLOM KIRI: INFO DAFTAR JURUSAN & PERINGATAN (KREATIVE BOX) -->
                     <div class="col-lg-5 mb-4 mb-lg-0 order-lg-2">
-                        <!-- Kotak Peringatan Penting (Merah Transparan Khas) -->
                         <div class="p-4 border-start border-4 shadow-sm mb-4"
                             style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
                             <h5 class="fw-bold d-flex align-items-center" style="color: #cc292b;">
@@ -297,8 +259,6 @@
                                 International Student Office (ISO) Kastamonu University.
                             </p>
                         </div>
-
-                        <!-- Tambahan Pentingnya Visa Pelajar dengan Tombol Tautan -->
                         <div class="p-4 border-start border-4 shadow-sm mb-4"
                             style="background-color: #faf6ee; border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
                             <h6 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
@@ -311,8 +271,6 @@
                                 proses
                                 registrasi di kampus dan untuk penerbitan izin tinggal (Ikamet) di Kastamonu.
                             </p>
-
-                            <!-- TAMBAHAN: Tombol Tautan Menuju Halaman Panduan Visa -->
                             <div class="mt-4 pt-2 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
                                 <a href="/pendaftaran/visa-pelajar"
                                     class="btn btn-sm text-white w-100 fw-bold py-2 shadow-sm"
@@ -321,9 +279,6 @@
                                 </a>
                             </div>
                         </div>
-
-
-                        <!-- Kotak Tambahan: Alur Setelah Datang -->
                         <div class="p-4 border-start border-4 shadow-sm"
                             style="background-color: #faf6ee; border-color: #4a4a4a !important; border-radius: 0 15px 15px 0;">
                             <h6 class="fw-bold mb-2" style="color: #222;">Setelah Registrasi Kampus:</h6>

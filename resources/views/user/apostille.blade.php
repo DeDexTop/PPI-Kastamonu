@@ -1,7 +1,6 @@
 @extends('layout.main') {{-- Ganti dengan nama master layout Anda jika berbeda --}}
 
 @section('containers')
-    <!-- Hero Section / Header Halaman -->
     <section class="py-5 bg-cream" style="margin-top: 100px;">
         <div class="container my-4">
             <div class="row align-items-center">
@@ -28,12 +27,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Konten Utama -->
     <section class="py-5" style="background-color: #fff;">
         <div class="container">
-
-            <!-- Bagian Alur Langkah Kerja -->
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Tahapan Proses <span style="position: relative;">Apostille<span
                             style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
@@ -42,7 +37,6 @@
             </div>
 
             <div class="row g-4 mb-5">
-                <!-- Langkah 1 -->
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -54,7 +48,6 @@
                             baru menggunakan data NIK KTP Anda, dan tunggu verifikasi email.</p>
                     </div>
                 </div>
-                <!-- Langkah 2 -->
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -66,7 +59,6 @@
                             nama pejabat/kepala sekolah yang menandatangani ijazah asli Anda.</p>
                     </div>
                 </div>
-                <!-- Langkah 3 -->
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -79,7 +71,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- Langkah 4 -->
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -92,11 +83,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Bagian Ketentuan Dokumen & Kotak Perhatian -->
             <div class="row align-items-start mt-5 pt-4">
-
-                <!-- KOLOM 1: BERKAS YANG HARUS DI-APOSTILLE (DITULIS DULUAN AGAR DI HP DI ATAS) -->
                 <div class="col-lg-7 mb-4 mb-lg-0">
                     <h3 class="fw-bold mb-4" style="color: #222;">Berkas yang Wajib Di-Apostille</h3>
                     <p class="text-muted mb-4">Pastikan dokumen utama berikut telah melalui proses penempelan stiker
@@ -132,10 +119,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- KOLOM 2: KOTAK INFORMASI & WARNING (DI HP OTOMATIS JATUH KE BAWAH) -->
                 <div class="col-lg-5">
-                    <!-- Kotak 1: Aturan Urutan Penerjemah (Merah Transparan) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
@@ -148,8 +132,6 @@
                             Tersumpah (*Sworn Translator*) untuk diterjemahkan ke bahasa Turki/Inggris. Jangan dibalik!
                         </p>
                     </div>
-
-                    <!-- Kotak 2: Lokasi Cetak Wilayah (Krem) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: #faf6ee; border-color: #4a4a4a !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #4a4a4a;">

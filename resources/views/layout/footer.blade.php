@@ -55,60 +55,57 @@
 
             {{-- LINK --}}
             <div class="col-lg-4 col-md-6">
-
-
                 <h4>
                     Link Cepat
                 </h4>
+                <div class="row">
+                    <!-- Navigasi Menu Utama -->
+                    <div class="col-6">
+                        <div class="footer-links">
+                            <a href="/tentang" class="btn btn-link text-start p-0 mb-2" style="font-size: 0.9rem;">
+                                Tentang Kami
+                            </a>
+                            <a href="/aktivitas" class="btn btn-link text-start p-0 mb-2" style="font-size: 0.9rem;">
+                                Aktivitas
+                            </a>
+                            <a href="/kastulis" class="btn btn-link text-start p-0 mb-2" style="font-size: 0.9rem;">
+                                Kastulis
+                            </a>
+                            <a href="/kabinet" class="btn btn-link text-start p-0 mb-2" style="font-size: 0.9rem;">
+                                Kabinet
+                            </a>
+                            <a href="/blog" class="btn btn-link text-start p-0 mb-2" style="font-size: 0.9rem;">
+                                Blog
+                            </a>
+                        </div>
+                    </div>
 
-
-                <div class="footer-links">
-
-
-                    <a href="/tentang" class="btn btn-link text-start">
-
-                        Tentang Kami
-
-                    </a>
-
-
-                    <a href="/aktivitas" class="btn btn-link text-start">
-
-                        Aktivitas
-
-                    </a>
-
-
-                    <a href="/kastulis" class="btn btn-link text-start">
-
-                        Kastulis
-
-                    </a>
-
-
-                    <a href="/kabinet" class="btn btn-link text-start">
-
-                        Kabinet
-
-                    </a>
-
-
-                    <a href="/blog" class="btn btn-link text-start">
-
-                        Blog
-
-                    </a>
-
-
+                    <!-- Panduan Informasi Kuliah (Sub-Menu Baru) -->
+                    <div class="col-6">
+                        <div class="footer-links border-start ps-3"
+                            style="border-color: rgba(255,255,255,0.1) !important;">
+                            <span class="d-block fw-bold mb-2 small text-cream" style="letter-spacing: 0.5px;">INFO
+                                KULIAH</span>
+                            <a href="/pendaftaran/mandiri" class="btn btn-link text-start p-0 mb-2"
+                                style="font-size: 0.85rem;">
+                                Jalur Mandiri
+                            </a>
+                            <a href="/pendaftaran/apostille" class="btn btn-link text-start p-0 mb-2"
+                                style="font-size: 0.85rem;">
+                                Pasca Apostille
+                            </a>
+                            <a href="/pendaftaran/visa-pelajar" class="btn btn-link text-start p-0 mb-2"
+                                style="font-size: 0.85rem;">
+                                Visa Pelajar
+                            </a>
+                            <a href="/pendaftaran/agen" class="btn btn-link text-start p-0 mb-2"
+                                style="font-size: 0.85rem;">
+                                Referensi Agen
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
-
-
-
-
-
             {{-- GALERI --}}
             <div class="col-lg-4 col-md-12">
 

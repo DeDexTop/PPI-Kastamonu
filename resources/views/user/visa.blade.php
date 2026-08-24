@@ -1,7 +1,6 @@
 @extends('layout.main') {{-- Ganti dengan nama master layout Anda jika berbeda --}}
 
 @section('containers')
-    <!-- Hero Section / Header Halaman -->
     <section class="py-5 bg-cream" style="margin-top: 100px;">
         <div class="container my-4">
             <div class="row align-items-center">
@@ -28,12 +27,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Konten Utama -->
     <section class="py-5" style="background-color: #fff;">
         <div class="container">
-
-            <!-- Bagian Alur Pengajuan Visa -->
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Tahapan Pengajuan <span style="position: relative;">Visa<span
                             style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
@@ -42,7 +37,6 @@
             </div>
 
             <div class="row g-4 mb-5">
-                <!-- Langkah 1 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -54,7 +48,6 @@
                             berkas secara online melalui situs resmi agen Gateway Visa Turki yang ditunjuk.</p>
                     </div>
                 </div>
-                <!-- Langkah 2 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -66,7 +59,6 @@
                             fisik, melakukan rekam biometrik (sidik jari), wawancara singkat, dan membayar biaya visa.</p>
                     </div>
                 </div>
-                <!-- Langkah 3 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
@@ -80,10 +72,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Bagian Persyaratan Dokumen & Info Biaya -->
             <div class="row align-items-start mt-5 pt-4">
-                <!-- Kolom Kiri: Daftar Berkas Fisik Visa -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h3 class="fw-bold mb-4" style="color: #222;">Dokumen Persyaratan Visa</h3>
                     <p class="text-muted mb-4">Seluruh dokumen ini wajib disiapkan dalam bentuk fisik (asli) beserta
@@ -150,10 +139,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Kolom Kanan: Kotak Informasi Tambahan (Senada dengan Halaman Mandiri) -->
                 <div class="col-lg-6">
-                    <!-- Kotak 1: Catatan Estimasi Waktu (Merah Transparan Khas) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
@@ -165,8 +151,6 @@
                             janji temu atau berkas tambahan yang mendadak diminta oleh pihak kedutaan.
                         </p>
                     </div>
-
-                    <!-- Kotak 2: Komponen Biaya Visa Terperinci (Krem) -->
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
                         style="background-color: #faf6ee; border-color: #4a4a4a !important; border-radius: 0 15px 15px 0;">
                         <h5 class="fw-bold d-flex align-items-center mb-3" style="color: #4a4a4a;">
@@ -176,10 +160,7 @@
                             Pengurusan Visa Pelajar Mandiri mewajibkan pemohon membayar dua komponen biaya utama saat datang
                             ke kantor Gateway (VFS Global):
                         </p>
-
-                        <!-- Detail Komponen Biaya 1 -->
                         <div class="mb-3 pt-2 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
-                            <!-- Menggunakan row & col agar responsif di HP -->
                             <div class="row g-2 mb-2 align-items-center">
                                 <div class="col-sm-7 col-12">
                                     <span class="small fw-bold text-dark d-block">1. Biaya Stiker Visa Resmi
@@ -196,10 +177,7 @@
                                 dengan kondisi lembaran uang yang mulus tanpa lipatan/coretan).
                             </p>
                         </div>
-
-                        <!-- Detail Komponen Biaya 2 -->
                         <div class="mb-3 pt-2 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
-                            <!-- Menggunakan row & col agar responsif di HP -->
                             <div class="row g-2 mb-2 align-items-center">
                                 <div class="col-sm-7 col-12">
                                     <span class="small fw-bold text-dark d-block">2. Biaya Layanan Jasa Gateway
@@ -216,8 +194,6 @@
                                 dan pengiriman berkas (dibayarkan dalam Rupiah tunai/kartu).
                             </p>
                         </div>
-
-                        <!-- Catatan Kaki Kotak -->
                         <div class="pt-2 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
                             <p class="text-muted small m-0" style="font-size: 0.8rem; color: #6c757d; line-height: 1.4;">
                                 *Catatan: Nominal di atas merupakan perkiraan berdasarkan tarif reguler saat ini dan dapat
