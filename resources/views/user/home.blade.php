@@ -47,13 +47,15 @@
         </div>
     </div>
 
-    
+
     <div class="container-fluid py-5 bg-cream border-top">
         <div class="container py-4">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <img src="{{ asset('img/kastamonu_kampus.jpg') }}" alt="Kastamonu" class="img-fluid image-shadow"
                         style="width: 100%; height: 380px; object-fit: cover; border-radius: 20px;">
+                    <p class="mt-2">Sumber: <a href="https://www.kastamonu.edu.tr/en/about-us" target="_blank"
+                            class="text-red">kastamonu.edu.tr</a></p>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
                     <p class="fs-5 text-red fw-bold mb-1">Eksplorasi</p>
@@ -92,7 +94,7 @@
         </div>
     </div>
 
-    
+
     <div class="container-fluid py-5 bg-white border-top">
         <div class="container py-4">
             <div class="text-center mb-5 wow fadeIn">
@@ -137,7 +139,7 @@
         </div>
     </div>
 
-    
+
     <div class="container-fluid py-5 bg-red text-white">
         <div class="container py-3">
             <div class="row g-4 text-center">
@@ -166,7 +168,7 @@
     </div>
 
 
-    
+
     <div class="container-fluid py-5 bg-cream border-top">
         <div class="container py-4">
             <div class="text-center mb-5 wow fadeIn">
@@ -216,7 +218,7 @@
     </div>
 
 
-    
+
     <style>
         /* CSS TAMBAHAN UNTUK SEKSI BARU */
         .fw-bold {

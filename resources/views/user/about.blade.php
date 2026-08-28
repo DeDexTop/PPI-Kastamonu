@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('containers')
-        <section class="about-hero section-padding bg-cream">
+    <section class="about-hero section-padding bg-cream">
 
         <div class="container" style="margin-top: 50px">
 
@@ -46,7 +46,7 @@
     </section>
 
 
-    
+
     <section class="section-padding">
 
         <div class="container">
@@ -145,7 +145,7 @@
     </section>
 
 
-    
+
     <section class="section-padding bg-cream">
 
         <div class="container">
@@ -215,7 +215,7 @@
     </section>
 
 
-    
+
     <section class="section-padding">
 
         <div class="container">
@@ -234,6 +234,8 @@
 
                         <img src="{{ asset('img/kastam.jpg') }}" class="img-fluid img-about" alt="Kastamonu"
                             style="border-radius: 10px;">
+                        <p class="mt-2">Sumber: <a href="https://hadigez.com/kastamonu-gezi-notlari/" target="_blank"
+                                class="text-red">hadigez.com</a></p>
 
                     </div>
 
@@ -266,21 +268,17 @@
             <div class="row justify-content-center mt-5 wow fadeInUp">
                 <div class="col-lg-12">
                     <div class="map-wrapper">
-                                                <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47886.65335111611!2d33.7469699331073!3d41.39763415213568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4084fa1240163891%3A0xd819b0a02911d532!2sKastamonu%2C%20Kastamonu%20Merkez%2FProvinsi%20Kastamonu%2C%20Turki!5e0!3m2!1sid!2sid!4v1785986925157!5m2!1sid!2sid" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; min-height: 350px;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47886.65335111611!2d33.7469699331073!3d41.39763415213568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4084fa1240163891%3A0xd819b0a02911d532!2sKastamonu%2C%20Kastamonu%20Merkez%2FProvinsi%20Kastamonu%2C%20Turki!5e0!3m2!1sid!2sid!4v1785986925157!5m2!1sid!2sid"
+                            width="100%" height="100%" style="border:0; min-height: 350px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                 </div>
             </div>
 
         </div>
-        
+
 
     </section>
 

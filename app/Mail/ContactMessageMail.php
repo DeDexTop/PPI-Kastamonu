@@ -19,13 +19,14 @@ class ContactMessageMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Pesan Baru dari Website: ' . $this->data['subject'])
-                    ->html("
-                        <h3>Pesan Baru dari Formulir Kontak Website</h3>
-                        <p><strong>Nama:</strong> {$this->data['name']}</p>
-                        <p><strong>Email Pengirim:</strong> {$this->data['email']}</p>
-                        <p><strong>Pesan:</strong></p>
-                        <p>{$this->data['message']}</p>
-                    ");
+        return $this->subject('Pesan Baru dari Website: '.$this->data['subject'])
+            ->html("
+                    <h3>Pesan Baru dari Formulir Kontak Website</h3>
+                    <p><strong>Nama:</strong> {$this->data['name']}</p>
+                    <p><strong>Kontak Pengirim (Email/WA):</strong> {$this->data['kontak']}</p>
+                    <p><strong>Subjek:</strong> {$this->data['subject']}</p>
+                    <p><strong>Pesan:</strong></p>
+                    <p>{$this->data['message']}</p>
+                ");
     }
 }

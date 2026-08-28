@@ -70,6 +70,12 @@ Route::get('/pendaftaran/apostille', function() {
     ]);
 });
 
+Route::get('/terms-of-service', function(){
+    return view('user.term-of-service', [
+        'title' => 'PPI Kastamonu - Ketentuan Layanan'
+    ]);
+});
+
 Route::get('/blog', [BlogController::class, 'indexUser'])
     ->name('blog.index.user');
 

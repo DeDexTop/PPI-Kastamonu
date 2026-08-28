@@ -1,23 +1,23 @@
 @extends('layout.main') {{-- Ganti dengan nama master layout Anda jika berbeda --}}
 
 @section('containers')
-    <section class="py-5 bg-cream" style="margin-top: 100px;">
-        <div class="container my-4">
+    <section class="py-5 bg-cream">
+        <div class="container" style="margin-top: 100px;">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-center text-lg-start">
                     <span class="fw-bold px-3 py-1 rounded-pill small"
-                        style="background-color: rgba(204, 41, 43, 0.1); color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.1); color: #D32F2F;">
                         Legalitas Berkas Internasional
                     </span>
                     <h1 class="display-5 fw-bold mt-3 mb-4" style="color: #222;">
-                        Panduan <span style="color: #cc292b;">Apostille</span> Kemenkumham
+                        Panduan <span style="color: #D32F2F;">Apostille</span> Kemenkumham
                     </h1>
                     <p class="lead text-muted mb-4" style="max-width: 600px;">
                         Sesuai regulasi internasional terbaru, semua berkas pendidikan asal Indonesia wajib dilegalisasi
                         melalui sertifikat Apostille AHU Kemenkumham agar sah diakui di Turki.
                     </p>
                     <a href="https://ahu.go.id" target="_blank" class="btn px-4 py-2 fw-bold text-white shadow-sm"
-                        style="background-color: #cc292b; border-radius: 30px;">
+                        style="background-color: #D32F2F; border-radius: 30px;">
                         Buka Portal Apostille Online <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Tahapan Proses <span style="position: relative;">Apostille<span
-                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
+                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #D32F2F; border-radius: 2px;"></span></span>
                 </h2>
                 <p class="text-muted mt-3">Alur pengurusan sertifikasi dokumen publik dari rumah secara mandiri </p>
             </div>
@@ -40,7 +40,7 @@
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 45px; height: 45px; background-color: #cc292b; color: #fff;">
+                            style="width: 45px; height: 45px; background-color: #D32F2F; color: #fff;">
                             <h5 class="m-0 fw-bold text-cream">1</h5>
                         </div>
                         <h6 class="fw-bold mb-2">Registrasi Akun</h6>
@@ -51,7 +51,7 @@
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 45px; height: 45px; background-color: #cc292b; color: #fff;">
+                            style="width: 45px; height: 45px; background-color: #D32F2F; color: #fff;">
                             <h5 class="m-0 fw-bold text-cream">2</h5>
                         </div>
                         <h6 class="fw-bold mb-2">Unggah Dokumen</h6>
@@ -62,7 +62,7 @@
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 45px; height: 45px; background-color: #cc292b; color: #fff;">
+                            style="width: 45px; height: 45px; background-color: #D32F2F; color: #fff;">
                             <h5 class="m-0 fw-bold text-cream">3</h5>
                         </div>
                         <h6 class="fw-bold mb-2">Bayar PNBP</h6>
@@ -74,7 +74,7 @@
                 <div class="col-md-3">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 45px; height: 45px; background-color: #cc292b; color: #fff;">
+                            style="width: 45px; height: 45px; background-color: #D32F2F; color: #fff;">
                             <h5 class="m-0 fw-bold text-cream">4</h5>
                         </div>
                         <h6 class="fw-bold mb-2">Cetak Stiker</h6>
@@ -90,7 +90,7 @@
                         Apostille sebelum dibawa ke Turki :</p>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Ijazah SMA / Sederajat (Asli)</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Dokumen kelulusan asli. Jika nama
@@ -100,7 +100,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Transkrip Nilai Akademik (Asli)</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Lembar rincian nilai ujian akhir
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">SKCK Kepolisian (Opsional)</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Disarankan untuk turut di-Apostille
@@ -121,8 +121,8 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
-                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
-                        <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #D32F2F !important; border-radius: 0 15px 15px 0;">
+                        <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #D32F2F;">
                             <i class="fa-solid fa-arrow-down-a-z me-2"></i> Perhatikan Urutan Proses!
                         </h5>
                         <p class="text-muted small m-0" style="line-height: 1.6;">
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="mb-4 mt-5">
-                    <a href="/pendaftaran/mandiri" class="text-decoration-none fw-bold small" style="color: #cc292b;">
+                    <a href="/pendaftaran/mandiri" class="text-decoration-none fw-bold small" style="color: #D32F2F;">
                         <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Panduan Mandiri
                     </a>
                 </div>

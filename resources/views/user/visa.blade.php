@@ -1,23 +1,23 @@
 @extends('layout.main') {{-- Ganti dengan nama master layout Anda jika berbeda --}}
 
 @section('containers')
-    <section class="py-5 bg-cream" style="margin-top: 100px;">
-        <div class="container my-4">
+    <section class="py-5 bg-cream">
+        <div class="container" style="margin-top: 100px;">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-center text-lg-start">
                     <span class="fw-bold px-3 py-1 rounded-pill small"
-                        style="background-color: rgba(204, 41, 43, 0.1); color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.1); color: #D32F2F;">
                         Panduan Pemberangkatan Mandiri
                     </span>
                     <h1 class="display-5 fw-bold mt-3 mb-4" style="color: #222;">
-                        Pengurusan <span style="color: #cc292b;">Visa Pelajar</span> Turki
+                        Pengurusan <span style="color: #D32F2F;">Visa Pelajar</span> Turki
                     </h1>
                     <p class="lead text-muted mb-4" style="max-width: 600px;">
                         Panduan lengkap tata cara pengajuan Visa Pelajar (Student Visa) resmi melalui Gateway resmi
                         Kedutaan Turki di Indonesia sebelum keberangkatan menuju Kota Kastamonu.
                     </p>
                     <a href="https://vfsglobal.com" target="_blank" class="btn px-4 py-2 fw-bold text-white shadow-sm"
-                        style="background-color: #cc292b; border-radius: 30px;">
+                        style="background-color: #D32F2F; border-radius: 30px;">
                         Kunjungi Situs Gateway Visa <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Tahapan Pengajuan <span style="position: relative;">Visa<span
-                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
+                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #D32F2F; border-radius: 2px;"></span></span>
                 </h2>
                 <p class="text-muted mt-3">Ikuti alur berikut dari persiapan berkas hingga pengambilan paspor</p>
             </div>
@@ -40,7 +40,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">1</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Janji Temu (Appointment)</h5>
@@ -51,7 +51,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">2</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Penyerahan & Wawancara</h5>
@@ -62,7 +62,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">3</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Proses & Pengambilan</h5>
@@ -79,7 +79,7 @@
                         salinannya (fotokopi) saat datang ke janji temu:</p>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Paspor Asli & Fotokopi</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Masa berlaku paspor minimal 6 bulan
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Letter of Acceptance (LoA) Resmi</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Surat bukti penerimaan asli yang
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Formulir Permohonan Visa</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Telah diisi secara online, dicetak
@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Dokumen Keuangan (Rekening Koran)</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">Bukti tabungan sponsor/orang tua
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="d-flex align-items-start mb-4">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Asuransi Kesehatan Turki Resmi</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">
@@ -131,7 +131,7 @@
 
 
                     <div class="d-flex align-items-start">
-                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                        <i class="fa-solid fa-circle-check mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                         <div>
                             <h6 class="fw-bold mb-1" style="color: #222;">Foto Biometrik & SKCK</h6>
                             <p class="text-muted small m-0" style="line-height: 1.5;">2 lembar foto biometrik 5x5 latar
@@ -141,8 +141,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
-                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
-                        <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #D32F2F !important; border-radius: 0 15px 15px 0;">
+                        <h5 class="fw-bold d-flex align-items-center mb-2" style="color: #D32F2F;">
                             <i class="fa-solid fa-clock me-2"></i> Estimasi Waktu Pengurusan
                         </h5>
                         <p class="text-muted small m-0" style="line-height: 1.6;">
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-sm-5 col-12 text-sm-end">
                                     <span class="small fw-bold d-inline-block px-2 py-1 rounded"
-                                        style="color: #cc292b; background-color: rgba(204, 41, 43, 0.05);">USD 105 -
+                                        style="color: #D32F2F; background-color: rgba(204, 41, 43, 0.05);">USD 105 -
                                         110</span>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col-sm-5 col-12 text-sm-end">
                                     <span class="small fw-bold d-inline-block px-2 py-1 rounded"
-                                        style="color: #cc292b; background-color: rgba(204, 41, 43, 0.05);">Rp 1.100k - Rp
+                                        style="color: #D32F2F; background-color: rgba(204, 41, 43, 0.05);">Rp 1.100k - Rp
                                         1.300k</span>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="mb-4 mt-5">
-                    <a href="/pendaftaran/mandiri" class="text-decoration-none fw-bold small" style="color: #cc292b;">
+                    <a href="/pendaftaran/mandiri" class="text-decoration-none fw-bold small" style="color: #D32F2F;">
                         <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Panduan Mandiri
                     </a>
                 </div>

@@ -1,23 +1,23 @@
 @extends('layout.main') 
 
 @section('containers')
-    <section class="py-5 bg-cream" style="margin-top: 100px;">
-        <div class="container my-4">
+    <section class="py-5 bg-cream">
+        <div class="container" style="margin-top: 100px;">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-center text-lg-start">
                     <span class="fw-bold px-3 py-1 rounded-pill small"
-                        style="background-color: rgba(204, 41, 43, 0.1); color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.1); color: #D32F2F;">
                         Panduan Resmi PPI Kastamonu
                     </span>
                     <h1 class="display-5 fw-bold mt-3 mb-4" style="color: #222;">
-                        Pendaftaran Jalur <span style="color: #cc292b;">Mandiri</span>
+                        Pendaftaran Jalur <span style="color: #D32F2F;">Mandiri</span>
                     </h1>
                     <p class="lead text-muted mb-4" style="max-width: 600px;">
                         Kuliah di Kastamonu University tanpa perantara. Panduan lengkap tata cara pendaftaran, persyaratan
                         berkas, hingga alur seleksi resmi untuk mahasiswa internasional.
                     </p>
                     <a href="https://iso.kastamonu.edu.tr" target="_blank" class="btn px-4 py-2 fw-bold text-white shadow-sm"
-                        style="background-color: #cc292b; border-radius: 30px;">
+                        style="background-color: #D32F2F; border-radius: 30px;">
                         Kunjungi Situs Resmi Kampus <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                     </a>
                 </div>
@@ -33,7 +33,7 @@
 
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="color: #222;">Alur Pendaftaran <span style="position: relative;">Mandiri<span
-                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #cc292b; border-radius: 2px;"></span></span>
+                            style="position: absolute; bottom: -8px; left: 25%; width: 50%; height: 3px; background-color: #D32F2F; border-radius: 2px;"></span></span>
                 </h2>
                 <p class="text-muted mt-3">Langkah-langkah yang harus Anda lalui dari awal hingga dinyatakan diterima</p>
             </div>
@@ -42,7 +42,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">1</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Persiapan Berkas</h5>
@@ -53,7 +53,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">2</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Pengisian Otomasi & Biaya</h5>
@@ -65,7 +65,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 p-4 border-0 shadow-sm bg-cream" style="border-radius: 15px;">
                         <div class="d-flex align-items-center justify-content-center mb-3 rounded-circle"
-                            style="width: 50px; height: 50px; background-color: #cc292b; color: #fff;">
+                            style="width: 50px; height: 50px; background-color: #D32F2F; color: #fff;">
                             <h4 class="m-0 fw-bold text-cream">3</h4>
                         </div>
                         <h5 class="fw-bold mb-2">Pengumuman LoA</h5>
@@ -83,7 +83,7 @@
 
                     <div class="pe-lg-3">
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
+                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #D32F2F;"></i>
                             <div>
                                 <h6 class="fw-bold mb-1" style="color: #222;">Paspor / Ikamet</h6>
                                 <p class="text-muted small m-0" style="line-height: 1.5;">Kartu identitas resmi yang masih
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
+                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #D32F2F;"></i>
                             <div>
                                 <h6 class="fw-bold mb-1" style="color: #222;">Foto Biometrik Standar Ikamet</h6>
                                 <p class="text-muted small m-0" style="line-height: 1.5;">Foto terbaru dengan latar belakang
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
+                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #D32F2F;"></i>
                             <div>
                                 <h6 class="fw-bold mb-1" style="color: #222;">Ijazah SMA (Transkrip Nilai) / YÖS</h6>
                                 <p class="text-muted small m-0" style="line-height: 1.5;">Berkas ijazah asli sekolah
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #cc292b;"></i>
+                            <i class="fa-solid fa-circle-check mt-1 me-3" style="color: #D32F2F;"></i>
                             <div>
                                 <h6 class="fw-bold mb-1" style="color: #222;">Terjemahan Ijazah & Transkrip Nilai</h6>
                                 <p class="text-muted small m-0" style="line-height: 1.5;">Wajib diterjemahkan ke dalam
@@ -118,8 +118,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="p-4 border-start border-4 shadow-sm mb-4"
-                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
-                        <h5 class="fw-bold d-flex align-items-center" style="color: #cc292b;">
+                        style="background-color: rgba(204, 41, 43, 0.03); border-color: #D32F2F !important; border-radius: 0 15px 15px 0;">
+                        <h5 class="fw-bold d-flex align-items-center" style="color: #D32F2F;">
                             <i class="fa-solid fa-list-ol me-2"></i> Ketentuan Pilihan Jurusan
                         </h5>
                         <p class="text-muted small mt-2 mb-3" style="line-height: 1.5;">
@@ -183,7 +183,7 @@
 
                         <div class="pe-lg-4">
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-file-invoice mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-file-invoice mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Letter of Acceptance (LoA) / Hasil
                                         Kelulusan</h6>
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-passport mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-passport mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Paspor Asli & Salinan (Fotokopi)</h6>
                                     <p class="text-muted small m-0" style="line-height: 1.5;">Membawa paspor asli beserta
@@ -200,7 +200,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-file mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-file mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Ijazah Asli, Transkrip & Terjemahan
                                         Resmi</h6>
@@ -208,7 +208,7 @@
                                         beserta dokumen hasil terjemahan tersumpah bahasa Turki/Inggris yang telah
                                         disiapkan. <strong>Ijazah Asli dan Transkrip nilai harus sudah di-Apostille terlebih
                                             dahulu. <a href="/pendaftaran/apostille" class="fw-bold"
-                                                style="color: #cc292b; text-decoration: underline;">
+                                                style="color: #D32F2F; text-decoration: underline;">
                                                 Lihat Panduan Cara Apostille Kemenkumham Di Sini.
                                             </a>
                                         </strong>
@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-stamp mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-stamp mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Sertifikat Penyetaraan Ijazah (Denklik
                                         Belgesi)</h6>
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-images mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-images mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Pasfoto Biometrik Tambahan</h6>
                                     <p class="text-muted small m-0" style="line-height: 1.5;">Siapkan cetak fisik foto
@@ -235,7 +235,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start mb-4">
-                                <i class="fa-solid fa-receipt mt-1 me-3 fs-5" style="color: #cc292b;"></i>
+                                <i class="fa-solid fa-receipt mt-1 me-3 fs-5" style="color: #D32F2F;"></i>
                                 <div>
                                     <h6 class="fw-bold mb-1" style="color: #222;">Bukti Bayar Spp Semester Ganjil (Harc
                                         Makbuzu)</h6>
@@ -248,8 +248,8 @@
                     </div>
                     <div class="col-lg-5 mb-4 mb-lg-0 order-lg-2">
                         <div class="p-4 border-start border-4 shadow-sm mb-4"
-                            style="background-color: rgba(204, 41, 43, 0.03); border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
-                            <h5 class="fw-bold d-flex align-items-center" style="color: #cc292b;">
+                            style="background-color: rgba(204, 41, 43, 0.03); border-color: #D32F2F !important; border-radius: 0 15px 15px 0;">
+                            <h5 class="fw-bold d-flex align-items-center" style="color: #D32F2F;">
                                 <i class="fa-solid fa-triangle-exclamation me-2"></i> Perhatian Penting!
                             </h5>
                             <p class="text-muted small mt-2 mb-0" style="line-height: 1.6;">
@@ -260,8 +260,8 @@
                             </p>
                         </div>
                         <div class="p-4 border-start border-4 shadow-sm mb-4"
-                            style="background-color: #faf6ee; border-color: #cc292b !important; border-radius: 0 15px 15px 0;">
-                            <h6 class="fw-bold d-flex align-items-center mb-2" style="color: #cc292b;">
+                            style="background-color: #faf6ee; border-color: #D32F2F !important; border-radius: 0 15px 15px 0;">
+                            <h6 class="fw-bold d-flex align-items-center mb-2" style="color: #D32F2F;">
                                 <i class="fa-solid fa-passport me-2"></i> Kewajiban Visa Pelajar
                             </h6>
                             <p class="text-muted small m-0" style="line-height: 1.6;">
@@ -274,7 +274,7 @@
                             <div class="mt-4 pt-2 border-top" style="border-top: 1px dashed rgba(0,0,0,0.1) !important;">
                                 <a href="/pendaftaran/visa-pelajar"
                                     class="btn btn-sm text-white w-100 fw-bold py-2 shadow-sm"
-                                    style="background-color: #cc292b; border-radius: 8px; font-size: 0.85rem;">
+                                    style="background-color: #D32F2F; border-radius: 8px; font-size: 0.85rem;">
                                     Lihat Panduan Cara Membuat Visa Pelajar <i class="fa-solid fa-arrow-right ms-2"></i>
                                 </a>
                             </div>
