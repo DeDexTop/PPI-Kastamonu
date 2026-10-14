@@ -33,7 +33,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('aktivitas') ? 'active' : '' }}" href="/aktivitas">
-                            Aktivitas
+                            Kegiatan
                         </a>
                     </li>
 
@@ -51,7 +51,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="/blog">
-                            Blog
+                            Kabar PPI
                         </a>
                     </li>
 

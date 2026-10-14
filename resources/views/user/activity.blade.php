@@ -151,14 +151,14 @@
                         <div class="text-center mb-5">
 
                 <h1 class="display-4 fw-bold mt-3">
-                    Aktivitas
+                    Kegiatan
                     <span class="text-red">PPI Kastamonu</span>
                 </h1>
 
                 <div class="divider"></div>
 
                 <p class="text-muted mx-auto" style="max-width:700px;">
-                    Berbagai kegiatan yang diselenggarakan oleh
+                    Berbagai kegiatan rutin yang diselenggarakan oleh
                     Perhimpunan Pelajar Indonesia Kastamonu sebagai
                     wadah pengembangan akademik, sosial, budaya,
                     dan kekeluargaan.
@@ -225,11 +225,11 @@
                     <img src="{{ asset('img/Logo ppi.png') }}" alt="Logo" style="width:120px; opacity:.4;">
 
                     <h4 class="mt-4 text-red">
-                        Belum ada aktivitas yang ditambahkan.
+                        Belum ada kegiatan yang ditambahkan.
                     </h4>
 
                     <p class="text-muted">
-                        Aktivitas akan muncul di sini setelah ditambahkan melalui dashboard.
+                        Kegiatan akan muncul di sini setelah ditambahkan melalui dashboard.
                     </p>
 
                 </div>

@@ -9,14 +9,14 @@
             <div class="text-center mb-5">
 
                 <h1 class="display-4 fw-bold mt-3">
-                    Blog
+                    Kabar
                     <span class="text-red">PPI Kastamonu</span>
                 </h1>
 
                 <div class="divider"></div>
 
                 <p class="mx-auto text-muted mb-4" style="max-width:700px;">
-                    Selamat datang di blog resmi PPI Kastamonu.
+                    Selamat datang di Kabar PPI Kastamonu.
                     Temukan cerita, pengalaman, informasi akademik,
                     kegiatan organisasi, serta berbagai artikel menarik
                     dari mahasiswa Indonesia di Kastamonu.

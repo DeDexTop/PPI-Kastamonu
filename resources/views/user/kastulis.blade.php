@@ -18,7 +18,7 @@
 
                 <p class="text-muted mx-auto mb-4" style="max-width:750px;">
                     Ruang bagi anggota PPI Kastamonu untuk berbagi
-                    gagasan melalui artikel, puisi, cerita pendek,
+                    gagasan melalui puisi, cerita pendek,
                     dan tulisan inspiratif.
                 </p>
 
